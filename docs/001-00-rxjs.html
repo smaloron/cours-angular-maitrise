@@ -1,0 +1,182 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:26.981325"><title>Module 1 : L'essentiel - Ma&icirc;trise de RxJS, le c&oelig;ur r&eacute;actif d'Angular | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"les-piliers-de-rxjs","level":0,"title":"Les Piliers de RxJS","anchor":"#les-piliers-de-rxjs"},{"id":"les-subjects-le-pont-entre-deux-mondes","level":0,"title":"Les Subjects : Le Pont entre Deux Mondes","anchor":"#les-subjects-le-pont-entre-deux-mondes"},{"id":"les-op-rateurs-de-transformation-de-flux","level":0,"title":"Les Opérateurs de Transformation de Flux","anchor":"#les-op-rateurs-de-transformation-de-flux"},{"id":"exercice-1-1-la-recherche-auto-compl-t-e","level":0,"title":"Exercice 1.1 : La recherche auto-complétée","anchor":"#exercice-1-1-la-recherche-auto-compl-t-e"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 1 : L'essentiel - Ma&icirc;trise de RxJS, le c&oelig;ur r&eacute;actif d'Angular | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/001-00-rxjs.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 1 : L'essentiel - Ma&icirc;trise de RxJS, le c&oelig;ur r&eacute;actif d'Angular | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/001-00-rxjs.html#webpage",
+    "url": "writerside-documentation/001-00-rxjs.html",
+    "name": "Module 1 : L'essentiel - Ma&icirc;trise de RxJS, le c&oelig;ur r&eacute;actif d'Angular | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="001-00-RXJS" data-main-title="Module 1 : L'essentiel - Maîtrise de RxJS, le cœur réactif d'Angular" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="001-00-RXJS" id="001-00-RXJS.md">Module 1 : L'essentiel - Maîtrise de RxJS, le cœur réactif d'Angular</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="vtk766_11">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="vtk766_12"><li class="list__item" id="vtk766_13"><p id="vtk766_17"><span class="control" id="vtk766_18">Distinguer</span> clairement les concepts fondamentaux de RxJS : <code class="code" id="vtk766_19">Observable</code>, <code class="code" id="vtk766_20">Observer</code> et <code class="code" id="vtk766_21">Subscription</code>.</p></li><li class="list__item" id="vtk766_14"><p id="vtk766_22"><span class="control" id="vtk766_23">Choisir</span> le bon type de <code class="code" id="vtk766_24">Subject</code> (<code class="code" id="vtk766_25">Subject</code> vs <code class="code" id="vtk766_26">BehaviorSubject</code>) pour des cas d'usage pr&eacute;cis, notamment pour faire le pont entre le monde imp&eacute;ratif et le monde r&eacute;actif.</p></li><li class="list__item" id="vtk766_15"><p id="vtk766_27"><span class="control" id="vtk766_28">Ma&icirc;triser</span> le quatuor essentiel des op&eacute;rateurs de transformation de flux : <code class="code" id="vtk766_29">switchMap</code>, <code class="code" id="vtk766_30">mergeMap</code>, <code class="code" id="vtk766_31">concatMap</code> et <code class="code" id="vtk766_32">exhaustMap</code>.</p></li><li class="list__item" id="vtk766_16"><p id="vtk766_33"><span class="control" id="vtk766_34">Appliquer</span> ces concepts pour r&eacute;soudre des probl&egrave;mes concrets et courants, comme la recherche auto-compl&eacute;t&eacute;e.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="vtk766_35">Vous avez d&eacute;j&agrave; utilis&eacute; RxJS, peut-&ecirc;tre sans m&ecirc;me y penser en profondeur. Chaque fois que vous avez utilis&eacute; <code class="code" id="vtk766_38">HttpClient</code>, vous avez manipul&eacute; un <code class="code" id="vtk766_39">Observable</code>. Mais vous n'avez fait qu'effleurer la surface de ce qui est sans doute la biblioth&egrave;que la plus puissante de l'&eacute;cosyst&egrave;me Angular.</p><p id="vtk766_36">Imaginez que vous commandez une pizza. L'approche classique (avec les <code class="code" id="vtk766_40">Promise</code>) serait d'attendre passivement devant votre porte jusqu'&agrave; ce que le livreur arrive. Vous ne savez rien de ce qui se passe entre temps. La programmation r&eacute;active avec RxJS, c'est comme avoir une application de suivi : vous recevez une s&eacute;rie de notifications. &quot;Commande re&ccedil;ue&quot;, &quot;Pr&eacute;paration en cours&quot;, &quot;Livreur en route&quot;, &quot;Pizza livr&eacute;e&quot;. Vous ne recevez pas une seule information &agrave; la fin, mais un <span class="control" id="vtk766_41">flux d'&eacute;v&eacute;nements dans le temps</span>.</p><p id="vtk766_37">RxJS vous donne les outils pour cr&eacute;er, combiner, filtrer et transformer ces flux de donn&eacute;es. Ma&icirc;triser RxJS, c'est passer d'un d&eacute;veloppeur qui subit l'asynchronisme &agrave; un architecte qui l'orchestre avec pr&eacute;cision. C'est la comp&eacute;tence qui d&eacute;bloquera votre capacit&eacute; &agrave; g&eacute;rer des sc&eacute;narios complexes avec un code &eacute;tonnamment simple et lisible.</p></section><section class="chapter"><h2 id="les-piliers-de-rxjs" data-toc="les-piliers-de-rxjs">Les Piliers de RxJS</h2><p id="vtk766_42">Pour bien construire, il faut des fondations solides. En RxJS, elles reposent sur trois piliers.</p><ol class="list _decimal" id="vtk766_43" type="1"><li class="list__item" id="vtk766_48"><p id="vtk766_51"><span class="control" id="vtk766_52">L'Observable</span>: C'est le producteur de donn&eacute;es, le flux. Imaginez-le comme un journal. Il publie des informations (les valeurs) au fil du temps. Il peut aussi signaler quand il a fini de publier (<code class="code" id="vtk766_53">complete</code>) ou si une erreur est survenue (<code class="code" id="vtk766_54">error</code>).</p></li><li class="list__item" id="vtk766_49"><p id="vtk766_55"><span class="control" id="vtk766_56">L'Observer</span>: C'est le consommateur. C'est un objet avec trois m&eacute;thodes (<code class="code" id="vtk766_57">next</code>, <code class="code" id="vtk766_58">error</code>, <code class="code" id="vtk766_59">complete</code>) qui sait comment r&eacute;agir aux informations publi&eacute;es par l'Observable. C'est votre lecteur du journal.</p></li><li class="list__item" id="vtk766_50"><p id="vtk766_60"><span class="control" id="vtk766_61">La Subscription</span>: C'est le lien entre l'Observable et l'Observer. Quand vous faites <code class="code" id="vtk766_62">.subscribe()</code>, vous cr&eacute;ez cet abonnement. C'est ce qui d&eacute;clenche la production des valeurs. Surtout, cet abonnement poss&egrave;de une m&eacute;thode <code class="code" id="vtk766_63">unsubscribe()</code> pour se d&eacute;sabonner et &eacute;viter les fuites de m&eacute;moire.</p></li></ol><div class="code-block" data-lang="ts">
+import {Observable} from 'rxjs';
+
+// 1. Création de l'Observable (le journal)
+const myObservable$ = new Observable(subscriber =&gt; {
+    console.log('L-Observable commence à produire...');
+    subscriber.next(1); // Publie la valeur 1
+    subscriber.next(2); // Publie la valeur 2
+    // subscriber.error('Une erreur est survenue !'); // Pourrait publier une erreur
+    subscriber.next(3); // Publie la valeur 3
+    subscriber.complete(); // Annonce la fin de la publication
+    // Ce code ne sera jamais exécuté car le flux est terminé
+    subscriber.next(4);
+});
+
+// 2. Création de l'Observer (le lecteur)
+const myObserver = {
+    next: (value: number) =&gt; console.log(`Valeur reçue : ${value}`),
+    error: (err: string) =&gt; console.error(`Erreur : ${err}`),
+    complete: () =&gt; console.log('Le flux est terminé.')
+};
+
+// 3. Création de la Subscription (l'abonnement)
+console.log('Avant l-abonnement');
+const subscription = myObservable$.subscribe(myObserver);
+console.log('Après l-abonnement');
+
+// Plus tard, pour arrêter d'écouter
+// subscription.unsubscribe();
+</div><p id="vtk766_45">@startuml skinparam linetype ortho !theme vibrant</p><p id="vtk766_46">participant &quot;Code appelant&quot; as Caller participant &quot;Observable&quot; as Obs participant &quot;Observer&quot; as Lstn</p><p id="vtk766_47">Caller -&gt; Obs : .subscribe(myObserver) activate Obs Obs -&gt; Lstn : next(1) activate Lstn deactivate Lstn Obs -&gt; Lstn : next(2) activate Lstn deactivate Lstn Obs -&gt; Lstn : next(3) activate Lstn deactivate Lstn Obs -&gt; Lstn : complete() activate Lstn deactivate Lstn Obs --&gt; Caller : Subscription deactivate Obs @enduml</p></section><section class="chapter"><h2 id="les-subjects-le-pont-entre-deux-mondes" data-toc="les-subjects-le-pont-entre-deux-mondes">Les <code class="code" id="vtk766_69">Subjects</code>: Le Pont entre Deux Mondes</h2><p id="vtk766_65">Un <code class="code" id="vtk766_70">Observable</code> standard est &quot;froid&quot; : il ne commence &agrave; produire ses valeurs que lorsqu'on s'y abonne, et chaque abonn&eacute; re&ccedil;oit sa propre s&eacute;quence de valeurs (comme si chacun recevait sa propre copie du journal).</p><p id="vtk766_66">Un <span class="control" id="vtk766_71"><code class="code" id="vtk766_75">Subject</code></span> est diff&eacute;rent. Il est &quot;chaud&quot;. C'est un type sp&eacute;cial d'Observable qui permet de &quot;pousser&quot; des valeurs &agrave; plusieurs Observers en m&ecirc;me temps (multicast). Il agit comme un canal de communication. Il est &agrave; la fois un <code class="code" id="vtk766_72">Observable</code> (on peut s'y abonner) et un <code class="code" id="vtk766_73">Observer</code> (on peut lui passer des valeurs avec <code class="code" id="vtk766_74">.next()</code>).</p><p id="vtk766_67">C'est le pont parfait entre le code imp&eacute;ratif (ex: un clic sur un bouton) et le monde r&eacute;actif de RxJS.</p><div class="tabs" id="vtk766_68" data-anchors="[vtk766_76,vtk766_77]"><div class="tabs__content" data-gtm="tab" id="vtk766_76" data-title="Subject"><p>Un `Subject` de base. Il n'a pas de m&eacute;moire. Si vous vous abonnez apr&egrave;s qu'une valeur a &eacute;t&eacute; &eacute;mise, vous ne la recevrez pas. Vous ne recevrez que les valeurs &eacute;mises *apr&egrave;s* votre abonnement. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+import {Subject} from 'rxjs';
+
+const mySubject = new Subject&lt;string&gt;();
+
+// Le premier abonné arrive
+mySubject.subscribe(value =&gt; console.log(`Abonné 1: ${value}`));
+
+mySubject.next('Hello'); // Émet une valeur
+mySubject.next('World'); // Émet une autre valeur
+
+// Le deuxième abonné arrive en retard
+mySubject.subscribe(value =&gt; console.log(`Abonné 2: ${value}`));
+
+mySubject.next('!'); // Seuls les deux abonnés reçoivent cette valeur
+
+// Output:
+// Abonné 1: Hello
+// Abonné 1: World
+// Abonné 1: !
+// Abonné 2: !
+</div></div><div class="tabs__content" data-gtm="tab" id="vtk766_77" data-title="BehaviorSubject"><p>Le `BehaviorSubject` est l'un des outils les plus utiles de votre arsenal. Il a deux super-pouvoirs : 1. Il doit &ecirc;tre cr&eacute;&eacute; avec une **valeur initiale**. 2. Il garde en m&eacute;moire la **derni&egrave;re valeur &eacute;mise** et la fournit imm&eacute;diatement &agrave; tout nouvel abonn&eacute;. </p><p id="vtk766_79">C'est l'outil parfait pour repr&eacute;senter des &quot;&eacute;tats&quot; qui &eacute;voluent dans le temps (ex: l'utilisateur connect&eacute;, la valeur d'un panier, etc.).</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+import {BehaviorSubject} from 'rxjs';
+
+// Créé avec une valeur initiale
+const myBhvSubject = new BehaviorSubject&lt;string&gt;('Valeur initiale');
+
+myBhvSubject.subscribe(value =&gt; console.log(`Abonné 1: ${value}`));
+
+myBhvSubject.next('Nouvelle valeur');
+
+// Le deuxième abonné arrive et reçoit immédiatement la dernière valeur
+myBhvSubject.subscribe(value =&gt; console.log(`Abonné 2: ${value}`));
+
+// Output:
+// Abonné 1: Valeur initiale
+// Abonné 1: Nouvelle valeur
+// Abonné 2: Nouvelle valeur
+</div></div></div></section><section class="chapter"><h2 id="les-op-rateurs-de-transformation-de-flux" data-toc="les-op-rateurs-de-transformation-de-flux">Les Op&eacute;rateurs de Transformation de Flux</h2><p id="vtk766_81">Le vrai pouvoir de RxJS vient des op&eacute;rateurs. Imaginez-les comme une cha&icirc;ne de montage pour vos flux de donn&eacute;es.</p><p id="vtk766_82">Un cas tr&egrave;s courant est celui o&ugrave; une valeur d'un premier <code class="code" id="vtk766_84">Observable</code> (ex: un terme de recherche) d&eacute;clenche la cr&eacute;ation d'un autre <code class="code" id="vtk766_85">Observable</code> (ex: un appel HTTP). C'est ce qu'on appelle un &quot;Higher-Order Observable&quot;. Pour g&eacute;rer cela, nous avons un quatuor d'op&eacute;rateurs essentiels. La cl&eacute; est de comprendre comment chacun g&egrave;re la &quot;concurrence&quot; entre ces Observables internes.</p><div class="tabs" id="vtk766_83" data-anchors="[vtk766_86,vtk766_87,vtk766_88,vtk766_89]"><div class="tabs__content" data-gtm="tab" id="vtk766_86" data-title="switchMap"><p>**Le Sc&eacute;nario :** La recherche auto-compl&eacute;t&eacute;e. L'utilisateur tape &quot;a&quot;, puis &quot;ap&quot;, puis &quot;app&quot;. Vous ne voulez que le r&eacute;sultat de la derni&egrave;re recherche (&quot;app&quot;). </p><p id="vtk766_90"><span class="control" id="vtk766_98">La Strat&eacute;gie <code class="code" id="vtk766_100">switchMap</code>:</span> D&egrave;s qu'une nouvelle valeur arrive du flux source, il se <span class="control" id="vtk766_99">d&eacute;sabonne de l'Observable pr&eacute;c&eacute;dent</span> et ne s'abonne qu'au nouveau. C'est l'op&eacute;rateur de choix pour les actions de type &quot;annuler-et-remplacer&quot;.</p><p id="vtk766_91">@startuml !theme vibrant robust &quot;Source&quot; as S robust &quot;R&eacute;sultat&quot; as R</p><p id="vtk766_92">@0 S is &quot;a&quot; @100 S is &quot;b&quot;</p><p id="vtk766_93">concise &quot;Requ&ecirc;te A&quot; as RA concise &quot;Requ&ecirc;te B&quot; as RB</p><p id="vtk766_94">S -&gt; R : switchMap(v =&gt; http(v))</p><p id="vtk766_95">@0 RA is @10 RA is &quot;R&eacute;sultat A&quot;</p><p id="vtk766_96">@100 RA is RB is</p><p id="vtk766_97">@115 RB is &quot;R&eacute;sultat B&quot; @enduml</p></div><div class="tabs__content" data-gtm="tab" id="vtk766_87" data-title="mergeMap (flatMap)"><p>**Le Sc&eacute;nario :** L'utilisateur clique sur plusieurs boutons qui d&eacute;clenchent des actions longues mais ind&eacute;pendantes (ex: t&eacute;l&eacute;verser plusieurs fichiers). </p><p id="vtk766_101"><span class="control" id="vtk766_108">La Strat&eacute;gie <code class="code" id="vtk766_110">mergeMap</code>:</span> Il s'abonne &agrave; tous les Observables internes <span class="control" id="vtk766_109">en parall&egrave;le</span> et &eacute;met leurs valeurs d&egrave;s qu'elles arrivent, sans se soucier de l'ordre. Id&eacute;al pour la parall&eacute;lisation.</p><p id="vtk766_102">@startuml !theme vibrant robust &quot;Source&quot; as S robust &quot;R&eacute;sultat&quot; as R</p><p id="vtk766_103">@0 S is &quot;a&quot; @100 S is &quot;b&quot;</p><p id="vtk766_104">concise &quot;Requ&ecirc;te A&quot; as RA concise &quot;Requ&ecirc;te B&quot; as RB</p><p id="vtk766_105">S -&gt; R : mergeMap(v =&gt; http(v))</p><p id="vtk766_106">@0 RA is @115 RA is &quot;R&eacute;sultat A&quot;</p><p id="vtk766_107">@100 RB is @110 RB is &quot;R&eacute;sultat B&quot; @enduml</p></div><div class="tabs__content" data-gtm="tab" id="vtk766_88" data-title="concatMap"><p>**Le Sc&eacute;nario :** Vous devez sauvegarder un formulaire, et seulement si la sauvegarde r&eacute;ussit, mettre &agrave; jour les logs. Les actions doivent se faire **en s&eacute;quence**. </p><p id="vtk766_111"><span class="control" id="vtk766_118">La Strat&eacute;gie <code class="code" id="vtk766_121">concatMap</code>:</span> Il attend que l'Observable interne actuel se termine (<code class="code" id="vtk766_119">complete</code>) avant de s'abonner au suivant. Il garantit <span class="control" id="vtk766_120">le respect de l'ordre</span>.</p><p id="vtk766_112">@startuml !theme vibrant robust &quot;Source&quot; as S robust &quot;R&eacute;sultat&quot; as R</p><p id="vtk766_113">@0 S is &quot;a&quot; @10 S is &quot;b&quot;</p><p id="vtk766_114">concise &quot;Requ&ecirc;te A&quot; as RA concise &quot;Requ&ecirc;te B&quot; as RB</p><p id="vtk766_115">S -&gt; R : concatMap(v =&gt; http(v))</p><p id="vtk766_116">@0 RA is @100 RA is &quot;R&eacute;sultat A&quot; RA is</p><p id="vtk766_117">@100 RB is @200 RB is &quot;R&eacute;sultat B&quot; @enduml</p></div><div class="tabs__content" data-gtm="tab" id="vtk766_89" data-title="exhaustMap"><p>**Le Sc&eacute;nario :** Un bouton de soumission de formulaire. L'utilisateur double-clique fr&eacute;n&eacute;tiquement. Vous ne voulez prendre en compte que le premier clic et **ignorer tous les autres** tant que la premi&egrave;re requ&ecirc;te n'est pas termin&eacute;e. </p><p id="vtk766_122"><span class="control" id="vtk766_130">La Strat&eacute;gie <code class="code" id="vtk766_131">exhaustMap</code>:</span> Il s'abonne au premier Observable interne et ignore toutes les nouvelles valeurs de la source tant que cet Observable n'est pas termin&eacute;. Parfait pour &eacute;viter les actions multiples non d&eacute;sir&eacute;es.</p><p id="vtk766_123">@startuml !theme vibrant robust &quot;Source&quot; as S robust &quot;R&eacute;sultat&quot; as R</p><p id="vtk766_124">@0 S is &quot;a&quot; @10 S is &quot;b&quot; @120 S is &quot;c&quot;</p><p id="vtk766_125">concise &quot;Requ&ecirc;te A&quot; as RA concise &quot;Requ&ecirc;te C&quot; as RC</p><p id="vtk766_126">S -&gt; R : exhaustMap(v =&gt; http(v))</p><p id="vtk766_127">@0 RA is @100 RA is &quot;R&eacute;sultat A&quot; RA is</p><p id="vtk766_128">@120 RC is @220 RC is &quot;R&eacute;sultat C&quot;</p><p id="vtk766_129">note at 10 on S : &quot;b&quot; est ignor&eacute; @enduml</p></div></div></section><section class="chapter"><h2 id="exercice-1-1-la-recherche-auto-compl-t-e" data-toc="exercice-1-1-la-recherche-auto-compl-t-e">Exercice 1.1 : La recherche auto-compl&eacute;t&eacute;e</h2><p id="vtk766_132">C'est l'exercice classique pour ma&icirc;triser <code class="code" id="vtk766_138">switchMap</code>. Nous allons construire un champ de recherche qui appelle un ( faux) service de recherche, en optimisant les appels.</p><p id="vtk766_133"><span class="control" id="vtk766_139">Objectif :</span> Cr&eacute;er un composant avec un champ de recherche. Chaque fois que l'utilisateur tape du texte, nous voulons :</p><ol class="list _decimal" id="vtk766_134" type="1"><li class="list__item" id="vtk766_140"><p id="vtk766_143">Attendre une pause de 300ms pour ne pas lancer de recherche &agrave; chaque frappe (<code class="code" id="vtk766_144">debounceTime</code>).</p></li><li class="list__item" id="vtk766_141"><p id="vtk766_145">Ne pas lancer de recherche si le texte n'a pas chang&eacute; (ex: <code class="code" id="vtk766_146">a</code>-&gt; <code class="code" id="vtk766_147">a</code> en appuyant sur Shift) (<code class="code" id="vtk766_148">distinctUntilChanged</code>).</p></li><li class="list__item" id="vtk766_142"><p id="vtk766_149">Lancer un appel &agrave; un service de recherche. Si une nouvelle recherche est lanc&eacute;e, annuler la pr&eacute;c&eacute;dente (<code class="code" id="vtk766_150">switchMap</code>).</p></li></ol><p id="vtk766_135"><span class="control" id="vtk766_151">Instructions :</span></p><ol class="list _decimal" id="vtk766_136" type="1"><li class="list__item" id="vtk766_152"><p id="vtk766_157"><span class="control" id="vtk766_158">Cr&eacute;ez un service <code class="code" id="vtk766_161">SearchService</code></span> avec une m&eacute;thode <code class="code" id="vtk766_159">search(term: string): Observable&lt;string[]&gt;</code>. Cette m&eacute;thode simulera un appel HTTP avec un d&eacute;lai, en utilisant <code class="code" id="vtk766_160">of([...]).pipe(delay(500))</code>. Elle retournera des r&eacute;sultats qui contiennent le terme de recherche.</p></li><li class="list__item" id="vtk766_153"><p id="vtk766_162"><span class="control" id="vtk766_163">Dans votre composant</span>, cr&eacute;ez un <code class="code" id="vtk766_164">FormControl</code> pour le champ de recherche.</p></li><li class="list__item" id="vtk766_154"><p id="vtk766_165">Abonnez-vous &agrave; l'Observable <code class="code" id="vtk766_166">valueChanges</code> de ce <code class="code" id="vtk766_167">FormControl</code>.</p></li><li class="list__item" id="vtk766_155"><p id="vtk766_168"><span class="control" id="vtk766_169">Pipez</span> cet <code class="code" id="vtk766_170">Observable</code> &agrave; travers les op&eacute;rateurs <code class="code" id="vtk766_171">debounceTime(300)</code>, <code class="code" id="vtk766_172">distinctUntilChanged()</code>, et <code class="code" id="vtk766_173">switchMap()</code> qui appellera votre <code class="code" id="vtk766_174">SearchService</code>.</p></li><li class="list__item" id="vtk766_156"><p id="vtk766_175">Affichez les r&eacute;sultats dans votre template.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-1-1" data-toc="correction-exercice-1-1">Correction exercice 1.1</h3></div><div class="collapse__content"><section class="procedure-steps" id="vtk766_176"><p id="vtk766_177">Voici une impl&eacute;mentation compl&egrave;te de la recherche auto-compl&eacute;t&eacute;e.</p><p id="vtk766_178"><span class="control" id="vtk766_184">1. Le service <code class="code" id="vtk766_185">SearchService</code></span></p><p id="vtk766_179">Ce service simule une API qui prend du temps &agrave; r&eacute;pondre.</p><div class="code-block" data-lang="ts">
+// src/app/search.service.ts
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {delay} from 'rxjs/operators';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class SearchService {
+
+    private allItems = [
+        'Angular', 'React', 'Vue', 'Svelte',
+        'RxJS', 'NgRx', 'Node.js', 'TypeScript'
+    ];
+
+    search(term: string): Observable&lt;string[]&gt; {
+        console.log(`Recherche du terme: &quot;${term}&quot;`);
+
+        // Si le terme est vide, on retourne un tableau vide
+        if (!term.trim()) {
+            return of([]);
+        }
+
+        // Filtre les items et simule une latence réseau
+        const results = this.allItems.filter(item =&gt;
+            item.toLowerCase().includes(term.toLowerCase())
+        );
+
+        // 'of' crée un Observable qui émet les résultats,
+        // 'delay' simule un appel réseau de 500ms
+        return of(results).pipe(delay(500));
+    }
+}
+</div><p id="vtk766_181"><span class="control" id="vtk766_186">2. Le composant de recherche</span></p><p id="vtk766_182">Le composant orchestre la logique RxJS.</p><div class="code-block" data-lang="ts">
+// src/app/search/search.component.ts
+import {Component, OnInit, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Observable, of} from 'rxjs';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    switchMap,
+    tap
+} from 'rxjs/operators';
+
+import {SearchService} from '../search.service';
+
+@Component({
+    selector: 'app-search',
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule],
+    template: `
+    &lt;h2&gt;Recherche Intelligente avec RxJS&lt;/h2&gt;
+    &lt;input 
+      type=&quot;text&quot; 
+      [formControl]=&quot;searchControl&quot; 
+      placeholder=&quot;Tapez pour rechercher...&quot;&gt;
+
+    &lt;div *ngIf=&quot;isLoading&quot; class=&quot;loader&quot;&gt;Chargement...&lt;/div&gt;
+
+    &lt;ul *ngIf=&quot;results$ | async as results&quot;&gt;
+      &lt;li *ngIf=&quot;results.length === 0 &amp;&amp; searchControl.value&quot;&gt;
+        Aucun résultat
+      &lt;/li&gt;
+      &lt;li *ngFor=&quot;let result of results&quot;&gt;{{ result }}&lt;/li&gt;
+    &lt;/ul&gt;
+  `
+})
+export class SearchComponent implements OnInit {
+    private searchService = inject(SearchService);
+
+    searchControl = new FormControl('');
+    results$!: Observable&lt;string[]&gt;;
+    isLoading = false;
+
+    ngOnInit(): void {
+        this.results$ = this.searchControl.valueChanges.pipe(
+            // Attend 300ms après la dernière frappe
+            debounceTime(300),
+
+            // Affiche le terme dans la console (pour le débogage)
+            tap(term =&gt; console.log(`Terme déboggué: ${term}`)),
+
+            // Ne continue que si la valeur a réellement changé
+            distinctUntilChanged(),
+
+            // Affiche/cache un loader
+            tap(() =&gt; this.isLoading = true),
+
+            // Annule la recherche précédente et lance la nouvelle
+            switchMap(term =&gt; this.searchService.search(term || '')),
+
+            // Cache le loader une fois les résultats reçus
+            tap(() =&gt; this.isLoading = false)
+        );
+    }
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="vtk766_187" type="1"><li class="list__item" id="vtk766_188"><p id="vtk766_193"><span class="control" id="vtk766_194">Vous utilisez un <code class="code" id="vtk766_196">BehaviorSubject</code> pour stocker l'utilisateur actuellement connect&eacute;. Un nouveau composant s'abonne &agrave; ce <code class="code" id="vtk766_197">BehaviorSubject</code>. Que re&ccedil;oit-il imm&eacute;diatement ?</span> a. Rien, il doit attendre la prochaine connexion/d&eacute;connexion. b. La valeur initiale avec laquelle le <code class="code" id="vtk766_195">BehaviorSubject</code> a &eacute;t&eacute; cr&eacute;&eacute;. c. La toute derni&egrave;re valeur de l'utilisateur qui a &eacute;t&eacute; &eacute;mise (ou la valeur initiale si aucune n'a &eacute;t&eacute; &eacute;mise). d. Un message d'erreur, car on ne peut s'abonner qu'une seule fois.</p></li><li class="list__item" id="vtk766_189"><p id="vtk766_198"><span class="control" id="vtk766_199">Expliquez avec vos propres mots la diff&eacute;rence fondamentale de comportement entre <code class="code" id="vtk766_200">switchMap</code> et <code class="code" id="vtk766_201">mergeMap</code>.</span></p></li><li class="list__item" id="vtk766_190"><p id="vtk766_202">**Vous devez impl&eacute;menter une s&eacute;quence d'appels API : 1. <code class="code" id="vtk766_204">createOrder()</code> 2. <code class="code" id="vtk766_205">processPayment()</code></p><ol class="list _decimal" id="vtk766_203" type="1" start="3"><li class="list__item" id="vtk766_206"><p id="vtk766_207"><code class="code" id="vtk766_208">sendConfirmationEmail()</code>. Chaque &eacute;tape ne doit commencer que si la pr&eacute;c&eacute;dente a r&eacute;ussi. Quel op&eacute;rateur de transformation de flux est le plus adapt&eacute; ?** a. <code class="code" id="vtk766_209">switchMap</code> b. <code class="code" id="vtk766_210">mergeMap</code> c. <code class="code" id="vtk766_211">exhaustMap</code> d. <code class="code" id="vtk766_212">concatMap</code></p></li></ol></li><li class="list__item" id="vtk766_191"><p id="vtk766_213"><span class="control" id="vtk766_214">&Agrave; quoi sert l'objet retourn&eacute; par un appel &agrave; <code class="code" id="vtk766_215">.subscribe()</code>? Pourquoi est-il crucial de ne pas le &quot;perdre&quot;, en particulier dans les composants Angular ?</span></p></li><li class="list__item" id="vtk766_192"><p id="vtk766_216"><span class="control" id="vtk766_217">Quelle est la principale diff&eacute;rence entre un <code class="code" id="vtk766_226">Observable</code> cr&eacute;&eacute; avec <code class="code" id="vtk766_227">new Observable(...)</code> et un <code class="code" id="vtk766_228">Subject</code>?</span> a. Un <code class="code" id="vtk766_218">Subject</code> ne peut &eacute;mettre que des nombres, un <code class="code" id="vtk766_219">Observable</code> peut &eacute;mettre n'importe quoi. b. Un <code class="code" id="vtk766_220">Subject</code> est &quot;chaud&quot; et multicast (partage ses valeurs), tandis qu'un <code class="code" id="vtk766_221">Observable</code> standard est &quot;froid&quot; et unicast (chaque abonn&eacute; a sa propre ex&eacute;cution). c. Seuls les <code class="code" id="vtk766_222">Observables</code> peuvent &ecirc;tre utilis&eacute;s avec <code class="code" id="vtk766_223">HttpClient</code>. d. Les <code class="code" id="vtk766_224">Subjects</code> n'ont pas de m&eacute;thode <code class="code" id="vtk766_225">complete()</code>.</p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="vtk766_229">Vous venez de faire un grand pas dans la ma&icirc;trise d'Angular. Nous avons d&eacute;cortiqu&eacute; les briques de base de RxJS, compris l'utilit&eacute; des <code class="code" id="vtk766_232">Subjects</code> comme pont entre deux mondes, et surtout, nous avons appris &agrave; choisir le bon outil parmi le quatuor <code class="code" id="vtk766_233">switchMap</code>, <code class="code" id="vtk766_234">mergeMap</code>, <code class="code" id="vtk766_235">concatMap</code>, <code class="code" id="vtk766_236">exhaustMap</code> pour orchestrer des op&eacute;rations asynchrones complexes.</p><p id="vtk766_230">Ce n'est qu'un d&eacute;but. La programmation r&eacute;active est un changement de paradigme. Entra&icirc;nez-vous &agrave; &quot;penser en flux&quot;. La prochaine fois que vous ferez face &agrave; un probl&egrave;me asynchrone, demandez-vous : &quot;Comment puis-je le mod&eacute;liser avec des <code class="code" id="vtk766_237">Observables</code> et des op&eacute;rateurs ?&quot;</p><p id="vtk766_231">Dans la partie &quot;Pour aller plus loin&quot;, nous allons ajouter des outils essentiels &agrave; notre panoplie : comment g&eacute;rer les erreurs avec &eacute;l&eacute;gance, et comment combiner plusieurs flux de donn&eacute;es pour cr&eacute;er des vues encore plus riches et synchronis&eacute;es.</p></section><div class="last-modified">18 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="00-01-four-pillars.html" class="navigation-links__prev">Module 0 : Pour aller plus loin - Vers un Code Professionnel</a><a href="001-01-advanced-rxjs.html" class="navigation-links__next">Module 1 : Pour aller plus loin - L'Art de la Composition et de la R&eacute;silience</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

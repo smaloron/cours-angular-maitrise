@@ -1,0 +1,204 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:27.01767"><title>Module 2 : Pour aller plus loin - Introduction &agrave; NgRx (L'approche Redux) | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"la-philosophie-de-ngrx","level":0,"title":"La Philosophie de NgRx","anchor":"#la-philosophie-de-ngrx"},{"id":"les-acteurs-de-ngrx","level":0,"title":"Les Acteurs de NgRx","anchor":"#les-acteurs-de-ngrx"},{"id":"le-flux-de-donn-es-unidirectionnel","level":0,"title":"Le Flux de Données Unidirectionnel","anchor":"#le-flux-de-donn-es-unidirectionnel"},{"id":"atelier-pratique-refactoriser-la-liste-d-utilisateurs-avec-ngrx","level":0,"title":"Atelier Pratique : Refactoriser la Liste d\u0027Utilisateurs avec NgRx","anchor":"#atelier-pratique-refactoriser-la-liste-d-utilisateurs-avec-ngrx"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 2 : Pour aller plus loin - Introduction &agrave; NgRx (L'approche Redux) | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/002-01-ngrx.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 2 : Pour aller plus loin - Introduction &agrave; NgRx (L'approche Redux) | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/002-01-ngrx.html#webpage",
+    "url": "writerside-documentation/002-01-ngrx.html",
+    "name": "Module 2 : Pour aller plus loin - Introduction &agrave; NgRx (L'approche Redux) | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="002-01-ngrx" data-main-title="Module 2 : Pour aller plus loin - Introduction à NgRx (L'approche Redux)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="002-00-state-management.md|Module 2 : L'essentiel - Stratégies de Gestion d'État (State Management)"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="002-01-ngrx" id="002-01-ngrx.md">Module 2 : Pour aller plus loin - Introduction à NgRx (L'approche Redux)</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="-3exs76_11">&Agrave; la fin de cette partie, vous serez capable de :</p><ul class="list _bullet" id="-3exs76_12"><li class="list__item" id="-3exs76_13"><p id="-3exs76_17"><span class="control" id="-3exs76_18">Comprendre</span> la philosophie derri&egrave;re NgRx : &eacute;tat unique, immuable et flux de donn&eacute;es unidirectionnel.</p></li><li class="list__item" id="-3exs76_14"><p id="-3exs76_19"><span class="control" id="-3exs76_20">Distinguer</span> le r&ocirc;le de chaque acteur principal de NgRx : <code class="code" id="-3exs76_21">Store</code>, <code class="code" id="-3exs76_22">Actions</code>, <code class="code" id="-3exs76_23">Reducers</code>, <code class="code" id="-3exs76_24">Effects</code>, et <code class="code" id="-3exs76_25">Selectors</code>.</p></li><li class="list__item" id="-3exs76_15"><p id="-3exs76_26"><span class="control" id="-3exs76_27">Mettre en &oelig;uvre</span> un cycle complet de gestion d'&eacute;tat avec NgRx : de l'action de l'utilisateur &agrave; la mise &agrave; jour de la vue.</p></li><li class="list__item" id="-3exs76_16"><p id="-3exs76_28"><span class="control" id="-3exs76_29">Refactoriser</span> une fonctionnalit&eacute; existante pour utiliser NgRx.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="-3exs76_30">Le service &quot;stateful&quot; que nous avons construit est un outil fantastique. C'est votre couteau suisse : polyvalent, simple et efficace pour de nombreuses situations. Mais que se passe-t-il lorsque vous ne construisez plus une cabane, mais un gratte-ciel ? Quand plusieurs &eacute;quipes d'artisans doivent travailler en m&ecirc;me temps, chacune sur un &eacute;tage diff&eacute;rent, tout en s'assurant que la plomberie et l'&eacute;lectricit&eacute; restent coh&eacute;rentes dans tout le b&acirc;timent ?</p><p id="-3exs76_31">C'est l&agrave; que le couteau suisse montre ses limites. Vous avez besoin d'un plan d'architecte d&eacute;taill&eacute;, d'un cahier des charges strict et de processus clairs. <span class="control" id="-3exs76_35">NgRx est ce plan d'architecte.</span></p><p id="-3exs76_32">Inspir&eacute; par la biblioth&egrave;que Redux de l'&eacute;cosyst&egrave;me React, NgRx apporte un cadre tr&egrave;s structur&eacute; pour la gestion d'&eacute;tat. Sa courbe d'apprentissage est plus raide, et il demande plus de code au d&eacute;part (&quot;boilerplate&quot;). Alors pourquoi l'utiliser ? Pour trois raisons fondamentales qui deviennent cruciales dans les grandes applications :</p><ol class="list _decimal" id="-3exs76_33" type="1"><li class="list__item" id="-3exs76_36"><p id="-3exs76_39"><span class="control" id="-3exs76_40">Pr&eacute;visibilit&eacute; :</span> Les changements d'&eacute;tat deviennent extr&ecirc;mement pr&eacute;visibles, car ils doivent suivre un chemin strict et unique.</p></li><li class="list__item" id="-3exs76_37"><p id="-3exs76_41"><span class="control" id="-3exs76_42">Maintenabilit&eacute; :</span> Le code est d&eacute;coup&eacute; en petites unit&eacute;s logiques (actions, reducers, effects), ce qui le rend plus facile &agrave; comprendre, &agrave; tester et &agrave; faire &eacute;voluer.</p></li><li class="list__item" id="-3exs76_38"><p id="-3exs76_43"><span class="control" id="-3exs76_44">Outillage (Tooling) :</span> NgRx s'accompagne d'outils de d&eacute;veloppement exceptionnels (comme le Redux DevTools) qui vous permettent de voyager dans le temps, d'inspecter chaque changement d'&eacute;tat et de d&eacute;boguer votre application comme jamais auparavant.</p></li></ol><p id="-3exs76_34">Pr&eacute;parez-vous &agrave; changer de perspective. Nous n'allons plus simplement &quot;modifier&quot; l'&eacute;tat, nous allons &quot;d&eacute;crire&quot; les &eacute;v&eacute;nements qui m&egrave;nent &agrave; de nouveaux &eacute;tats.</p></section><section class="chapter"><h2 id="la-philosophie-de-ngrx" data-toc="la-philosophie-de-ngrx">La Philosophie de NgRx</h2><p id="-3exs76_45">Tout repose sur trois principes, inspir&eacute;s de Redux :</p><ol class="list _decimal" id="-3exs76_46" type="1"><li class="list__item" id="-3exs76_47"><p id="-3exs76_50"><span class="control" id="-3exs76_51">Source de v&eacute;rit&eacute; unique :</span> L'&eacute;tat de toute votre application est stock&eacute; dans un seul objet, &agrave; l'int&eacute;rieur d'un unique <span class="control" id="-3exs76_52">Store</span>.</p></li><li class="list__item" id="-3exs76_48"><p id="-3exs76_53"><span class="control" id="-3exs76_54">L'&eacute;tat est en lecture seule (immuable) :</span> La seule fa&ccedil;on de modifier l'&eacute;tat est d'&eacute;mettre une <span class="control" id="-3exs76_55">Action</span>, un objet d&eacute;crivant ce qui s'est pass&eacute;. On ne modifie jamais l'&eacute;tat existant, on en cr&eacute;e toujours un nouveau.</p></li><li class="list__item" id="-3exs76_49"><p id="-3exs76_56"><span class="control" id="-3exs76_57">Les changements sont effectu&eacute;s avec des fonctions pures :</span> Pour sp&eacute;cifier comment l'&eacute;tat est transform&eacute; par les actions, vous &eacute;crivez des <span class="control" id="-3exs76_58">Reducers</span>. Un reducer est une fonction pure qui prend l'&eacute;tat pr&eacute;c&eacute;dent et une action, et retourne l'&eacute;tat suivant.</p></li></ol></section><section class="chapter"><h2 id="les-acteurs-de-ngrx" data-toc="les-acteurs-de-ngrx">Les Acteurs de NgRx</h2><p id="-3exs76_59">Pour comprendre le flux NgRx, il faut conna&icirc;tre sa troupe d'acteurs. Chacun a un r&ocirc;le bien pr&eacute;cis.</p><div class="tabs" id="-3exs76_60" data-anchors="[-3exs76_61,-3exs76_62,-3exs76_63,-3exs76_64,-3exs76_65]"><div class="tabs__content" data-gtm="tab" id="-3exs76_61" data-title="Le Store"><p>C'est le c&oelig;ur de NgRx. Un service injectable qui contient l'&eacute;tat global de l'application. On interagit avec lui de deux mani&egrave;res : * `store.dispatch(action)` : pour envoyer une instruction de changement. * `store.select(selector)` : pour lire une partie de l'&eacute;tat.</p></div><div class="tabs__content" data-gtm="tab" id="-3exs76_62" data-title="Les Actions"><p>Les Actions sont le point de d&eacute;part de toute modification. Ce sont des **messages**, des descriptions d'&eacute;v&eacute;nements. Elles disent *ce qui s'est pass&eacute;*, pas *comment* l'&eacute;tat doit changer. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// src/app/users/users.actions.ts
+import {createAction, props} from '@ngrx/store';
+import {User} from '../models/user.model';
+
+// Décrit l'événement &quot;L'utilisateur veut charger la liste&quot;
+export const loadUsers = createAction(
+    '[Users Page] Load Users'
+);
+
+// Décrit l'événement &quot;La liste a été chargée avec succès&quot;
+// et transporte la charge utile (payload)
+export const loadUsersSuccess = createAction(
+    '[Users API] Load Users Success',
+    props&lt;{ users: User[] }&gt;()
+);
+
+// Décrit l'événement &quot;Le chargement a échoué&quot;
+export const loadUsersFailure = createAction(
+    '[Users API] Load Users Failure',
+    props&lt;{ error: any }&gt;()
+);
+</div></div><div class="tabs__content" data-gtm="tab" id="-3exs76_63" data-title="Les Reducers"><p>Le Reducer est le comptable. Il &eacute;coute toutes les actions qui passent. Quand il en reconna&icirc;t une, il prend l'&eacute;tat actuel, l'action, et **calcule le nouvel &eacute;tat**. C'est une **fonction pure** : pour les m&ecirc;mes entr&eacute;es, elle produit toujours la m&ecirc;me sortie, sans aucun effet de bord (pas d'appel API ici !). </p><p id="-3exs76_67">L' <span class="control" id="-3exs76_69">immutabilit&eacute;</span> est la r&egrave;gle d'or : on ne mute jamais <code class="code" id="-3exs76_70">state</code>, on utilise le spread operator (<code class="code" id="-3exs76_71">...</code>) pour cr&eacute;er une nouvelle copie.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// src/app/users/users.reducer.ts
+import {createReducer, on} from '@ngrx/store';
+import {loadUsers, loadUsersSuccess, loadUsersFailure}
+    from './users.actions';
+
+export interface UsersState {
+    users: User[];
+    isLoading: boolean;
+    error: any;
+}
+
+export const initialState: UsersState = {
+    users: [],
+    isLoading: false,
+    error: null
+};
+
+export const usersReducer = createReducer(
+    initialState,
+    // Quand l'action `loadUsers` est dispatchée...
+    on(loadUsers, (state) =&gt; ({
+        ...state, // ...on retourne un nouvel état
+        isLoading: true
+    })),
+
+    // Quand l'action `loadUsersSuccess` arrive...
+    on(loadUsersSuccess, (state, {users}) =&gt; ({
+        ...state,
+        users: users, // ...on met à jour les utilisateurs
+        isLoading: false
+    })),
+
+    // Quand l'action `loadUsersFailure` arrive...
+    on(loadUsersFailure, (state, {error}) =&gt; ({
+        ...state,
+        error: error,
+        isLoading: false
+    }))
+);
+</div></div><div class="tabs__content" data-gtm="tab" id="-3exs76_64" data-title="Les Effects"><p>Mais alors, o&ugrave; fait-on les appels API ? Dans les **Effects** ! Un Effect est une classe qui &eacute;coute les actions, mais au lieu de modifier l'&eacute;tat, elle effectue des **effets de bord** (t&acirc;ches asynchrones). Typiquement, un Effect va : 1. &Eacute;couter une action (ex: `loadUsers`). 2. Appeler un service (ex: `HttpClient`). 3. En cas de succ&egrave;s ou d'&eacute;chec, dispatcher une **nouvelle action** (ex: `loadUsersSuccess` ou `loadUsersFailure`). </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// src/app/users/users.effects.ts
+import {Injectable, inject} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {catchError, map, mergeMap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {UserService} from '../services/user.service';
+import * as UsersActions from './users.actions';
+
+@Injectable()
+export class UsersEffects {
+    private actions$ = inject(Actions);
+    private userService = inject(UserService);
+
+    loadUsers$ = createEffect(() =&gt;
+        this.actions$.pipe(
+            // Écoute seulement les actions de type `loadUsers`
+            ofType(UsersActions.loadUsers),
+            // Appelle le service
+            mergeMap(() =&gt; this.userService.getUsers().pipe(
+                // Si ça réussit, dispatche l'action de succès
+                map(users =&gt; UsersActions.loadUsersSuccess({users})),
+                // Si ça échoue, dispatche l'action d'échec
+                catchError(error =&gt; of(UsersActions.loadUsersFailure({error})))
+            ))
+        )
+    );
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-3exs76_65" data-title="Les Selectors"><p>Les Selectors sont des fonctions pures qui permettent de **lire des morceaux de l'&eacute;tat**. Ils sont optimis&eacute;s : NgRx met en cache le r&eacute;sultat (`memoization`). Si l'&eacute;tat n'a pas chang&eacute;, le selector retourne la derni&egrave;re valeur calcul&eacute;e sans refaire le travail. C'est excellent pour la performance. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// src/app/users/users.selectors.ts
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {UsersState} from './users.reducer';
+
+// Sélectionne la &quot;tranche&quot; de l'état qui concerne les utilisateurs
+export const selectUsersState =
+    createFeatureSelector&lt;UsersState&gt;('users');
+
+// Sélectionne la liste des utilisateurs à partir de la tranche
+export const selectAllUsers = createSelector(
+    selectUsersState,
+    (state) =&gt; state.users
+);
+
+// Sélectionne l'état de chargement
+export const selectUsersIsLoading = createSelector(
+    selectUsersState,
+    (state) =&gt; state.isLoading
+);
+</div></div></div></section><section class="chapter"><h2 id="le-flux-de-donn-es-unidirectionnel" data-toc="le-flux-de-donn-es-unidirectionnel">Le Flux de Donn&eacute;es Unidirectionnel</h2><p id="-3exs76_74">Voici le cycle de vie complet, qui est le c&oelig;ur de NgRx :</p><p id="444444">@startuml !theme vibrant skinparam sequence</p><p id="-3exs76_76">actor &quot;Composant&quot; as Comp participant &quot;Store&quot; as S participant &quot;Effects&quot; as E participant &quot;API&quot; as API participant &quot;Reducer&quot; as R</p><p id="-3exs76_77">Comp -&gt; S : 1. dispatch(loadUsers) activate S S -&gt; E : 2. notifie l'action deactivate S activate E E -&gt; API : 3. appelle getUsers() activate API API --&gt; E : 4. retourne les donn&eacute;es deactivate API E -&gt; S : 5. dispatch(loadUsersSuccess) deactivate E activate S S -&gt; R : 6. passe (&eacute;tat, action) deactivate S activate R R -&gt; R : 7. calcule le nouvel &eacute;tat R --&gt; S : 8. retourne le nouvel &eacute;tat deactivate R activate S S -&gt; Comp : 9. notifie le changement (via selector) deactivate S</p><p id="-3exs76_78">note right of Comp La vue est mise &agrave; jour avec les nouvelles donn&eacute;es. end note @enduml</p></section><section class="chapter"><h2 id="atelier-pratique-refactoriser-la-liste-d-utilisateurs-avec-ngrx" data-toc="atelier-pratique-refactoriser-la-liste-d-utilisateurs-avec-ngrx">Atelier Pratique : Refactoriser la Liste d'Utilisateurs avec NgRx</h2><p id="-3exs76_79"><span class="control" id="-3exs76_83">Objectif :</span> Prendre une application simple qui charge des utilisateurs via un service, et la refactoriser pour utiliser NgRx.</p><p id="-3exs76_80"><span class="control" id="-3exs76_84">Instructions :</span></p><ol class="list _decimal" id="-3exs76_81" type="1"><li class="list__item" id="-3exs76_85"><p id="-3exs76_93"><span class="control" id="-3exs76_94">Installez NgRx :</span> <code class="code" id="-3exs76_95">ng add @ngrx/store @ngrx/effects @ngrx/store-devtools</code></p></li><li class="list__item" id="-3exs76_86"><p id="-3exs76_96"><span class="control" id="-3exs76_97">Cr&eacute;ez un dossier <code class="code" id="-3exs76_100">store</code></span> dans <code class="code" id="-3exs76_98">src/app</code>. &Agrave; l'int&eacute;rieur, cr&eacute;ez un dossier <code class="code" id="-3exs76_99">users</code>.</p></li><li class="list__item" id="-3exs76_87"><p id="-3exs76_101"><span class="control" id="-3exs76_102">D&eacute;finissez vos Actions</span> dans <code class="code" id="-3exs76_103">users.actions.ts</code>: <code class="code" id="-3exs76_104">loadUsers</code>, <code class="code" id="-3exs76_105">loadUsersSuccess</code>, <code class="code" id="-3exs76_106">loadUsersFailure</code>.</p></li><li class="list__item" id="-3exs76_88"><p id="-3exs76_107"><span class="control" id="-3exs76_108">D&eacute;finissez votre State et votre Reducer</span> dans <code class="code" id="-3exs76_109">users.reducer.ts</code>.</p></li><li class="list__item" id="-3exs76_89"><p id="-3exs76_110"><span class="control" id="-3exs76_111">Cr&eacute;ez votre Effect</span> dans <code class="code" id="-3exs76_112">users.effects.ts</code> pour g&eacute;rer l'appel API.</p></li><li class="list__item" id="-3exs76_90"><p id="-3exs76_113"><span class="control" id="-3exs76_114">Cr&eacute;ez vos Selectors</span> dans <code class="code" id="-3exs76_115">users.selectors.ts</code>.</p></li><li class="list__item" id="-3exs76_91"><p id="-3exs76_116"><span class="control" id="-3exs76_117">Configurez le Store</span> dans votre <code class="code" id="-3exs76_118">app.config.ts</code> (pour une application Standalone) en important les providers.</p></li><li class="list__item" id="-3exs76_92"><p id="-3exs76_119"><span class="control" id="-3exs76_121">Modifiez votre <code class="code" id="-3exs76_122">UserListComponent</code></span>:</p><ul class="list _bullet" id="-3exs76_120"><li class="list__item" id="-3exs76_123"><p id="-3exs76_126">Injectez le <code class="code" id="-3exs76_127">Store</code>.</p></li><li class="list__item" id="-3exs76_124"><p id="-3exs76_128">Dans <code class="code" id="-3exs76_129">ngOnInit</code>, dispatchez l'action <code class="code" id="-3exs76_130">loadUsers</code>.</p></li><li class="list__item" id="-3exs76_125"><p id="-3exs76_131">Utilisez les selectors pour r&eacute;cup&eacute;rer les donn&eacute;es (<code class="code" id="-3exs76_132">users$ = this.store.select(...)</code>) et les consommer dans le template avec le pipe <code class="code" id="-3exs76_133">async</code>.</p></li></ul></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-2-2" data-toc="correction-exercice-2-2">Correction exercice 2.2</h3></div><div class="collapse__content"><section class="procedure-steps" id="-3exs76_134"><p id="-3exs76_135">Voici l'impl&eacute;mentation compl&egrave;te du refactoring vers NgRx.</p><p id="-3exs76_136"><span class="control" id="-3exs76_144">Pr&eacute;requis : Un service <code class="code" id="-3exs76_145">UserService</code> qui fait l'appel API.</span></p><div class="code-block" data-lang="ts">
+// src/app/services/user.service.ts
+import {Injectable, inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {User} from '../models/user.model'; // Assurez-vous d'avoir ce modèle
+
+@Injectable({providedIn: 'root'})
+export class UserService {
+    private http = inject(HttpClient);
+
+    getUsers(): Observable&lt;User[]&gt; {
+        return this.http.get&lt;User[]&gt;('https://jsonplaceholder.typicode.com/users');
+    }
+}
+</div><p id="-3exs76_138"><span class="control" id="-3exs76_146">1. Les fichiers NgRx (dans <code class="code" id="-3exs76_147">src/app/store/users/</code>)</span></p><ul class="list _bullet" id="-3exs76_139"><li class="list__item" id="-3exs76_148"><p id="-3exs76_152"><code class="code" id="-3exs76_153">users.actions.ts</code>: (Identique &agrave; l'exemple ci-dessus)</p></li><li class="list__item" id="-3exs76_149"><p id="-3exs76_154"><code class="code" id="-3exs76_155">users.reducer.ts</code>: (Identique &agrave; l'exemple ci-dessus)</p></li><li class="list__item" id="-3exs76_150"><p id="-3exs76_156"><code class="code" id="-3exs76_157">users.effects.ts</code>: (Identique &agrave; l'exemple ci-dessus)</p></li><li class="list__item" id="-3exs76_151"><p id="-3exs76_158"><code class="code" id="-3exs76_159">users.selectors.ts</code>: (Identique &agrave; l'exemple ci-dessus)</p></li></ul><p id="-3exs76_140"><span class="control" id="-3exs76_160">2. Configuration dans <code class="code" id="-3exs76_161">app.config.ts</code></span></p><div class="code-block" data-lang="ts">
+// src/app/app.config.ts
+import {ApplicationConfig, isDevMode} from '@angular/core';
+import {provideHttpClient} from '@angular/common/http';
+import {provideStore} from '@ngrx/store';
+import {provideStoreDevtools} from '@ngrx/store-devtools';
+import {provideEffects} from '@ngrx/effects';
+
+import {usersReducer} from './store/users/users.reducer';
+import {UsersEffects} from './store/users/users.effects';
+
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideHttpClient(),
+        // Enregistre le store global
+        provideStore({users: usersReducer}),
+        // Enregistre les effects
+        provideEffects([UsersEffects]),
+        // Active les DevTools seulement en mode développement
+        provideStoreDevtools({
+            maxAge: 25,
+            logOnly: !isDevMode(),
+        }),
+    ],
+};
+</div><p id="-3exs76_142"><span class="control" id="-3exs76_162">3. Le composant refactoris&eacute;</span></p><div class="code-block" data-lang="ts">
+// src/app/components/user-list/user-list.component.ts
+import {Component, OnInit, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Store} from '@ngrx/store';
+
+import * as UsersActions from '../../store/users/users.actions';
+import {selectAllUsers, selectUsersIsLoading}
+    from '../../store/users/users.selectors';
+
+@Component({
+    selector: 'app-user-list',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+    &lt;h2&gt;Liste des Utilisateurs (avec NgRx)&lt;/h2&gt;
+
+    &lt;div *ngIf=&quot;isLoading$ | async&quot;&gt;Chargement...&lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li *ngFor=&quot;let user of users$ | async&quot;&gt;
+        {{ user.name }} ({{ user.email }})
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  `
+})
+export class UserListComponent implements OnInit {
+    private store = inject(Store);
+
+    // On sélectionne les données du store via les selectors
+    users$ = this.store.select(selectAllUsers);
+    isLoading$ = this.store.select(selectUsersIsLoading);
+
+    ngOnInit(): void {
+        // On dispatche l'action pour déclencher le chargement
+        this.store.dispatch(UsersActions.loadUsers());
+    }
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="-3exs76_163" type="1"><li class="list__item" id="-3exs76_164"><p id="-3exs76_169"><span class="control" id="-3exs76_170">Lequel de ces principes n'appartient PAS &agrave; la philosophie de NgRx/Redux ?</span> a. L'&eacute;tat est en lecture seule. b. Les composants peuvent modifier directement l'&eacute;tat pour plus de simplicit&eacute;. c. Il y a une source de v&eacute;rit&eacute; unique (le Store). d. Les changements d'&eacute;tat sont faits par des fonctions pures (Reducers).</p></li><li class="list__item" id="-3exs76_165"><p id="-3exs76_171"><span class="control" id="-3exs76_172">Expliquez le r&ocirc;le d'un <code class="code" id="-3exs76_173">Effect</code> et pourquoi il ne modifie jamais directement l'&eacute;tat.</span></p></li><li class="list__item" id="-3exs76_166"><p id="-3exs76_174"><span class="control" id="-3exs76_175">Quel est le r&ocirc;le principal d'un <code class="code" id="-3exs76_176">Reducer</code>?</span> a. G&eacute;rer les appels API et autres effets de bord. b. Calculer un nouvel &eacute;tat en r&eacute;ponse &agrave; une action. c. S&eacute;lectionner des donn&eacute;es du store pour les composants. d. Dispatcher des actions.</p></li><li class="list__item" id="-3exs76_167"><p id="-3exs76_177"><span class="control" id="-3exs76_178">Pourquoi les <code class="code" id="-3exs76_179">Selectors</code> sont-ils consid&eacute;r&eacute;s comme performants ?</span></p></li><li class="list__item" id="-3exs76_168"><p id="-3exs76_180"><span class="control" id="-3exs76_181">Dans le flux de donn&eacute;es NgRx, quelle est la premi&egrave;re chose qu'un composant fait pour initier un changement d'&eacute;tat ( comme le chargement de donn&eacute;es) ?</span> a. Il appelle une m&eacute;thode sur un <code class="code" id="-3exs76_182">Reducer</code>. b. Il s'abonne &agrave; un <code class="code" id="-3exs76_183">Effect</code>. c. Il dispatche une <code class="code" id="-3exs76_184">Action</code> au <code class="code" id="-3exs76_185">Store</code>. d. Il modifie directement une variable dans le <code class="code" id="-3exs76_186">Store</code>.</p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="-3exs76_187">Vous venez de faire vos premiers pas dans le monde structur&eacute; de NgRx. Nous avons vu que malgr&eacute; un code initial plus important, cette approche apporte une clart&eacute; et une pr&eacute;visibilit&eacute; sans &eacute;gales pour les applications complexes. Vous avez appris &agrave; s&eacute;parer les pr&eacute;occupations : les <span class="control" id="-3exs76_189">Actions</span> d&eacute;crivent les &eacute;v&eacute;nements, les <span class="control" id="-3exs76_190">Reducers</span> calculent l'&eacute;tat, les * <span class="emphasis" id="-3exs76_191">Effects</span>* g&egrave;rent les effets de bord, et les <span class="control" id="-3exs76_192">Selectors</span> lisent les donn&eacute;es.</p><p id="-3exs76_188">NgRx est un outil puissant, et le ma&icirc;triser demande de la pratique. Ne soyez pas d&eacute;courag&eacute; par le nombre de fichiers ; voyez-le comme un plan bien organis&eacute;. Dans les prochains modules, nous verrons comment cette gestion d'&eacute;tat centralis&eacute;e interagit avec des patrons de conception de composants pour cr&eacute;er des architectures encore plus propres et performantes. Vous verrez comment le patron &quot;Container/Presentational&quot; s'accorde parfaitement avec la philosophie de NgRx.</p></section><div class="last-modified">10 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="002-00-state-management.html" class="navigation-links__prev">Module 2 : L'essentiel - Strat&eacute;gies de Gestion d'&Eacute;tat (State Management)</a><a href="003-00-better-components.html" class="navigation-links__next">Module 3 : L'essentiel - B&acirc;tir des Composants Sains et Performants</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

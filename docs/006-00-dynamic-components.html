@@ -1,0 +1,259 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:26.983955"><title>Module 6, Partie A : Int&eacute;gration d'un Design System et Composants Dynamiques | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"1-utiliser-un-design-system-externe-ex-angular-material","level":0,"title":"1. Utiliser un Design System Externe (ex: Angular Material)","anchor":"#1-utiliser-un-design-system-externe-ex-angular-material"},{"id":"2-cr-er-des-composants-r-utilisables-avec-ng-content-projection-de-contenu","level":0,"title":"2. Créer des Composants Réutilisables avec ng-content (Projection de Contenu)","anchor":"#2-cr-er-des-composants-r-utilisables-avec-ng-content-projection-de-contenu"},{"id":"3-cr-er-des-composants-dynamiques","level":0,"title":"3. Créer des Composants Dynamiques","anchor":"#3-cr-er-des-composants-dynamiques"},{"id":"exercice-6-1-cr-er-une-fen-tre-modale-r-utilisable","level":0,"title":"Exercice 6.1 : Créer une fenêtre modale réutilisable","anchor":"#exercice-6-1-cr-er-une-fen-tre-modale-r-utilisable"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 6, Partie A : Int&eacute;gration d'un Design System et Composants Dynamiques | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/006-00-dynamic-components.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 6, Partie A : Int&eacute;gration d'un Design System et Composants Dynamiques | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/006-00-dynamic-components.html#webpage",
+    "url": "writerside-documentation/006-00-dynamic-components.html",
+    "name": "Module 6, Partie A : Int&eacute;gration d'un Design System et Composants Dynamiques | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="006-00-dynamic-components" data-main-title="Module 6, Partie A : Intégration d'un Design System et Composants Dynamiques" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="006-00-dynamic-components" id="006-00-dynamic-components.md">Module 6, Partie A : Intégration d'un Design System et Composants Dynamiques</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="z3n8m0k_11">&Agrave; la fin de cette partie, vous serez capable de :</p><ul class="list _bullet" id="z3n8m0k_12"><li class="list__item" id="z3n8m0k_13"><p id="z3n8m0k_16"><span class="control" id="z3n8m0k_17">Int&eacute;grer</span> un Design System externe comme Angular Material pour acc&eacute;l&eacute;rer le d&eacute;veloppement et garantir la coh&eacute;rence visuelle.</p></li><li class="list__item" id="z3n8m0k_14"><p id="z3n8m0k_18"><span class="control" id="z3n8m0k_19">Construire</span> vos propres composants &quot;Wrapper&quot; hautement r&eacute;utilisables gr&acirc;ce &agrave; la projection de contenu avec <code class="code" id="z3n8m0k_20">ng-content</code>.</p></li><li class="list__item" id="z3n8m0k_15"><p id="z3n8m0k_21"><span class="control" id="z3n8m0k_22">Ma&icirc;triser</span> la cr&eacute;ation de composants dynamiques pour les cas d'usage o&ugrave; l'interface est d&eacute;finie &agrave; l'ex&eacute;cution.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="z3n8m0k_23">Jusqu'&agrave; pr&eacute;sent, nous avons surtout travaill&eacute; sur l'architecture invisible de notre application : la gestion des donn&eacute;es, les flux, la s&eacute;curit&eacute;. Mais pour l'utilisateur, ce qui compte, c'est ce qu'il voit et ce avec quoi il interagit. Comment s'assurer que notre application est non seulement fonctionnelle, mais aussi belle, coh&eacute;rente et intuitive ?</p><p id="z3n8m0k_24">On peut, bien s&ucirc;r, cr&eacute;er chaque bouton, chaque champ de formulaire, chaque bo&icirc;te de dialogue &agrave; partir de z&eacute;ro. C'est comme construire une maison en fabriquant chaque brique soi-m&ecirc;me. C'est long et le r&eacute;sultat peut manquer d'uniformit&eacute;. Une approche plus professionnelle consiste &agrave; utiliser un <span class="control" id="z3n8m0k_26">Design System</span>: une biblioth&egrave;que de composants pr&eacute;-fabriqu&eacute;s, test&eacute;s, accessibles et visuellement coh&eacute;rents. Nous verrons comment int&eacute;grer le plus populaire d'entre eux, <span class="control" id="z3n8m0k_27">Angular Material</span>.</p><p id="z3n8m0k_25">Mais parfois, nous avons besoin de cr&eacute;er nos propres &quot;briques&quot; r&eacute;utilisables, comme une carte ou une fen&ecirc;tre modale qui peut accueillir n'importe quel contenu. C'est l&agrave; que la <span class="control" id="z3n8m0k_28">projection de contenu</span> avec <code class="code" id="z3n8m0k_29">ng-content</code> entre en jeu. Et pour le summum de la flexibilit&eacute;, nous apprendrons &agrave; cr&eacute;er des composants <span class="control" id="z3n8m0k_30">dynamiquement</span>, &agrave; la vol&eacute;e, une technique puissante pour des interfaces enti&egrave;rement configurables par l'utilisateur.</p></section><section class="chapter"><h2 id="1-utiliser-un-design-system-externe-ex-angular-material" data-toc="1-utiliser-un-design-system-externe-ex-angular-material">1. Utiliser un Design System Externe (ex: Angular Material)</h2><p id="z3n8m0k_31">Angular Material est la biblioth&egrave;que de composants officielle de l'&eacute;quipe Angular. Elle impl&eacute;mente les sp&eacute;cifications du &quot;Material Design&quot; de Google. L'utiliser, c'est b&eacute;n&eacute;ficier instantan&eacute;ment de dizaines de composants de haute qualit&eacute;.</p><section class="chapter"><h3 id="installation-et-configuration" data-toc="installation-et-configuration">Installation et Configuration</h3><p id="z3n8m0k_34">Angular CLI rend l'int&eacute;gration incroyablement simple gr&acirc;ce &agrave; la commande <code class="code" id="z3n8m0k_38">ng add</code>.</p><div class="code-block" data-lang="bash">
+ng add @angular/material
+</div><p id="z3n8m0k_36">Cette commande magique va :</p><ol class="list _decimal" id="z3n8m0k_37" type="1"><li class="list__item" id="z3n8m0k_39"><p id="z3n8m0k_43">Installer les d&eacute;pendances (<code class="code" id="z3n8m0k_44">@angular/material</code>, <code class="code" id="z3n8m0k_45">@angular/cdk</code>).</p></li><li class="list__item" id="z3n8m0k_40"><p id="z3n8m0k_46">Vous demander de choisir un th&egrave;me de couleurs pr&eacute;-d&eacute;fini.</p></li><li class="list__item" id="z3n8m0k_41"><p id="z3n8m0k_47">Configurer la typographie Material Design dans votre <code class="code" id="z3n8m0k_48">styles.scss</code>.</p></li><li class="list__item" id="z3n8m0k_42"><p id="z3n8m0k_49">Importer <code class="code" id="z3n8m0k_50">provideAnimations()</code> dans votre <code class="code" id="z3n8m0k_51">app.config.ts</code> pour que les animations fonctionnent.</p></li></ol></section><section class="chapter"><h3 id="utilisation-des-composants-approche-standalone" data-toc="utilisation-des-composants-approche-standalone">Utilisation des Composants (Approche Standalone)</h3><p id="z3n8m0k_52">L'approche moderne consiste &agrave; importer directement les composants dont vous avez besoin dans le tableau <code class="code" id="z3n8m0k_55">imports</code> de votre composant Standalone.</p><div class="code-block" data-lang="ts">
+// src/app/contact-form/contact-form.component.ts
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+// On importe les composants Material dont on a besoin
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
+@Component({
+    selector: 'app-contact-form',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MatFormFieldModule, // Chaque composant Material est dans son propre module
+        MatInputModule,
+        MatButtonModule
+    ],
+    template: `
+    &lt;mat-form-field appearance=&quot;fill&quot;&gt;
+      &lt;mat-label&gt;Votre nom&lt;/mat-label&gt;
+      &lt;input matInput&gt;
+    &lt;/mat-form-field&gt;
+    
+    &lt;button mat-raised-button color=&quot;primary&quot;&gt;Envoyer&lt;/button&gt;
+  `
+})
+export class ContactFormComponent {
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="281px" preserveAspectRatio="none" style="width:568px;height:281px;background:#FFFFFF;" version="1.1" viewBox="0 0 568 281" width="568px" zoomAndPan="magnify"><defs/><g><!--cluster Angular Material--><g id="cluster_Angular Material"><path d="M9.5,186.93 L128.5,186.93 A5.25,5.25 0 0 1 132,190.43 L139,209.4183 L389.5,209.4183 A3.5,3.5 0 0 1 393,212.9183 L393,270.92 A3.5,3.5 0 0 1 389.5,274.42 L9.5,274.42 A3.5,3.5 0 0 1 6,270.92 L6,190.43 A3.5,3.5 0 0 1 9.5,186.93 " fill="none" style="stroke:#696969;stroke-width:1.0;"/><line style="stroke:#696969;stroke-width:1.0;" x1="6" x2="139" y1="209.4183" y2="209.4183"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="120" x="10" y="202.4652">Angular Material</text></g><!--entity FormField--><g id="elem_FormField"><rect fill="#F1F1F1" height="36.4883" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="114" x="22" y="221.93"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="32" y="245.4652">MatFormField</text></g><!--entity Input--><g id="elem_Input"><rect fill="#F1F1F1" height="36.4883" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="81" x="170.5" y="221.93"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="180.5" y="245.4652">MatInput</text></g><!--entity Button--><g id="elem_Button"><rect fill="#F1F1F1" height="36.4883" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="90" x="287" y="221.93"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="297" y="245.4652">MatButton</text></g><!--entity Comp--><g id="elem_Comp"><rect fill="#F1F1F1" height="36.4883" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="190" x="116" y="15.72"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="126" y="39.2552">ContactFormComponent</text></g><g id="elem_GMN10"><path d="M340.5,9.5 L340.5,29.97 L306.16,33.97 L340.5,37.97 L340.5,58.4316 A3.5,3.5 0 0 0 344,61.9316 L558,61.9316 A3.5,3.5 0 0 0 561.5,58.4316 L561.5,16 L551.5,6 L344,6 A3.5,3.5 0 0 0 340.5,9.5 " fill="#7FFFD4" style="stroke:#454645;stroke-width:1.5;"/><path d="M551.5,6 L551.5,14.25 A1.75,1.75 0 0 0 553.25,16 L561.5,16 L551.5,6 " fill="#7FFFD4" style="stroke:#454645;stroke-width:1.5;"/><text fill="#454645" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="200" x="346.5" y="23.5684">Le composant importe et utilise</text><text fill="#454645" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="186" x="346.5" y="38.8789">les briques de la biblioth&#232;que</text><text fill="#454645" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="196" x="346.5" y="54.1895">externe pour construire son UI.</text></g><!--link Comp to FormField--><g id="link_Comp_FormField"><path d="M199.75,52.38 C174.87,90.86 118.6979,177.7715 93.6679,216.4815 " fill="none" id="Comp-to-FormField" style="stroke:#454645;stroke-width:1.0;"/><polygon fill="#454645" points="90.41,221.52,98.6558,216.1342,93.1249,217.3213,91.9379,211.7904,90.41,221.52" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="154.78" y="136.4984">utilise</text></g><!--link Comp to Input--><g id="link_Comp_Input"><path d="M211,52.38 C211,90.86 211,176.81 211,215.52 " fill="none" id="Comp-to-Input" style="stroke:#454645;stroke-width:1.0;"/><polygon fill="#454645" points="211,221.52,215,212.52,211,216.52,207,212.52,211,221.52" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="212" y="136.4984">utilise</text></g><!--link Comp to Button--><g id="link_Comp_Button"><path d="M221.32,52.38 C244.12,90.86 295.5411,177.6483 318.4811,216.3583 " fill="none" id="Comp-to-Button" style="stroke:#454645;stroke-width:1.0;"/><polygon fill="#454645" points="321.54,221.52,320.3928,211.7382,318.9909,217.2186,313.5105,215.8167,321.54,221.52" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="273.51" y="136.4984">utilise</text></g><!--SRC=[VP11JiGm34NtEON9lXo01T8mqaWZmGfn0BSrhJMfqt4S1eIu3_VWOgGj3D05gpZ-ty_9lx2U1e8dhXN5N3gmZAWuG1E7CGg9tTjB851g3AKBvDnP0R-DOjZOBkgm_Uvwm0JJpOtO7B0Zy1lfSa25EpHInk3XzJUbj2V2ZYcqy_JvjdBjPSmBVwvMwaqsYpBBI-dUd9iU0bNLnfDKrpzWk0AVZGCdyYlFZFv7NzX_34wYbOYuwmtYu_BvMreYJ2LMu59eiP31rv0BbA1MFkPojWG1eUOwSBJ-uxqq7JsNh8HWZ5aBIP9fPYL8PVV3_jAHj32j_GG0]--></g></svg></div></section></section><section class="chapter"><h2 id="2-cr-er-des-composants-r-utilisables-avec-ng-content-projection-de-contenu" data-toc="2-cr-er-des-composants-r-utilisables-avec-ng-content-projection-de-contenu">2. Cr&eacute;er des Composants R&eacute;utilisables avec <code class="code" id="z3n8m0k_61">ng-content</code> (Projection de Contenu)</h2><p id="z3n8m0k_57">Parfois, ce dont on a besoin, ce n'est pas un composant sp&eacute;cifique (un bouton), mais un <span class="control" id="z3n8m0k_62">contenant</span> r&eacute;utilisable (une carte, un panneau, une modale). Comment cr&eacute;er un composant <code class="code" id="z3n8m0k_63">&lt;app-card&gt;</code> qui puisse afficher n'importe quoi &agrave; l' int&eacute;rieur ? La r&eacute;ponse est <code class="code" id="z3n8m0k_64">&lt;ng-content&gt;</code>.</p><p id="z3n8m0k_58"><code class="code" id="z3n8m0k_65">&lt;ng-content&gt;</code> est un &quot;trou&quot; dans le template de votre composant, une fente o&ugrave; le composant parent peut projeter son propre contenu HTML.</p><section class="chapter"><h3 id="ng-content-simple" data-toc="ng-content-simple"><code class="code" id="z3n8m0k_70">ng-content</code> simple</h3><div class="code-block" data-lang="ts">
+// src/app/ui/card/card.component.ts
+import {Component, Input} from '@angular/core';
+
+@Component({
+    selector: 'app-card',
+    standalone: true,
+    template: `
+    &lt;div class=&quot;card-wrapper&quot;&gt;
+      &lt;h3 class=&quot;card-header&quot; *ngIf=&quot;title&quot;&gt;{{ title }}&lt;/h3&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;!-- Le contenu fourni par le parent sera projeté ici --&gt;
+        &lt;ng-content&gt;&lt;/ng-content&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `,
+    styles: [`/* ... styles pour la carte ... */`]
+})
+export class CardComponent {
+    @Input() title?: string;
+}
+</div><p id="z3n8m0k_68"><span class="control" id="z3n8m0k_71">Utilisation :</span></p><div class="code-block" data-lang="markup">
+&lt;!-- Dans un autre composant --&gt;
+&lt;app-card title=&quot;Mon Profil&quot;&gt;
+    &lt;!-- Tout ce qui est ici sera projeté dans le ng-content --&gt;
+    &lt;p&gt;Nom: Jean Dupont&lt;/p&gt;
+    &lt;app-contact-form&gt;&lt;/app-contact-form&gt;
+&lt;/app-card&gt;
+</div></section><section class="chapter"><h3 id="ng-content-avec-slots-nomm-s-select" data-toc="ng-content-avec-slots-nomm-s-select"><code class="code" id="z3n8m0k_77">ng-content</code> avec &quot;slots&quot; nomm&eacute;s (<code class="code" id="z3n8m0k_78">select</code>)</h3><p id="z3n8m0k_73">Pour des composants plus complexes comme une fen&ecirc;tre modale, vous pouvez vouloir plusieurs &quot;slots&quot; : un pour l'en-t&ecirc;te, un pour le corps, un pour le pied de page. On utilise l'attribut <code class="code" id="z3n8m0k_79">select</code>.</p><div class="code-block" data-lang="ts">
+// src/app/ui/modal/modal.component.ts
+// ...
+template: `
+  &lt;div class=&quot;modal-header&quot;&gt;
+    &lt;ng-content select=&quot;[modal-header]&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;modal-body&quot;&gt;
+    &lt;ng-content select=&quot;[modal-body]&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;modal-footer&quot;&gt;
+    &lt;ng-content select=&quot;[modal-footer]&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+`
+// ...
+</div><p id="z3n8m0k_75"><span class="control" id="z3n8m0k_80">Utilisation :</span></p><div class="code-block" data-lang="markup">
+
+&lt;app-modal&gt;
+    &lt;h2 modal-header&gt;Titre de la modale&lt;/h2&gt;
+    &lt;p modal-body&gt;Contenu principal...&lt;/p&gt;
+    &lt;div modal-footer&gt;
+        &lt;button&gt;OK&lt;/button&gt;
+        &lt;button&gt;Annuler&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/app-modal&gt;
+</div></section></section><section class="chapter"><h2 id="3-cr-er-des-composants-dynamiques" data-toc="3-cr-er-des-composants-dynamiques">3. Cr&eacute;er des Composants Dynamiques</h2><p id="z3n8m0k_81">C'est le niveau de flexibilit&eacute; ultime. Imaginez un tableau de bord o&ugrave; l'utilisateur peut ajouter, supprimer et r&eacute;organiser des &quot;widgets&quot;. Le type de widget n'est pas connu &agrave; l'avance. On ne peut donc pas utiliser <code class="code" id="z3n8m0k_87">@if</code> ou <code class="code" id="z3n8m0k_88">@switch</code>. Il faut cr&eacute;er les composants <span class="control" id="z3n8m0k_89">programmatiquement</span>.</p><p id="z3n8m0k_82">La cl&eacute; est <code class="code" id="z3n8m0k_90">ViewContainerRef</code>. C'est un service qui repr&eacute;sente un conteneur dans votre template, un endroit o&ugrave; de nouvelles vues (et donc des composants) peuvent &ecirc;tre attach&eacute;es.</p><p id="z3n8m0k_83"><span class="control" id="z3n8m0k_91">Le processus :</span></p><ol class="list _decimal" id="z3n8m0k_84" type="1"><li class="list__item" id="z3n8m0k_92"><p id="z3n8m0k_95"><span class="control" id="z3n8m0k_96">Marquer un point d'ancrage</span> dans le template avec <code class="code" id="z3n8m0k_97">&lt;ng-template&gt;</code>.</p></li><li class="list__item" id="z3n8m0k_93"><p id="z3n8m0k_98"><span class="control" id="z3n8m0k_99">Obtenir une r&eacute;f&eacute;rence</span> &agrave; ce point d'ancrage avec <code class="code" id="z3n8m0k_100">@ViewChild</code>.</p></li><li class="list__item" id="z3n8m0k_94"><p id="z3n8m0k_101"><span class="control" id="z3n8m0k_102">Appeler <code class="code" id="z3n8m0k_104">viewContainerRef.createComponent()</code></span> en lui passant le <span class="emphasis" id="z3n8m0k_103">type</span> du composant &agrave; cr&eacute;er.</p></li></ol><div class="code-block" data-lang="ts">
+// src/app/dashboard/dashboard.component.ts
+import {Component, ViewChild, ViewContainerRef, inject} from '@angular/core';
+import {ChartWidgetComponent} from '../widgets/chart.component';
+import {TableWidgetComponent} from '../widgets/table.component';
+
+@Component({
+    selector: 'app-dashboard',
+    standalone: true,
+    template: `
+    &lt;h2&gt;Dashboard Dynamique&lt;/h2&gt;
+    &lt;button (click)=&quot;loadWidget('chart')&quot;&gt;Ajouter Graphique&lt;/button&gt;
+    &lt;button (click)=&quot;loadWidget('table')&quot;&gt;Ajouter Tableau&lt;/button&gt;
+    
+    &lt;!-- 1. Le point d'ancrage --&gt;
+    &lt;ng-template #widgetHost&gt;&lt;/ng-template&gt;
+  `
+})
+export class DashboardComponent {
+    // 2. Obtenir une référence au ViewContainerRef
+    @ViewChild('widgetHost', {read: ViewContainerRef, static: true})
+    private widgetHost!: ViewContainerRef;
+
+    private componentRegistry = {
+        chart: ChartWidgetComponent,
+        table: TableWidgetComponent
+    };
+
+    loadWidget(type: 'chart' | 'table'): void {
+        // On nettoie le conteneur avant d'ajouter un nouveau widget
+        this.widgetHost.clear();
+
+        const componentToLoad = this.componentRegistry[type];
+
+        // 3. On crée le composant dynamiquement !
+        const componentRef = this.widgetHost.createComponent(componentToLoad);
+
+        // On peut même passer des données au composant créé
+        // componentRef.instance.data = { ... };
+    }
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="437px" preserveAspectRatio="none" style="width:841px;height:437px;background:#FFFFFF;" version="1.1" viewBox="0 0 841 437" width="841px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="64.6211" style="stroke:#696969;stroke-width:1.0;" width="10" x="382" y="139.4199"/><rect fill="#FFFFFF" height="64.6211" style="stroke:#696969;stroke-width:1.0;" width="10" x="382" y="311.9727"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="90" x2="90" y1="36.4883" y2="401.5938"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="387" x2="387" y1="36.4883" y2="401.5938"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="555" x2="555" y1="36.4883" y2="401.5938"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="745" x2="745" y1="36.4883" y2="401.5938"/><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="170" x="5" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="12" y="25.5352">DashboardComponent</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="170" x="5" y="400.5938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="12" y="421.1289">DashboardComponent</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="136" x="319" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="326" y="25.5352">ViewContainerRef</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="136" x="319" y="400.5938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="326" y="421.1289">ViewContainerRef</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="180" x="465" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="472" y="25.5352">ChartWidgetComponent</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="180" x="465" y="400.5938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="472" y="421.1289">ChartWidgetComponent</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="180" x="655" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="662" y="25.5352">TableWidgetComponent</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="180" x="655" y="400.5938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="662" y="421.1289">TableWidgetComponent</text><rect fill="#FFFFFF" height="64.6211" style="stroke:#696969;stroke-width:1.0;" width="10" x="382" y="139.4199"/><rect fill="#FFFFFF" height="64.6211" style="stroke:#696969;stroke-width:1.0;" width="10" x="382" y="311.9727"/><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="132" y1="67.7988" y2="67.7988"/><line style="stroke:#454645;stroke-width:1.0;" x1="132" x2="132" y1="67.7988" y2="80.7988"/><line style="stroke:#454645;stroke-width:1.0;" x1="91" x2="132" y1="80.7988" y2="80.7988"/><polygon fill="#454645" points="101,76.7988,91,80.7988,101,84.7988,97,80.7988" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145" x="97" y="63.0566">user clicks "Add Chart"</text><polygon fill="#454645" points="375,106.1094,385,110.1094,375,114.1094,379,110.1094" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="381" y1="110.1094" y2="110.1094"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="97" y="105.3672">.clear()</text><polygon fill="#454645" points="370,135.4199,380,139.4199,370,143.4199,374,139.4199" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="376" y1="139.4199" y2="139.4199"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="273" x="97" y="134.6777">.createComponent(ChartWidgetComponent)</text><polygon fill="#454645" points="543,164.7305,553,168.7305,543,172.7305,547,168.7305" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="392" x2="549" y1="168.7305" y2="168.7305"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="33" x="399" y="163.9883">new()</text><line style="stroke:#454645;stroke-width:1.0;" x1="392" x2="434" y1="203.041" y2="203.041"/><line style="stroke:#454645;stroke-width:1.0;" x1="434" x2="434" y1="203.041" y2="216.041"/><line style="stroke:#454645;stroke-width:1.0;" x1="387" x2="434" y1="216.041" y2="216.041"/><polygon fill="#454645" points="397,212.041,387,216.041,397,220.041,393,216.041" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="399" y="198.2988">Attache la vue au DOM</text><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="132" y1="240.3516" y2="240.3516"/><line style="stroke:#454645;stroke-width:1.0;" x1="132" x2="132" y1="240.3516" y2="253.3516"/><line style="stroke:#454645;stroke-width:1.0;" x1="91" x2="132" y1="253.3516" y2="253.3516"/><polygon fill="#454645" points="101,249.3516,91,253.3516,101,257.3516,97,253.3516" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145" x="97" y="235.6094">user clicks "Add Table"</text><polygon fill="#454645" points="375,278.6621,385,282.6621,375,286.6621,379,282.6621" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="381" y1="282.6621" y2="282.6621"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="97" y="277.9199">.clear()</text><polygon fill="#454645" points="370,307.9727,380,311.9727,370,315.9727,374,311.9727" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="90" x2="376" y1="311.9727" y2="311.9727"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="273" x="97" y="307.2305">.createComponent(TableWidgetComponent)</text><polygon fill="#454645" points="733,337.2832,743,341.2832,733,345.2832,737,341.2832" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="392" x2="739" y1="341.2832" y2="341.2832"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="33" x="399" y="336.541">new()</text><line style="stroke:#454645;stroke-width:1.0;" x1="392" x2="434" y1="375.5938" y2="375.5938"/><line style="stroke:#454645;stroke-width:1.0;" x1="434" x2="434" y1="375.5938" y2="388.5938"/><line style="stroke:#454645;stroke-width:1.0;" x1="387" x2="434" y1="388.5938" y2="388.5938"/><polygon fill="#454645" points="397,384.5938,387,388.5938,397,392.5938,393,388.5938" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="399" y="370.8516">Attache la vue au DOM</text><!--SRC=[fP313e8m38RlUuhA2G_w01vC25oDYJ5wBbkLHHXa57Xzvp2O9RkenxPV__v_LrnHGp3gqg9X8JgqhANkN059WNrLjcXLtZPTQyXm0jZ3qWxfYwOfRmsZDcHFTFFi9J-5L5wvwghLdJXKzOEGFMDPKupr0o4M8x3PVrp13eQUBCXQoqSFIQRKB9w42ywQGxUo9hJfEZwpX4pBxJHcVYrGiXuTvyE-Dfs09vs4eSbflvkpQiQCiYAe4SQ100SeZWUXA93v8fj_nl_POi-EP_FaxzcU]--></g></svg></div></section><section class="chapter"><h2 id="exercice-6-1-cr-er-une-fen-tre-modale-r-utilisable" data-toc="exercice-6-1-cr-er-une-fen-tre-modale-r-utilisable">Exercice 6.1 : Cr&eacute;er une fen&ecirc;tre modale r&eacute;utilisable</h2><p id="z3n8m0k_105"><span class="control" id="z3n8m0k_109">Objectif :</span> Construire le composant <code class="code" id="z3n8m0k_110">&lt;app-modal&gt;</code> en utilisant la projection de contenu avec des &quot;slots&quot; nomm&eacute;s.</p><p id="z3n8m0k_106"><span class="control" id="z3n8m0k_111">Instructions :</span></p><ol class="list _decimal" id="z3n8m0k_107" type="1"><li class="list__item" id="z3n8m0k_112"><p id="z3n8m0k_117">Cr&eacute;ez un <code class="code" id="z3n8m0k_118">ModalComponent</code> qui sera le &quot;wrapper&quot;.</p></li><li class="list__item" id="z3n8m0k_113"><p id="z3n8m0k_119">Dans son template, d&eacute;finissez 3 slots avec <code class="code" id="z3n8m0k_120">&lt;ng-content&gt;</code> et l'attribut <code class="code" id="z3n8m0k_121">select</code>: <code class="code" id="z3n8m0k_122">[modal-title]</code>, <code class="code" id="z3n8m0k_123">[modal-body]</code>, <code class="code" id="z3n8m0k_124">[modal-footer]</code>.</p></li><li class="list__item" id="z3n8m0k_114"><p id="z3n8m0k_125">Ajoutez un <code class="code" id="z3n8m0k_126">@Output() close</code> qui &eacute;met un &eacute;v&eacute;nement lorsqu'on clique sur un bouton de fermeture (un &quot;X&quot; dans le coin, par exemple).</p></li><li class="list__item" id="z3n8m0k_115"><p id="z3n8m0k_127">Stylisez la modale pour qu'elle ressemble &agrave; une vraie fen&ecirc;tre (un fond semi-transparent, une bo&icirc;te centr&eacute;e avec une ombre).</p></li><li class="list__item" id="z3n8m0k_116"><p id="z3n8m0k_128">Dans un autre composant (ex: <code class="code" id="z3n8m0k_130">AppComponent</code>), utilisez votre <code class="code" id="z3n8m0k_131">&lt;app-modal&gt;</code>:</p><ul class="list _bullet" id="z3n8m0k_129"><li class="list__item" id="z3n8m0k_132"><p id="z3n8m0k_135">Utilisez une propri&eacute;t&eacute; (<code class="code" id="z3n8m0k_136">isModalOpen</code>) pour l'afficher ou la cacher avec <code class="code" id="z3n8m0k_137">@if</code>.</p></li><li class="list__item" id="z3n8m0k_133"><p id="z3n8m0k_138">Projetez du contenu dans les 3 slots.</p></li><li class="list__item" id="z3n8m0k_134"><p id="z3n8m0k_139">G&eacute;rez l'&eacute;v&eacute;nement <code class="code" id="z3n8m0k_140">(close)</code> pour mettre <code class="code" id="z3n8m0k_141">isModalOpen</code> &agrave; <code class="code" id="z3n8m0k_142">false</code>.</p></li></ul></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-6-1" data-toc="correction-exercice-6-1">Correction exercice 6.1</h3></div><div class="collapse__content"><section class="procedure-steps" id="z3n8m0k_143"><p id="z3n8m0k_144">Voici une impl&eacute;mentation compl&egrave;te de la modale r&eacute;utilisable.</p><p id="z3n8m0k_145"><span class="control" id="z3n8m0k_151">1. <code class="code" id="z3n8m0k_152">modal.component.ts</code></span></p><div class="code-block" data-lang="ts">
+// src/app/ui/modal/modal.component.ts
+import {Component, EventEmitter, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+@Component({
+    selector: 'app-modal',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+    &lt;div class=&quot;modal-backdrop&quot; (click)=&quot;onClose()&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;modal-content&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;ng-content select=&quot;[modal-title]&quot;&gt;&lt;/ng-content&gt;
+        &lt;button class=&quot;close-btn&quot; (click)=&quot;onClose()&quot;&gt;×&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;ng-content select=&quot;[modal-body]&quot;&gt;&lt;/ng-content&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;ng-content select=&quot;[modal-footer]&quot;&gt;&lt;/ng-content&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `,
+    styleUrls: ['./modal.component.css'] // Voir CSS ci-dessous
+})
+export class ModalComponent {
+    @Output() close = new EventEmitter&lt;void&gt;();
+
+    onClose() {
+        this.close.emit();
+    }
+}
+</div><p id="z3n8m0k_147"><span class="control" id="z3n8m0k_153">2. <code class="code" id="z3n8m0k_154">modal.component.css</code></span></p><div class="code-block" data-lang="css">
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+</div><p id="z3n8m0k_149"><span class="control" id="z3n8m0k_155">3. Utilisation dans <code class="code" id="z3n8m0k_156">app.component.ts</code></span></p><div class="code-block" data-lang="ts">
+// src/app/app.component.ts
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ModalComponent} from './ui/modal/modal.component';
+
+@Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [CommonModule, ModalComponent],
+    template: `
+    &lt;button (click)=&quot;isModalOpen = true&quot;&gt;Ouvrir la modale&lt;/button&gt;
+
+    &lt;app-modal *ngIf=&quot;isModalOpen&quot; (close)=&quot;isModalOpen = false&quot;&gt;
+      &lt;h2 modal-title&gt;Confirmation&lt;/h2&gt;
+      
+      &lt;div modal-body&gt;
+        &lt;p&gt;Voulez-vous vraiment effectuer cette action ?&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div modal-footer&gt;
+        &lt;button (click)=&quot;isModalOpen = false&quot;&gt;Annuler&lt;/button&gt;
+        &lt;button&gt;Confirmer&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/app-modal&gt;
+  `
+})
+export class AppComponent {
+    isModalOpen = false;
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="z3n8m0k_157" type="1"><li class="list__item" id="z3n8m0k_158"><p id="z3n8m0k_163"><span class="control" id="z3n8m0k_164">Quel est le principal avantage d'utiliser <code class="code" id="z3n8m0k_165">ng add @angular/material</code> plut&ocirc;t que d'installer manuellement la biblioth&egrave;que ?</span> a. C'est plus rapide &agrave; t&eacute;l&eacute;charger. b. La commande configure automatiquement le th&egrave;me, la typographie et les animations. c. Cela installe une version sp&eacute;ciale et plus performante de la biblioth&egrave;que. d. Cela ne fonctionne que pour les projets non-standalone.</p></li><li class="list__item" id="z3n8m0k_159"><p id="z3n8m0k_166"><span class="control" id="z3n8m0k_167">Expliquez le concept de &quot;projection de contenu&quot; et le r&ocirc;le de la balise <code class="code" id="z3n8m0k_168">&lt;ng-content&gt;</code>.</span></p></li><li class="list__item" id="z3n8m0k_160"><p id="z3n8m0k_169"><span class="control" id="z3n8m0k_170">Dans quel sc&eacute;nario la cr&eacute;ation de composants dynamiques est-elle la solution la plus appropri&eacute;e ?</span> a. Pour afficher une liste de produits o&ugrave; chaque produit a la m&ecirc;me structure. b. Pour afficher un dialogue de confirmation simple. c. Pour construire un tableau de bord o&ugrave; l'utilisateur peut choisir les &quot;widgets&quot; &agrave; afficher &agrave; partir d'une liste. d. Pour afficher ou cacher une section de la page en fonction du r&ocirc;le de l'utilisateur.</p></li><li class="list__item" id="z3n8m0k_161"><p id="z3n8m0k_171"><span class="control" id="z3n8m0k_172">Comment peut-on d&eacute;finir plusieurs &quot;slots&quot; de projection dans un m&ecirc;me composant ?</span></p></li><li class="list__item" id="z3n8m0k_162"><p id="z3n8m0k_173"><span class="control" id="z3n8m0k_174">Quelle classe de l'API Angular est fondamentale pour pouvoir cr&eacute;er et ins&eacute;rer des composants dynamiquement dans le DOM ?</span> a. <code class="code" id="z3n8m0k_175">ComponentFactoryResolver</code> (ancienne m&eacute;thode) b. <code class="code" id="z3n8m0k_176">Renderer2</code> c. <code class="code" id="z3n8m0k_177">ElementRef</code> d. <code class="code" id="z3n8m0k_178">ViewContainerRef</code> (m&eacute;thode moderne)</p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="z3n8m0k_179">Vous avez ajout&eacute; trois puissants patrons de conception de composants &agrave; votre arsenal. Vous savez maintenant comment vous appuyer sur le travail de la communaut&eacute; en int&eacute;grant un <span class="control" id="z3n8m0k_181">Design System</span> complet. Vous savez &eacute;galement cr&eacute;er vos propres briques d'UI flexibles et r&eacute;utilisables gr&acirc;ce &agrave; la <span class="control" id="z3n8m0k_182">projection de contenu</span>. Enfin, pour les cas les plus complexes, vous &ecirc;tes capable de construire des interfaces &agrave; la vol&eacute;e avec la <span class="control" id="z3n8m0k_183">cr&eacute;ation de composants dynamiques</span>.</p><p id="z3n8m0k_180">Ces techniques vous permettent de cr&eacute;er des interfaces utilisateur riches et complexes. Mais comment les rendre plus vivantes ? Comment r&eacute;agir &agrave; des &eacute;v&eacute;nements qui ne proviennent pas de l'utilisateur, mais du serveur ? Dans la prochaine partie, nous allons explorer le monde du temps r&eacute;el en int&eacute;grant des <span class="control" id="z3n8m0k_184">WebSockets</span> dans notre application Angular.</p></section><div class="last-modified">10 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="005-01-advanced-unit-test.html" class="navigation-links__prev">Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones</a><a href="006-01-websockets.html" class="navigation-links__next">Module 6, Partie B : Temps R&eacute;el avec WebSockets</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

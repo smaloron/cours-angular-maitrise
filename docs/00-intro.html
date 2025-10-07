@@ -1,0 +1,222 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:26.980306"><title>Module 0 : L'essentiel - Introduction et Rappels Cl&eacute;s | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"de-d-veloppeur-architecte-d-application","level":0,"title":"De Développeur à Architecte d\u0027Application","anchor":"#de-d-veloppeur-architecte-d-application"},{"id":"validation-des-acquis-les-piliers-d-angular","level":0,"title":"Validation des Acquis : Les Piliers d\u0027Angular","anchor":"#validation-des-acquis-les-piliers-d-angular"},{"id":"exercice-0-1-consolidation-des-acquis","level":0,"title":"Exercice 0.1 : Consolidation des acquis","anchor":"#exercice-0-1-consolidation-des-acquis"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 0 : L'essentiel - Introduction et Rappels Cl&eacute;s | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/00-intro.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 0 : L'essentiel - Introduction et Rappels Cl&eacute;s | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/00-intro.html#webpage",
+    "url": "writerside-documentation/00-intro.html",
+    "name": "Module 0 : L'essentiel - Introduction et Rappels Cl&eacute;s | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="00-intro" data-main-title="Module 0 : L'essentiel - Introduction et Rappels Clés" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="00-intro" id="00-intro.md">Module 0 : L'essentiel - Introduction et Rappels Clés</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="f4kvel_10">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="f4kvel_11"><li class="list__item" id="f4kvel_12"><p id="f4kvel_16"><span class="control" id="f4kvel_17">Comprendre</span> les enjeux et les d&eacute;fis li&eacute;s au d&eacute;veloppement d'applications Angular &agrave; grande &eacute;chelle.</p></li><li class="list__item" id="f4kvel_13"><p id="f4kvel_18"><span class="control" id="f4kvel_19">Identifier</span> les comp&eacute;tences qui distinguent un d&eacute;veloppeur avanc&eacute; d'un d&eacute;veloppeur comp&eacute;tent.</p></li><li class="list__item" id="f4kvel_14"><p id="f4kvel_20"><span class="control" id="f4kvel_21">Valider</span> votre ma&icirc;trise des concepts fondamentaux d'Angular : Composants Standalone, Services, Injection de D&eacute;pendances et Formulaires R&eacute;actifs.</p></li><li class="list__item" id="f4kvel_15"><p id="f4kvel_22"><span class="control" id="f4kvel_23">Susciter</span> votre curiosit&eacute; pour les sujets avanc&eacute;s qui seront abord&eacute;s tout au long de ce cours.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="f4kvel_24">F&eacute;licitations ! Vous avez d&eacute;j&agrave; parcouru une partie importante du chemin. Vous savez cr&eacute;er des composants, interagir avec des API et construire des formulaires. Vous avez probablement d&eacute;j&agrave; livr&eacute; vos premi&egrave;res applications Angular et ressenti la satisfaction de voir votre code prendre vie.</p><p id="f4kvel_25">Mais que se passe-t-il quand l'application grandit ? Quand les fonctionnalit&eacute;s s'ajoutent les unes aux autres ? Quand plusieurs d&eacute;veloppeurs doivent collaborer sur la m&ecirc;me base de code ? C'est l&agrave; que de nouveaux d&eacute;fis apparaissent : la performance, la maintenabilit&eacute; du code, et la capacit&eacute; de l'application &agrave; &eacute;voluer sans s'effondrer sous son propre poids.</p><p id="f4kvel_26">Ce cours a &eacute;t&eacute; con&ccedil;u pour vous faire passer ce cap. Nous n'allons pas seulement apprendre de nouvelles fonctionnalit&eacute;s d'Angular, nous allons apprendre &agrave; <span class="control" id="f4kvel_28">penser comme des architectes d'applications</span>. Nous allons d&eacute;couvrir les patrons de conception, les strat&eacute;gies et les outils qui vous permettront de construire des applications robustes, performantes et agr&eacute;ables &agrave; maintenir.</p><p id="f4kvel_27">Pr&ecirc;ts &agrave; passer au niveau sup&eacute;rieur ? C'est parti !</p></section><section class="chapter"><h2 id="de-d-veloppeur-architecte-d-application" data-toc="de-d-veloppeur-architecte-d-application">De D&eacute;veloppeur &agrave; Architecte d'Application</h2><p id="f4kvel_29">Imaginez un petit projet qui d&eacute;marre vite. Au d&eacute;but, tout est simple. Mais au fil des mois, les demandes &eacute;voluent, l'&eacute;quipe s'agrandit, et ce qui &eacute;tait un code simple et clair commence &agrave; ressembler &agrave; un labyrinthe. Ajouter une nouvelle fonctionnalit&eacute; devient une &eacute;preuve, et corriger un bug en cr&eacute;e deux autres. C'est une situation que tout d&eacute;veloppeur a connue.</p><p id="f4kvel_30">Pour &eacute;viter cela, un d&eacute;veloppeur avanc&eacute; se pose constamment trois questions :</p><ol class="list _decimal" id="f4kvel_31" type="1"><li class="list__item" id="f4kvel_33"><p id="f4kvel_36"><span class="control" id="f4kvel_37">Performance :</span> Mon application est-elle rapide ? Le temps de chargement initial est-il optimal ? Les interactions sont-elles fluides ? Un utilisateur patient est un mythe. La performance per&ccedil;ue est un facteur cl&eacute; de succ&egrave;s.</p></li><li class="list__item" id="f4kvel_34"><p id="f4kvel_38"><span class="control" id="f4kvel_39">Maintenabilit&eacute; :</span> Si un nouveau d&eacute;veloppeur rejoint le projet, combien de temps lui faudra-t-il pour &ecirc;tre productif ? Est-il facile de trouver o&ugrave; modifier le code pour une fonctionnalit&eacute; donn&eacute;e ? Un code maintenable est un code qui peut vivre et &eacute;voluer sur le long terme.</p></li><li class="list__item" id="f4kvel_35"><p id="f4kvel_40"><span class="control" id="f4kvel_41">Scalabilit&eacute; :</span> L'architecture de mon application peut-elle supporter l'ajout de nombreuses fonctionnalit&eacute;s complexes ? L'&eacute;quipe peut-elle travailler en parall&egrave;le sur diff&eacute;rentes parties de l'application sans se g&ecirc;ner ?</p></li></ol><p id="f4kvel_32">Ce sont pr&eacute;cis&eacute;ment ces d&eacute;fis que nous allons apprendre &agrave; relever ensemble, en explorant des sujets comme la gestion d'&eacute;tat, les strat&eacute;gies d'optimisation et les tests avanc&eacute;s.</p></section><section class="chapter"><h2 id="validation-des-acquis-les-piliers-d-angular" data-toc="validation-des-acquis-les-piliers-d-angular">Validation des Acquis : Les Piliers d'Angular</h2><p id="f4kvel_42">Avant de plonger dans les profondeurs, assurons-nous que nous partageons tous le m&ecirc;me vocabulaire et les m&ecirc;mes bases solides. Voici un rappel &quot;&agrave; 30 000 pieds&quot; des quatre piliers sur lesquels nous allons construire notre expertise.</p><div class="tabs" id="f4kvel_43" data-anchors="[f4kvel_44,f4kvel_45,f4kvel_46,f4kvel_47]"><div class="tabs__content" data-gtm="tab" id="f4kvel_44" data-title="Composants Standalone"><p>Depuis Angular 14, les composants Standalone sont la nouvelle norme. Ils simplifient l'architecture en supprimant la n&eacute;cessit&eacute; des `NgModules`. Un composant se d&eacute;clare lui-m&ecirc;me et g&egrave;re ses propres d&eacute;pendances. C'est la brique de base de nos applications modernes. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+
+@Component({
+    selector: 'app-root',
+    standalone: true, // Ce composant est autonome
+    imports: [CommonModule, RouterOutlet], // Il importe ce dont il a besoin
+    template: `&lt;h1&gt;Bienvenue !&lt;/h1&gt;`
+})
+export class AppComponent {
+    title = 'my-advanced-app';
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="f4kvel_45" data-title="Services et Injection de D&eacute;pendances (DI)"><p>Le c&oelig;ur de la logique m&eacute;tier ne doit pas r&eacute;sider dans les composants. Les **Services** sont des classes TypeScript d&eacute;di&eacute;es &agrave; une t&acirc;che pr&eacute;cise (appeler une API, g&eacute;rer l'authentification, etc.). Gr&acirc;ce &agrave; l'**Injection de D&eacute;pendances**, Angular peut automatiquement &quot;fournir&quot; une instance d'un service &agrave; n'importe quel composant qui en fait la demande dans son constructeur. </p><p id="f4kvel_49">L'injecteur racine (<code class="code" id="f4kvel_58">providedIn: 'root'</code>) cr&eacute;e un singleton du service, une seule instance partag&eacute;e pour toute l'application.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// user.service.ts
+import {Injectable} from '@angular/core';
+
+@Injectable({
+    providedIn: 'root' // Disponible dans toute l'application
+})
+export class UserService {
+    getUsers() {
+        // Logique pour récupérer les utilisateurs
+        return [{id: 1, name: 'Alice'}];
+    }
+}
+</div><div class="code-block" data-lang="ts" data-title="TypeScript">
+// user-list.component.ts
+import {Component, OnInit} from '@angular/core';
+import {UserService} from './user.service';
+
+@Component({
+    selector: 'app-user-list',
+    // ...
+})
+export class UserListComponent implements OnInit {
+    // Angular va injecter l'instance unique de UserService ici
+    constructor(private userService: UserService) {
+    }
+
+    ngOnInit() {
+        const users = this.userService.getUsers();
+        console.log(users);
+    }
+}
+</div><p id="f4kvel_52">@startuml skinparam linetype ortho !theme vibrant</p><p id="f4kvel_53">class UserListComponent {</p><ul class="list _bullet" id="f4kvel_54"><li class="list__item" id="f4kvel_59"><p id="f4kvel_60">constructor(userService: UserService) }</p></li></ul><p id="f4kvel_55">class UserService {</p><ul class="list _bullet" id="f4kvel_56"><li class="list__item" id="f4kvel_61"><p id="f4kvel_62">getUsers(): User[] }</p></li></ul><p id="f4kvel_57">UserListComponent ..&gt; UserService : &quot;d&eacute;pend de&quot; @enduml</p></div><div class="tabs__content" data-gtm="tab" id="f4kvel_46" data-title="RxJS et Asynchronisme"><p>Dans le monde du web, tout est asynchrone : les appels HTTP, les interactions utilisateur, etc. RxJS est une biblioth&egrave;que qui permet de g&eacute;rer ces flux de donn&eacute;es asynchrones (les **Observables**) de mani&egrave;re &eacute;l&eacute;gante et puissante. Au lieu d'attendre une r&eacute;ponse, on &quot;s'abonne&quot; &agrave; un flux et on r&eacute;agit aux donn&eacute;es au fur et &agrave; mesure qu'elles arrivent. </p><p id="f4kvel_63"><code class="code" id="f4kvel_66">HttpClient</code> d'Angular retourne des Observables, ce qui en fait un partenaire naturel de RxJS.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// data.service.ts
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
+@Injectable({providedIn: 'root'})
+export class DataService {
+
+    constructor(private http: HttpClient) {
+    }
+
+    getProducts(): Observable&lt;Product[]&gt; {
+        return this.http.get&lt;{ data: Product[] }&gt;('/api/products').pipe(
+            map(response =&gt; response.data) // Transforme le flux de données
+        );
+    }
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="358px" preserveAspectRatio="none" style="width:581px;height:358px;background:#FFFFFF;" version="1.1" viewBox="0 0 581 358" width="581px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="146.5527" style="stroke:#696969;stroke-width:1.0;" width="10" x="218.5" y="112.7988"/><rect fill="#FFFFFF" height="87.9316" style="stroke:#696969;stroke-width:1.0;" width="10" x="430.5" y="142.1094"/><rect fill="#FFFFFF" height="29.3105" style="stroke:#696969;stroke-width:1.0;" width="10" x="552.5" y="171.4199"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="48" x2="48" y1="81.4883" y2="277.3516"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="223.5" x2="223.5" y1="81.4883" y2="277.3516"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="435" x2="435" y1="81.4883" y2="277.3516"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="557.5" x2="557.5" y1="81.4883" y2="277.3516"/><text fill="#454645" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="5" y="78.5352">Component</text><ellipse cx="48.5" cy="13.5" fill="#454645" rx="8" ry="8" style="stroke:#454645;stroke-width:0.5;"/><path d="M48.5,21.5 L48.5,48.5 M35.5,29.5 L61.5,29.5 M48.5,48.5 L35.5,63.5 M48.5,48.5 L61.5,63.5 " fill="none" style="stroke:#454645;stroke-width:0.5;"/><text fill="#454645" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="5" y="289.8867">Component</text><ellipse cx="48.5" cy="301.3398" fill="#454645" rx="8" ry="8" style="stroke:#454645;stroke-width:0.5;"/><path d="M48.5,309.3398 L48.5,336.3398 M35.5,317.3398 L61.5,317.3398 M48.5,336.3398 L35.5,351.3398 M48.5,336.3398 L61.5,351.3398 " fill="none" style="stroke:#454645;stroke-width:0.5;"/><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="62" x="192.5" y="50"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="199.5" y="70.5352">Service</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="62" x="192.5" y="276.3516"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="199.5" y="296.8867">Service</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="83" x="394" y="50"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="401" y="70.5352">HttpClient</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="83" x="394" y="276.3516"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="401" y="296.8867">HttpClient</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="36" x="539.5" y="50"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22" x="546.5" y="70.5352">API</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="36" x="539.5" y="276.3516"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22" x="546.5" y="296.8867">API</text><rect fill="#FFFFFF" height="146.5527" style="stroke:#696969;stroke-width:1.0;" width="10" x="218.5" y="112.7988"/><rect fill="#FFFFFF" height="87.9316" style="stroke:#696969;stroke-width:1.0;" width="10" x="430.5" y="142.1094"/><rect fill="#FFFFFF" height="29.3105" style="stroke:#696969;stroke-width:1.0;" width="10" x="552.5" y="171.4199"/><polygon fill="#454645" points="206.5,108.7988,216.5,112.7988,206.5,116.7988,210.5,112.7988" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="48.5" x2="212.5" y1="112.7988" y2="112.7988"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="83" x="55.5" y="108.0566">getProducts()</text><polygon fill="#454645" points="418.5,138.1094,428.5,142.1094,418.5,146.1094,422.5,142.1094" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="228.5" x2="424.5" y1="142.1094" y2="142.1094"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="235.5" y="137.3672">get('/api/products')</text><polygon fill="#454645" points="540.5,167.4199,550.5,171.4199,540.5,175.4199,544.5,171.4199" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="440.5" x2="546.5" y1="171.4199" y2="171.4199"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="447.5" y="166.6777">Requ&#234;te GET</text><polygon fill="#454645" points="451.5,196.7305,441.5,200.7305,451.5,204.7305,447.5,200.7305" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="445.5" x2="556.5" y1="200.7305" y2="200.7305"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="88" x="457.5" y="195.9883">R&#233;ponse JSON</text><polygon fill="#454645" points="239.5,226.041,229.5,230.041,239.5,234.041,235.5,230.041" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="233.5" x2="434.5" y1="230.041" y2="230.041"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="245.5" y="225.2988">Observable&lt;HttpResponse&gt;</text><polygon fill="#454645" points="59.5,255.3516,49.5,259.3516,59.5,263.3516,55.5,259.3516" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="53.5" x2="222.5" y1="259.3516" y2="259.3516"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="65.5" y="254.6094">Observable&lt;Product[]&gt;</text><!--SRC=[PP2zJWCn48JxVGgJ9g68qYCK2GN4Jq6Y2rI8Ok-o8XPtjh4t9_58y1fvCVRCILb3PraptynEUhSkOCJEjDOHVmOoFlBUmndlgIFJspgYOm1is4Vpd2WQJ6QoybtmZXnFGEni6nj4PgwHSKknjmrbsVWkHNVCOTLQCHVVLvjxW1mmNnQW2_D6l8b-TsWupSw7AhP79Yq2q0u1d49-_RFf0eDTX14pLHZL1vHD8599t1Lz78xV8hozUJgvSjr1CF-RLXs_P9j4vc6xVeGTbHQTyE_GTIttzrYtT3deAagPjDGKNRSuMcXvlW8pxlRoMZ3qSZy0]--></g></svg></div></div><div class="tabs__content" data-gtm="tab" id="f4kvel_47" data-title="Formulaires R&eacute;actifs"><p>Pour g&eacute;rer les formulaires complexes avec des logiques de validation riches, les Formulaires R&eacute;actifs sont l'outil de choix. Le mod&egrave;le du formulaire (`FormGroup`, `FormControl`) est d&eacute;fini et g&eacute;r&eacute; dans la classe du composant, ce qui le rend facile &agrave; tester et &agrave; manipuler. La synchronisation avec le template HTML se fait via des directives comme `[formGroup]` et `formControlName`. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// profile-editor.component.ts
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+@Component({
+    selector: 'app-profile-editor',
+    // ...
+})
+export class ProfileEditorComponent implements OnInit {
+    profileForm: FormGroup;
+
+    constructor(private fb: FormBuilder) {
+    }
+
+    ngOnInit() {
+        this.profileForm = this.fb.group({
+            // Crée un contrôle de formulaire avec une valeur initiale
+            // et des validateurs
+            firstName: ['', Validators.required],
+            lastName: ['', [Validators.required, Validators.minLength(2)]],
+        });
+    }
+
+    onSubmit() {
+        console.log(this.profileForm.value);
+    }
+}
+</div></div></div></section><section class="chapter"><h2 id="exercice-0-1-consolidation-des-acquis" data-toc="exercice-0-1-consolidation-des-acquis">Exercice 0.1 : Consolidation des acquis</h2><p id="f4kvel_68">Mettons ces quatre piliers en action dans un petit exercice de synth&egrave;se.</p><p id="f4kvel_69"><span class="control" id="f4kvel_73">Objectif :</span> Cr&eacute;er un composant simple qui r&eacute;cup&egrave;re une liste de &quot;t&acirc;ches&quot; (todos) via un service et permet d'en ajouter une nouvelle via un formulaire r&eacute;actif.</p><p id="f4kvel_70"><span class="control" id="f4kvel_74">Instructions :</span></p><ol class="list _decimal" id="f4kvel_71" type="1"><li class="list__item" id="f4kvel_75"><p id="f4kvel_82"><span class="control" id="f4kvel_83">Cr&eacute;ez un service <code class="code" id="f4kvel_88">TodoService</code></span> qui a une m&eacute;thode <code class="code" id="f4kvel_84">getTodos()</code> retournant un <code class="code" id="f4kvel_85">Observable</code> d'un tableau de t&acirc;ches ( vous pouvez simuler avec <code class="code" id="f4kvel_86">of([{ id: 1, title: 'Apprendre Angular' }])</code>) et une m&eacute;thode <code class="code" id="f4kvel_87">addTodo(todo)</code> qui ajoute une t&acirc;che &agrave; la liste.</p></li><li class="list__item" id="f4kvel_76"><p id="f4kvel_89"><span class="control" id="f4kvel_90">Cr&eacute;ez un composant Standalone <code class="code" id="f4kvel_91">TodoListComponent</code></span>.</p></li><li class="list__item" id="f4kvel_77"><p id="f4kvel_92"><span class="control" id="f4kvel_93">Injectez <code class="code" id="f4kvel_94">TodoService</code></span> dans le composant.</p></li><li class="list__item" id="f4kvel_78"><p id="f4kvel_95">Dans <code class="code" id="f4kvel_96">ngOnInit</code>, appelez <code class="code" id="f4kvel_97">getTodos()</code> pour initialiser la liste des t&acirc;ches.</p></li><li class="list__item" id="f4kvel_79"><p id="f4kvel_98"><span class="control" id="f4kvel_99">Cr&eacute;ez un formulaire r&eacute;actif</span> avec un seul champ <code class="code" id="f4kvel_100">title</code> qui doit &ecirc;tre non vide (<code class="code" id="f4kvel_101">Validators.required</code>).</p></li><li class="list__item" id="f4kvel_80"><p id="f4kvel_102">Quand le formulaire est soumis et valide, <span class="control" id="f4kvel_103">appelez la m&eacute;thode <code class="code" id="f4kvel_104">addTodo()</code></span> du service, puis r&eacute;initialisez le formulaire.</p></li><li class="list__item" id="f4kvel_81"><p id="f4kvel_105"><span class="control" id="f4kvel_106">Affichez la liste des t&acirc;ches</span> dans le template et le formulaire d'ajout.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-0-1" data-toc="correction-exercice-0-1">Correction exercice 0.1</h3></div><div class="collapse__content"><section class="procedure-steps" id="f4kvel_107"><p id="f4kvel_108">Voici une solution possible pour cet exercice. Concentrez-vous sur la mani&egrave;re dont les diff&eacute;rents concepts s'articulent.</p><p id="f4kvel_109"><span class="control" id="f4kvel_115">1. Le Service <code class="code" id="f4kvel_116">TodoService</code></span></p><p id="f4kvel_110">Ce service utilise un <code class="code" id="f4kvel_117">BehaviorSubject</code> pour simuler une source de donn&eacute;es r&eacute;active. C'est un avant-go&ucirc;t de ce que nous verrons dans le module sur la gestion d'&eacute;tat !</p><div class="code-block" data-lang="ts">
+// src/app/todo.service.ts
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
+
+export interface Todo {
+    id: number;
+    title: string;
+    completed: boolean;
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class TodoService {
+
+    // Un BehaviorSubject maintient la valeur actuelle et la diffuse
+    // aux nouveaux abonnés.
+    private todos$ = new BehaviorSubject&lt;Todo[]&gt;([
+        {id: 1, title: 'Maîtriser les bases d-Angular', completed: true},
+        {id: 2, title: 'Apprendre RxJS', completed: false},
+    ]);
+
+    // Expose l'Observable public pour que les composants s'y abonnent
+    getTodos(): Observable&lt;Todo[]&gt; {
+        return this.todos$.asObservable();
+    }
+
+    // Méthode pour ajouter une nouvelle tâche
+    addTodo(title: string): void {
+        // Récupère la liste actuelle
+        const currentTodos = this.todos$.getValue();
+        const newTodo: Todo = {
+            // Calcule un nouvel ID simple
+            id: Math.max(...currentTodos.map(t =&gt; t.id)) + 1,
+            title: title,
+            completed: false
+        };
+
+        // Met à jour le BehaviorSubject avec la nouvelle liste
+        this.todos$.next([...currentTodos, newTodo]);
+    }
+}
+</div><p id="f4kvel_112"><span class="control" id="f4kvel_118">2. Le Composant <code class="code" id="f4kvel_119">TodoListComponent</code></span></p><p id="f4kvel_113">Ce composant est Standalone et importe tout ce dont il a besoin. Il orchestre la vue, le formulaire et le service.</p><div class="code-block" data-lang="ts">
+// src/app/todo-list/todo-list.component.ts
+import {Component, OnInit, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators}
+    from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Todo, TodoService} from '../todo.service';
+
+@Component({
+    selector: 'app-todo-list',
+    standalone: true,
+    imports: [
+        CommonModule,
+        ReactiveFormsModule // Indispensable pour les formulaires réactifs
+    ],
+    template: `
+    &lt;h2&gt;Ma Liste de Tâches&lt;/h2&gt;
+    
+    &lt;!-- On utilise le pipe 'async' pour s'abonner automatiquement --&gt;
+    &lt;ul&gt;
+      &lt;li *ngFor=&quot;let todo of todos$ | async&quot;&gt;
+        {{ todo.title }}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Ajouter une tâche&lt;/h3&gt;
+    &lt;form [formGroup]=&quot;todoForm&quot; (ngSubmit)=&quot;onSubmit()&quot;&gt;
+      &lt;input 
+        type=&quot;text&quot; 
+        formControlName=&quot;title&quot; 
+        placeholder=&quot;Nouvelle tâche...&quot;&gt;
+      
+      &lt;button type=&quot;submit&quot; [disabled]=&quot;todoForm.invalid&quot;&gt;
+        Ajouter
+      &lt;/button&gt;
+    &lt;/form&gt;
+  `,
+    styleUrls: ['./todo-list.component.css']
+})
+export class TodoListComponent implements OnInit {
+    // Injection de dépendances moderne avec inject()
+    private todoService = inject(TodoService);
+    private fb = inject(FormBuilder);
+
+    // L'Observable qui sera consommé par le template
+    todos$!: Observable&lt;Todo[]&gt;;
+    todoForm!: FormGroup;
+
+    ngOnInit(): void {
+        this.todos$ = this.todoService.getTodos();
+
+        this.todoForm = this.fb.group({
+            title: ['', Validators.required]
+        });
+    }
+
+    onSubmit(): void {
+        if (this.todoForm.invalid) {
+            return;
+        }
+
+        const title = this.todoForm.get('title')?.value;
+        this.todoService.addTodo(title);
+
+        // Réinitialise le formulaire pour la prochaine saisie
+        this.todoForm.reset();
+    }
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="f4kvel_120">Prenez un moment pour r&eacute;pondre &agrave; ces questions. L'objectif n'est pas d'avoir tout juste, mais de mesurer votre niveau de confiance sur ces sujets de base. Les corrections sont &agrave; la toute fin du support de cours.</p><ol class="list _decimal" id="f4kvel_121" type="1"><li class="list__item" id="f4kvel_122"><p id="f4kvel_127"><span class="control" id="f4kvel_128">Quel est le principal avantage des composants Standalone par rapport aux <code class="code" id="f4kvel_134">NgModule</code>?</span><br> a. Ils sont plus performants &agrave; l'ex&eacute;cution. <br> b. Ils simplifient la gestion des d&eacute;pendances et r&eacute;duisent le code standard (boilerplate). <br> c. Ils permettent d'utiliser TypeScript 5.0. <br> d. Ils sont obligatoires pour utiliser les Formulaires R&eacute;actifs. <br></p></li><li class="list__item" id="f4kvel_123"><p id="f4kvel_135"><span class="control" id="f4kvel_136">Expliquez avec vos propres mots le r&ocirc;le du d&eacute;corateur <code class="code" id="f4kvel_137">@Injectable({ providedIn: 'root' })</code> sur une classe de service.</span></p></li><li class="list__item" id="f4kvel_124"><p id="f4kvel_138"><span class="control" id="f4kvel_139">Dans un contexte de recherche auto-compl&eacute;t&eacute;e o&ugrave; chaque nouvelle frappe au clavier doit annuler la requ&ecirc;te HTTP pr&eacute;c&eacute;dente, quel op&eacute;rateur RxJS est le plus appropri&eacute; ?</span><br> a. <code class="code" id="f4kvel_141">mergeMap</code><br> b. <code class="code" id="f4kvel_143">concatMap</code><br> c. <code class="code" id="f4kvel_145">switchMap</code><br> d. <code class="code" id="f4kvel_147">exhaustMap</code><br></p></li><li class="list__item" id="f4kvel_125"><p id="f4kvel_149"><span class="control" id="f4kvel_150">Pourquoi les Formulaires R&eacute;actifs sont-ils g&eacute;n&eacute;ralement consid&eacute;r&eacute;s comme plus &quot;scalables&quot; (adapt&eacute;s &agrave; la croissance) que les Formulaires pilot&eacute;s par le template (Template-Driven) ?</span></p></li><li class="list__item" id="f4kvel_126"><p id="f4kvel_151"><span class="control" id="f4kvel_152">&Agrave; quoi sert le <code class="code" id="f4kvel_163">async</code> pipe dans un template Angular ?</span><br> a. Il convertit une <code class="code" id="f4kvel_154">Promise</code> en <code class="code" id="f4kvel_155">Observable</code>. <br> b. Il s'abonne &agrave; un <code class="code" id="f4kvel_157">Observable</code> ou une <code class="code" id="f4kvel_158">Promise</code> et retourne la derni&egrave;re valeur &eacute;mise, g&eacute;rant automatiquement la d&eacute;sinscription. <br> c. Il rend les appels <code class="code" id="f4kvel_160">HttpClient</code> synchrones. <br> d. Il met en pause le rendu du composant jusqu'&agrave; ce que les donn&eacute;es arrivent. <br></p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="f4kvel_164">Dans ce module d'introduction, nous avons pos&eacute; le d&eacute;cor. Nous avons d&eacute;fini notre objectif : devenir des d&eacute;veloppeurs Angular capables de construire des applications complexes, performantes et maintenables. Nous avons &eacute;galement solidifi&eacute; nos connaissances sur les quatre piliers qui rendent Angular si puissant. Vous avez m&ecirc;me eu un aper&ccedil;u de la programmation r&eacute;active avec le <code class="code" id="f4kvel_167">BehaviorSubject</code> dans la correction de l'exercice.</p><p id="f4kvel_165">Maintenant que les fondations sont solides, nous sommes pr&ecirc;ts &agrave; plonger dans le c&oelig;ur de la programmation r&eacute;active avec notre premier module avanc&eacute; : <span class="control" id="f4kvel_168">la ma&icirc;trise de RxJS</span>. C'est l&agrave; que nous transformerons les flux de donn&eacute;es en alli&eacute;s pour r&eacute;soudre des probl&egrave;mes complexes.</p><p id="f4kvel_166">Accrochez-vous, le voyage ne fait que commencer</p></section><div class="last-modified">18 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="00-01-four-pillars.html" class="navigation-links__next">Module 0 : Pour aller plus loin - Vers un Code Professionnel</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:27.020259"><title>Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"le-mocking-et-les-spies","level":0,"title":"Le Mocking et les Spies","anchor":"#le-mocking-et-les-spies"},{"id":"simuler-les-interactions-utilisateur","level":0,"title":"Simuler les Interactions Utilisateur","anchor":"#simuler-les-interactions-utilisateur"},{"id":"tester-le-code-asynchrone-rxjs","level":0,"title":"Tester le Code Asynchrone (RxJS)","anchor":"#tester-le-code-asynchrone-rxjs"},{"id":"exercice-5-2-tester-un-composant-de-recherche","level":0,"title":"Exercice 5.2 : Tester un composant de recherche","anchor":"#exercice-5-2-tester-un-composant-de-recherche"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/005-01-advanced-unit-test.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/005-01-advanced-unit-test.html#webpage",
+    "url": "writerside-documentation/005-01-advanced-unit-test.html",
+    "name": "Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="005-01-advanced-unit-test" data-main-title="Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="005-00-unit-test.md|Module 5 : L'essentiel - Garantir la Qualité avec les Tests Unitaires"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="005-01-advanced-unit-test" id="005-01-advanced-unit-test.md">Module 5 : Pour aller plus loin - Mocking, Spies et Tests Asynchrones</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="e5fpre_11">&Agrave; la fin de cette partie, vous serez capable de :</p><ul class="list _bullet" id="e5fpre_12"><li class="list__item" id="e5fpre_13"><p id="e5fpre_17"><span class="control" id="e5fpre_18">Cr&eacute;er</span> des &quot;doublures&quot; (mocks) de vos services en utilisant <code class="code" id="e5fpre_19">jasmine.createSpyObj</code>.</p></li><li class="list__item" id="e5fpre_14"><p id="e5fpre_20"><span class="control" id="e5fpre_21">Espionner</span> (<code class="code" id="e5fpre_22">spyOn</code>) des m&eacute;thodes existantes pour v&eacute;rifier si elles ont &eacute;t&eacute; appel&eacute;es, et avec quels arguments.</p></li><li class="list__item" id="e5fpre_15"><p id="e5fpre_23"><span class="control" id="e5fpre_24">Simuler</span> des interactions utilisateur comme des clics sur des boutons.</p></li><li class="list__item" id="e5fpre_16"><p id="e5fpre_25"><span class="control" id="e5fpre_26">Ma&icirc;triser</span> les diff&eacute;rentes strat&eacute;gies pour tester du code asynchrone (RxJS) avec <code class="code" id="e5fpre_27">async</code>, <code class="code" id="e5fpre_28">fakeAsync</code>, et <code class="code" id="e5fpre_29">tick</code>.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="e5fpre_30">Dans la partie &quot;L'essentiel&quot;, nous avons appris &agrave; tester des unit&eacute;s de code relativement isol&eacute;es. Nous avons test&eacute; un service qui d&eacute;pendait de <code class="code" id="e5fpre_33">HttpClient</code>, une d&eacute;pendance &quot;externe&quot; pour laquelle Angular nous fournit un module de test tout pr&ecirc;t.</p><p id="e5fpre_31">Mais dans une vraie application, nos composants d&eacute;pendent de <span class="control" id="e5fpre_34">nos propres services</span>. Un <code class="code" id="e5fpre_35">LoginComponent</code> d&eacute;pend d'un <code class="code" id="e5fpre_36">AuthService</code>, qui lui-m&ecirc;me d&eacute;pend peut-&ecirc;tre d'un <code class="code" id="e5fpre_37">NotificationService</code>. Comment tester le <code class="code" id="e5fpre_38">LoginComponent</code> <span class="control" id="e5fpre_39">sans d&eacute;pendre du vrai <code class="code" id="e5fpre_40">AuthService</code></span>? Si le test du composant &eacute;choue, est-ce &agrave; cause du composant ou &agrave; cause d'un bug dans le service ?</p><p id="e5fpre_32">Pour des tests unitaires purs, nous devons <span class="control" id="e5fpre_41">isoler l'unit&eacute; test&eacute;e</span>. C'est l&agrave; qu'interviennent les techniques de * <span class="emphasis" id="e5fpre_42">mocking</span>* et les <span class="control" id="e5fpre_43">espions (spies)</span>. Nous allons remplacer les d&eacute;pendances r&eacute;elles par des doublures que nous contr&ocirc;lons enti&egrave;rement. Nous deviendrons des ma&icirc;tres de l'illusion, capables de dicter le comportement des d&eacute;pendances pour tester chaque sc&eacute;nario de notre composant. Enfin, nous nous attaquerons au d&eacute;fi de l'asynchronisme, en apprenant &agrave; contr&ocirc;ler le temps pour tester nos <code class="code" id="e5fpre_44">Observables</code> de mani&egrave;re fiable et rapide.</p></section><section class="chapter"><h2 id="le-mocking-et-les-spies" data-toc="le-mocking-et-les-spies">Le Mocking et les Spies</h2><p id="e5fpre_45">Un &quot;mock&quot; est un faux objet qui simule le comportement d'un objet r&eacute;el. Un &quot;spy&quot; est une fonction qui enrobe une fonction r&eacute;elle pour observer comment elle est utilis&eacute;e. Jasmine nous fournit d'excellents outils pour cela.</p><div class="tabs" id="e5fpre_46" data-anchors="[e5fpre_47,e5fpre_48]"><div class="tabs__content" data-gtm="tab" id="e5fpre_47" data-title="jasmine.createSpyObj : Le Faussaire"><p>`createSpyObj` est un moyen rapide de cr&eacute;er un objet factice qui poss&egrave;de certaines m&eacute;thodes (les &quot;spies&quot;). C'est id&eacute;al pour mocker un service dans un test de composant. </p><p id="e5fpre_49">Imaginez que notre <code class="code" id="e5fpre_53">LoginComponent</code> d&eacute;pend de <code class="code" id="e5fpre_54">AuthService</code>.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// login.component.ts
+@Component({...})
+export class LoginComponent {
+    constructor(private authService: AuthService) {
+    }
+
+    login() {
+        this.authService.login({user: 'test', pass: 'pwd'});
+    }
+}
+</div><p id="e5fpre_51">Dans notre test, nous ne voulons pas utiliser le vrai <code class="code" id="e5fpre_55">AuthService</code>.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// login.component.spec.ts
+describe('LoginComponent', () =&gt; {
+    let component: LoginComponent;
+    let fixture: ComponentFixture&lt;LoginComponent&gt;;
+    // On déclare une variable pour notre mock
+    let authServiceSpy: jasmine.SpyObj&lt;AuthService&gt;;
+
+    beforeEach(async () =&gt; {
+        // On crée le mock avec les méthodes que l'on veut espionner
+        authServiceSpy = jasmine.createSpyObj('AuthService', ['login']);
+
+        await TestBed.configureTestingModule({
+            imports: [LoginComponent],
+            providers: [
+                // On dit à Angular : quand quelqu'un demande AuthService,
+                // fournis mon mock à la place !
+                {provide: AuthService, useValue: authServiceSpy}
+            ]
+        }).compileComponents();
+
+        fixture = TestBed.createComponent(LoginComponent);
+        component = fixture.componentInstance;
+    });
+
+    it('devrait appeler authService.login() lors du clic', () =&gt; {
+        // On simule un clic sur un bouton (plus de détails ci-dessous)
+        // ...
+        component.login(); // Appelons la méthode directement pour l'instant
+
+        // On vérifie que la méthode 'login' sur notre mock a bien été appelée.
+        expect(authServiceSpy.login).toHaveBeenCalled();
+        // On peut même vérifier avec quels arguments !
+        expect(authServiceSpy.login).toHaveBeenCalledWith({user: 'test', pass: 'pwd'});
+    });
+});
+</div></div><div class="tabs__content" data-gtm="tab" id="e5fpre_48" data-title="spyOn : L'Espion Discret"><p>Parfois, on ne veut pas remplacer un objet entier, mais juste &quot;espionner&quot; une m&eacute;thode sur un objet r&eacute;el, pour voir si elle est appel&eacute;e, tout en laissant l'appel original se produire. C'est le r&ocirc;le de `spyOn`. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+it('devrait appeler console.log', () =&gt; {
+    // On crée un espion sur la méthode `log` de l'objet `console`.
+    const logSpy = spyOn(console, 'log');
+
+    myFunctionThatLogs(); // Une fonction qui contient un console.log
+
+    expect(logSpy).toHaveBeenCalled();
+});
+</div><p id="e5fpre_57">On peut aussi contr&ocirc;ler la valeur de retour d'un espion :</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// login.component.spec.ts
+//...
+it('devrait afficher un message si le login réussit', () =&gt; {
+    // On dit à notre spy : &quot;Quand on t'appellera,
+    // retourne un Observable qui émet `true`&quot;
+    authServiceSpy.login.and.returnValue(of(true));
+
+    //... simuler l'action et vérifier l'affichage du message ...
+});
+</div></div></div></section><section class="chapter"><h2 id="simuler-les-interactions-utilisateur" data-toc="simuler-les-interactions-utilisateur">Simuler les Interactions Utilisateur</h2><p id="e5fpre_59">Pour tester un composant de mani&egrave;re r&eacute;aliste, nous devons simuler les actions d'un utilisateur.</p><ol class="list _decimal" id="e5fpre_60" type="1"><li class="list__item" id="e5fpre_62"><p id="e5fpre_64"><span class="control" id="e5fpre_65">Trouver l'&eacute;l&eacute;ment :</span> On utilise <code class="code" id="e5fpre_66">fixture.nativeElement.querySelector(...)</code> pour r&eacute;cup&eacute;rer un &eacute;l&eacute;ment du DOM.</p></li><li class="list__item" id="e5fpre_63"><p id="e5fpre_67"><span class="control" id="e5fpre_68">D&eacute;clencher l'&eacute;v&eacute;nement :</span> Pour un clic, on peut simplement appeler la m&eacute;thode <code class="code" id="e5fpre_69">.click()</code> sur l'&eacute;l&eacute;ment. Pour des &eacute;v&eacute;nements plus complexes, on peut utiliser <code class="code" id="e5fpre_70">dispatchEvent(new Event('...'))</code>.</p></li></ol><div class="code-block" data-lang="ts">
+it('devrait appeler la méthode login() quand on clique sur le bouton', () =&gt; {
+    // On espionne la méthode login() sur l'instance réelle du composant
+    spyOn(component, 'login');
+
+    // On trouve le bouton dans le DOM
+    const loginButton = fixture.nativeElement.querySelector('button#login-btn');
+
+    // On simule le clic
+    loginButton.click();
+
+    // On vérifie que la méthode du composant a été appelée
+    expect(component.login).toHaveBeenCalled();
+});
+</div></section><section class="chapter"><h2 id="tester-le-code-asynchrone-rxjs" data-toc="tester-le-code-asynchrone-rxjs">Tester le Code Asynchrone (RxJS)</h2><p id="e5fpre_71">C'est souvent le point qui pose le plus de probl&egrave;mes. Comment tester un <code class="code" id="e5fpre_73">Observable</code> qui &eacute;met une valeur apr&egrave;s un d&eacute;lai ? On ne veut pas que nos tests durent des secondes. Jasmine propose plusieurs strat&eacute;gies.</p><div class="tabs" id="e5fpre_72" data-anchors="[e5fpre_74,e5fpre_75]"><div class="tabs__content" data-gtm="tab" id="e5fpre_74" data-title="Avec `async` et `whenStable`"><p>`async` est un utilitaire de `TestBed` qui cr&eacute;e une zone de test sp&eacute;ciale. &Agrave; l'int&eacute;rieur, on peut utiliser `fixture.whenStable()`. Cette m&eacute;thode retourne une `Promise` qui se r&eacute;sout une fois que toutes les t&acirc;ches asynchrones (comme les `Promises`, `setTimeout`) sont termin&eacute;es. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+it('devrait afficher les données après un appel asynchrone', async(() =&gt; {
+    // On configure le mock pour qu'il retourne un Observable asynchrone
+    userServiceSpy.getUsers.and.returnValue(of(mockUsers).pipe(delay(10)));
+
+    // On déclenche la détection de changement initiale
+    fixture.detectChanges();
+
+    // On attend que toutes les tâches asynchrones soient terminées
+    fixture.whenStable().then(() =&gt; {
+        // Une fois stable, on redéclenche la détection de changement
+        // pour afficher les données reçues.
+        fixture.detectChanges();
+
+        const userList = fixture.nativeElement.querySelector('ul');
+        expect(userList.children.length).toBe(mockUsers.length);
+    });
+}));
+</div><p id="e5fpre_77">Cette approche est r&eacute;aliste, mais peut &ecirc;tre un peu verbeuse.</p></div><div class="tabs__content" data-gtm="tab" id="e5fpre_75" data-title="Avec `fakeAsync` et `tick`"><p>`fakeAsync` est encore plus puissant. Il cr&eacute;e une zone de test o&ugrave; nous devenons les **ma&icirc;tres du temps**. Toutes les fonctions asynchrones (comme `setTimeout`, `setInterval`, `delay`) sont patch&eacute;es. </p><p id="e5fpre_78">&Agrave; l'int&eacute;rieur de cette zone, nous avons acc&egrave;s &agrave; la fonction <code class="code" id="e5fpre_81">tick(milliseconds)</code>. Appeler <code class="code" id="e5fpre_82">tick(1000)</code> simule l'avancement du temps de 1000 millisecondes, <span class="control" id="e5fpre_83">instantan&eacute;ment</span>.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+it('devrait afficher les données en contrôlant le temps', fakeAsync(() =&gt; {
+    userServiceSpy.getUsers.and.returnValue(of(mockUsers).pipe(delay(500)));
+
+    fixture.detectChanges(); // Déclenche l'appel à getUsers
+
+    // À ce stade, le DOM est vide, le délai de 500ms n'est pas passé
+    let list = fixture.nativeElement.querySelector('ul');
+    expect(list.children.length).toBe(0);
+
+    // On fait avancer l'horloge virtuelle de 500ms
+    tick(500);
+
+    // L'Observable a maintenant émis sa valeur.
+    // Mettons à jour la vue.
+    fixture.detectChanges();
+
+    list = fixture.nativeElement.querySelector('ul');
+    expect(list.children.length).toBe(mockUsers.length);
+}));
+</div><p id="e5fpre_80"><code class="code" id="e5fpre_84">fakeAsync</code> est souvent la m&eacute;thode pr&eacute;f&eacute;r&eacute;e car elle rend les tests asynchrones synchrones, clairs et tr&egrave;s rapides.</p></div></div></section><section class="chapter"><h2 id="exercice-5-2-tester-un-composant-de-recherche" data-toc="exercice-5-2-tester-un-composant-de-recherche">Exercice 5.2 : Tester un composant de recherche</h2><p id="e5fpre_85"><span class="control" id="e5fpre_90">Objectif :</span> Tester le <code class="code" id="e5fpre_91">SearchComponent</code> que nous avons cr&eacute;&eacute; dans le module RxJS. Nous allons mocker le <code class="code" id="e5fpre_92">SearchService</code> et tester la logique asynchrone avec <code class="code" id="e5fpre_93">fakeAsync</code>.</p><p id="e5fpre_86"><span class="control" id="e5fpre_94">Rappel du composant :</span> Il a un champ de saisie. Quand l'utilisateur tape, il attend 300ms (<code class="code" id="e5fpre_95">debounceTime</code>), puis appelle <code class="code" id="e5fpre_96">searchService.search()</code>.</p><p id="e5fpre_87"><span class="control" id="e5fpre_97">Instructions :</span></p><ol class="list _decimal" id="e5fpre_88" type="1"><li class="list__item" id="e5fpre_98"><p id="e5fpre_101">Mettez en place le <code class="code" id="e5fpre_102">TestBed</code> pour le <code class="code" id="e5fpre_103">SearchComponent</code>.</p></li><li class="list__item" id="e5fpre_99"><p id="e5fpre_104">Cr&eacute;ez un mock du <code class="code" id="e5fpre_105">SearchService</code> avec <code class="code" id="e5fpre_106">jasmine.createSpyObj</code> et fournissez-le au <code class="code" id="e5fpre_107">TestBed</code>.</p></li><li class="list__item" id="e5fpre_100"><p id="e5fpre_108">&Eacute;crivez un test avec <code class="code" id="e5fpre_110">fakeAsync</code> qui :</p><ul class="list _bullet" id="e5fpre_109"><li class="list__item" id="e5fpre_111"><p id="e5fpre_115">Simule la saisie d'un texte dans le champ de recherche.</p></li><li class="list__item" id="e5fpre_112"><p id="e5fpre_116">V&eacute;rifie que <code class="code" id="e5fpre_117">searchService.search</code> N'EST PAS appel&eacute; imm&eacute;diatement.</p></li><li class="list__item" id="e5fpre_113"><p id="e5fpre_118">Fait avancer le temps de 300ms avec <code class="code" id="e5fpre_119">tick(300)</code>.</p></li><li class="list__item" id="e5fpre_114"><p id="e5fpre_120">V&eacute;rifie que <code class="code" id="e5fpre_121">searchService.search</code> A &Eacute;T&Eacute; appel&eacute; avec le bon terme.</p></li></ul></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-5-2" data-toc="correction-exercice-5-2">Correction exercice 5.2</h3></div><div class="collapse__content"><section class="procedure-steps" id="e5fpre_122"><p id="e5fpre_123">Ce test combine le mocking, la simulation d'&eacute;v&eacute;nement et le test asynchrone avec `fakeAsync`.</p><div class="code-block" data-lang="ts">
+// src/app/search/search.component.spec.ts
+import {ComponentFixture, TestBed, fakeAsync, tick}
+    from '@angular/core/testing';
+import {ReactiveFormsModule} from '@angular/forms';
+import {of} from 'rxjs';
+
+import {SearchComponent} from './search.component';
+import {SearchService} from '../search.service';
+
+describe('SearchComponent', () =&gt; {
+    let component: SearchComponent;
+    let fixture: ComponentFixture&lt;SearchComponent&gt;;
+    let searchServiceSpy: jasmine.SpyObj&lt;SearchService&gt;;
+
+    beforeEach(fakeAsync(() =&gt; {
+        // Création du mock pour SearchService
+        searchServiceSpy = jasmine.createSpyObj('SearchService', ['search']);
+
+        TestBed.configureTestingModule({
+            imports: [SearchComponent, ReactiveFormsModule],
+            providers: [
+                {provide: SearchService, useValue: searchServiceSpy}
+            ]
+        }).compileComponents();
+
+        fixture = TestBed.createComponent(SearchComponent);
+        component = fixture.componentInstance;
+    }));
+
+    it('devrait appeler le service après un debounceTime de 300ms', fakeAsync(() =&gt; {
+        // Le spy retourne un Observable vide pour que le subscribe fonctionne
+        searchServiceSpy.search.and.returnValue(of([]));
+
+        fixture.detectChanges(); // Initialise ngOnInit et le valueChanges
+
+        // On récupère l'input et on simule la saisie
+        const inputElement = fixture.nativeElement.querySelector('input');
+        inputElement.value = 'Angular';
+        inputElement.dispatchEvent(new Event('input'));
+
+        fixture.detectChanges();
+
+        // IMMÉDIATEMENT après la saisie, le service ne doit pas avoir été appelé
+        expect(searchServiceSpy.search).not.toHaveBeenCalled();
+
+        // On avance l'horloge de 300ms pour passer le debounceTime
+        tick(300);
+
+        // MAINTENANT, le service doit avoir été appelé
+        expect(searchServiceSpy.search).toHaveBeenCalledTimes(1);
+        expect(searchServiceSpy.search).toHaveBeenCalledWith('Angular');
+    }));
+});
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="e5fpre_125" type="1"><li class="list__item" id="e5fpre_126"><p id="e5fpre_131"><span class="control" id="e5fpre_132">Dans un test de composant, si vous voulez fournir une fausse version d'un service, comment le d&eacute;clarez-vous dans le <code class="code" id="e5fpre_137">TestBed</code>?</span> a. <code class="code" id="e5fpre_133">imports: [MyFakeService]</code> b. <code class="code" id="e5fpre_134">declarations: [MyFakeService]</code> c. <code class="code" id="e5fpre_135">providers: [{ provide: RealService, useValue: myFakeService }]</code> d. <code class="code" id="e5fpre_136">bootstrap: [MyFakeService]</code></p></li><li class="list__item" id="e5fpre_127"><p id="e5fpre_138"><span class="control" id="e5fpre_139">Quelle est la principale diff&eacute;rence entre <code class="code" id="e5fpre_140">jasmine.createSpyObj</code> et <code class="code" id="e5fpre_141">spyOn</code>?</span></p></li><li class="list__item" id="e5fpre_128"><p id="e5fpre_142"><span class="control" id="e5fpre_143">Vous testez un <code class="code" id="e5fpre_150">Observable</code> qui utilise l'op&eacute;rateur <code class="code" id="e5fpre_151">debounceTime(500)</code>. Quelle est la meilleure strat&eacute;gie de test pour &eacute;viter d'attendre 500ms r&eacute;elles ?</span> a. La zone <code class="code" id="e5fpre_144">async</code> avec <code class="code" id="e5fpre_145">fixture.whenStable()</code>. b. La zone <code class="code" id="e5fpre_146">fakeAsync</code> avec un appel &agrave; <code class="code" id="e5fpre_147">tick(500)</code>. c. Mettre un <code class="code" id="e5fpre_148">setTimeout(..., 500)</code> dans le test. d. Utiliser un callback <code class="code" id="e5fpre_149">done</code>.</p></li><li class="list__item" id="e5fpre_129"><p id="e5fpre_152"><span class="control" id="e5fpre_153">Dans un test utilisant <code class="code" id="e5fpre_154">fakeAsync</code>, &agrave; quoi sert la fonction <code class="code" id="e5fpre_155">tick()</code>?</span></p></li><li class="list__item" id="e5fpre_130"><p id="e5fpre_156"><span class="control" id="e5fpre_157">Vous avez un espion <code class="code" id="e5fpre_162">mySpy</code>. Comment pouvez-vous v&eacute;rifier qu'il a &eacute;t&eacute; appel&eacute; exactement une fois avec l' argument <code class="code" id="e5fpre_163">'hello'</code>?</span> a. <code class="code" id="e5fpre_158">expect(mySpy).toHaveBeenCalledWith('hello', 1)</code> b. <code class="code" id="e5fpre_159">expect(mySpy.calls.count()).toBe(1); expect(mySpy.calls.first().args).toContain('hello');</code> c. <code class="code" id="e5fpre_160">expect(mySpy).toHaveBeenCalledTimes(1); expect(mySpy).toHaveBeenCalledWith('hello');</code> d. <code class="code" id="e5fpre_161">expect(mySpy('hello')).toBe(1);</code></p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="e5fpre_164">Vous avez maintenant d&eacute;bloqu&eacute; les techniques de test les plus puissantes. Vous savez comment <span class="control" id="e5fpre_167">isoler compl&egrave;tement</span> l'unit&eacute; que vous testez en <span class="control" id="e5fpre_168">mockant</span> ses d&eacute;pendances. Vous &ecirc;tes capable de v&eacute;rifier les interactions entre les diff&eacute;rentes parties de votre code en utilisant des <span class="control" id="e5fpre_169">espions</span>. Et surtout, vous avez d&eacute;mystifi&eacute; le test asynchrone en apprenant &agrave; <span class="control" id="e5fpre_170">ma&icirc;triser le temps</span> avec <code class="code" id="e5fpre_171">fakeAsync</code> et <code class="code" id="e5fpre_172">tick</code>.</p><p id="e5fpre_165">L'&eacute;criture de tests n'est plus une bo&icirc;te noire. C'est une comp&eacute;tence d'ing&eacute;nierie qui vous apporte confiance et robustesse. En pratiquant ces techniques, vous constaterez que vous concevez m&ecirc;me votre code diff&eacute;remment, en le rendant plus modulaire et plus testable d&egrave;s le d&eacute;part.</p><p id="e5fpre_166">Nous avons couvert l'essentiel de l'outillage Angular moderne. Dans les prochains modules, nous nous int&eacute;resserons &agrave; des sujets plus sp&eacute;cifiques mais tout aussi importants pour des applications professionnelles : comment int&eacute;grer des librairies externes comme un Design System, comment cr&eacute;er des composants dynamiques, ou encore comment rendre nos applications accessibles &agrave; tous.</p></section><div class="last-modified">10 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="005-00-unit-test.html" class="navigation-links__prev">Module 5 : L'essentiel - Garantir la Qualit&eacute; avec les Tests Unitaires</a><a href="006-00-dynamic-components.html" class="navigation-links__next">Module 6, Partie A : Int&eacute;gration d'un Design System et Composants Dynamiques</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

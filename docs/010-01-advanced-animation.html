@@ -1,0 +1,198 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:26.987025"><title>Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"1-animations-complexes-et-chor-graphies","level":0,"title":"1. Animations Complexes et Chorégraphies","anchor":"#1-animations-complexes-et-chor-graphies"},{"id":"2-animer-les-transitions-de-route","level":0,"title":"2. Animer les Transitions de Route","anchor":"#2-animer-les-transitions-de-route"},{"id":"3-callbacks-d-animation","level":0,"title":"3. Callbacks d\u0027Animation","anchor":"#3-callbacks-d-animation"},{"id":"exercice-9-2-cr-er-un-effet-stagger-sur-une-galerie-d-images","level":0,"title":"Exercice 9.2 : Créer un effet \"Stagger\" sur une galerie d\u0027images","anchor":"#exercice-9-2-cr-er-un-effet-stagger-sur-une-galerie-d-images"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/010-01-advanced-animation.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/010-01-advanced-animation.html#webpage",
+    "url": "writerside-documentation/010-01-advanced-animation.html",
+    "name": "Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="010-01-advanced-animation" data-main-title="Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="010-00-animation.md|Bonus 1 : L'Art de l'Animation avec @angular/animations - L'essentiel"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="010-01-advanced-animation" id="010-01-advanced-animation.md">Bonus 1 : L'Art de l'Animation avec @angular/animations - Pour aller plus loin</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="-a30pzt_11">&Agrave; la fin de cette partie, vous serez capable de :</p><ul class="list _bullet" id="-a30pzt_12"><li class="list__item" id="-a30pzt_13"><p id="-a30pzt_17"><span class="control" id="-a30pzt_18">Orchestrer</span> des animations multiples en utilisant <code class="code" id="-a30pzt_19">group()</code> (parall&egrave;le) et <code class="code" id="-a30pzt_20">sequence()</code> (s&eacute;quentiel).</p></li><li class="list__item" id="-a30pzt_14"><p id="-a30pzt_21"><span class="control" id="-a30pzt_22">Cr&eacute;er</span> des animations complexes en cascade sur des listes avec <code class="code" id="-a30pzt_23">query()</code> et <code class="code" id="-a30pzt_24">stagger()</code>.</p></li><li class="list__item" id="-a30pzt_15"><p id="-a30pzt_25"><span class="control" id="-a30pzt_26">Impl&eacute;menter</span> des transitions de route anim&eacute;es pour rendre la navigation entre les pages plus fluide.</p></li><li class="list__item" id="-a30pzt_16"><p id="-a30pzt_27"><span class="control" id="-a30pzt_28">Interagir</span> avec le cycle de vie des animations gr&acirc;ce aux callbacks <code class="code" id="-a30pzt_29">(@trigger.done)</code>.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="-a30pzt_30">Dans la partie &quot;L'essentiel&quot;, nous avons appris &agrave; faire danser un soliste. C'&eacute;tait &eacute;l&eacute;gant, mais une vraie production n&eacute;cessite un corps de ballet. Comment faire danser plusieurs &eacute;l&eacute;ments ensemble ? Comment cr&eacute;er un effet de domino o&ugrave; les &eacute;l&eacute;ments d'une liste apparaissent les uns apr&egrave;s les autres avec un l&eacute;ger d&eacute;calage ?</p><p id="-a30pzt_31">C'est l&agrave; que les fonctions de chor&eacute;graphie d'Angular entrent en sc&egrave;ne. Elles nous permettent de passer du statut de simple chor&eacute;graphe &agrave; celui de metteur en sc&egrave;ne, capable de diriger des s&eacute;quences d'animation complexes. Nous allons apprendre &agrave; grouper des animations, &agrave; les s&eacute;quencer, et &agrave; cibler des &eacute;l&eacute;ments enfants &agrave; l'int&eacute;rieur d'un conteneur anim&eacute;.</p><p id="-a30pzt_32">Pour couronner le tout, nous nous attaquerons &agrave; l'une des animations les plus impressionnantes : l'animation des transitions de route. Fini les changements de page brusques ; nous allons cr&eacute;er des fondus encha&icirc;n&eacute;s ou des glissements qui donneront &agrave; notre Single Page Application l'aspect d'une application native parfaitement polie.</p></section><section class="chapter"><h2 id="1-animations-complexes-et-chor-graphies" data-toc="1-animations-complexes-et-chor-graphies">1. Animations Complexes et Chor&eacute;graphies</h2><p id="-a30pzt_33">Lorsque vous placez plusieurs appels &agrave; <code class="code" id="-a30pzt_35">animate()</code> dans une transition, ils s'ex&eacute;cutent par d&eacute;faut en s&eacute;quence. Mais pour des contr&ocirc;les plus fins, nous avons des outils d&eacute;di&eacute;s.</p><div class="tabs" id="-a30pzt_34" data-anchors="[-a30pzt_36,-a30pzt_37]"><div class="tabs__content" data-gtm="tab" id="-a30pzt_36" data-title="`group()` : Tous ensemble !"><p>La fonction `group()` permet d'ex&eacute;cuter plusieurs animations **en parall&egrave;le**. C'est utile si vous voulez animer plusieurs propri&eacute;t&eacute;s en m&ecirc;me temps, potentiellement avec des dur&eacute;es ou des timings diff&eacute;rents. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// Fait un fondu et un changement de taille en même temps
+transition(':enter', [
+    style({opacity: 0, height: '0px'}),
+    group([
+        animate('500ms ease-out', style({height: '*'})), // '*' = valeur calculée
+        animate('800ms ease-out', style({opacity: 1}))
+    ])
+])
+</div></div><div class="tabs__content" data-gtm="tab" id="-a30pzt_37" data-title="`query()` et `stagger()` : L'Effet Domino"><p>Ce duo est magique pour animer les &eacute;l&eacute;ments d'une liste. * **`query(':enter', ...)` :** Permet de trouver des &eacute;l&eacute;ments &agrave; l'int&eacute;rieur de l'&eacute;l&eacute;ment qui porte le `trigger`. On peut cibler des &eacute;l&eacute;ments qui entrent (`:enter`), qui sortent (`:leave`), ou n'importe quel s&eacute;lecteur CSS. * **`stagger(temps, ...)` :** Applique un d&eacute;lai entre les animations de chaque &eacute;l&eacute;ment trouv&eacute; par `query()`. </p><div class="code-block" data-lang="ts" data-title="TypeScript">
+// Animation attachée au conteneur &lt;ul&gt; ou &lt;div&gt;
+trigger('listStagger', [
+    transition('* =&gt; *', [ // S'exécute à chaque changement dans la liste
+        // On cible les nouveaux éléments qui entrent dans le DOM
+        query(':enter', [
+            // On les rend invisibles et décalés au départ
+            style({opacity: 0, transform: 'translateY(-50px)'}),
+            // On applique un délai de 100ms entre l'animation de chaque li
+            stagger('100ms', [
+                animate('500ms ease-out', style({
+                    opacity: 1,
+                    transform: 'none'
+                }))
+            ])
+        ], {optional: true}) // optional: true évite les erreurs si aucun élément n'est trouvé
+    ])
+])
+</div></div></div></section><section class="chapter"><h2 id="2-animer-les-transitions-de-route" data-toc="2-animer-les-transitions-de-route">2. Animer les Transitions de Route</h2><p id="-a30pzt_40">C'est une technique avanc&eacute;e qui donne un cachet tr&egrave;s professionnel &agrave; une application. Le principe est d'attacher un <code class="code" id="-a30pzt_51">trigger</code> d'animation au conteneur du <code class="code" id="-a30pzt_52">&lt;router-outlet&gt;</code>.</p><p id="-a30pzt_41"><span class="control" id="-a30pzt_53">Le processus :</span></p><ol class="list _decimal" id="-a30pzt_42" type="1"><li class="list__item" id="-a30pzt_54"><p id="-a30pzt_57"><span class="control" id="-a30pzt_58">Pr&eacute;parer le routeur :</span> Chaque route doit avoir une donn&eacute;e (<code class="code" id="-a30pzt_59">data</code>) qui servira &agrave; identifier l'&eacute;tat d'animation.</p></li><li class="list__item" id="-a30pzt_55"><p id="-a30pzt_60"><span class="control" id="-a30pzt_61">Pr&eacute;parer le template :</span> Le <code class="code" id="-a30pzt_62">&lt;router-outlet&gt;</code> doit &ecirc;tre dans un conteneur qui portera le <code class="code" id="-a30pzt_63">trigger</code>. On passe l'&eacute;tat de la route au <code class="code" id="-a30pzt_64">trigger</code>.</p></li><li class="list__item" id="-a30pzt_56"><p id="-a30pzt_65"><span class="control" id="-a30pzt_66">Cr&eacute;er l'animation :</span> On utilise <code class="code" id="-a30pzt_67">query(':enter')</code> et <code class="code" id="-a30pzt_68">query(':leave')</code> pour cibler la page qui arrive et celle qui part. On utilise <code class="code" id="-a30pzt_69">group()</code> pour les animer en m&ecirc;me temps.</p></li></ol><p id="-a30pzt_43"><span class="control" id="-a30pzt_70">1. <code class="code" id="-a30pzt_71">app.routes.ts</code></span></p><div class="code-block" data-lang="ts">
+// ...
+export const routes: Routes = [
+    {path: 'home', component: HomeComponent, data: {animation: 'HomePage'}},
+    {path: 'about', component: AboutComponent, data: {animation: 'AboutPage'}}
+];
+</div><p id="-a30pzt_45"><span class="control" id="-a30pzt_72">2. <code class="code" id="-a30pzt_73">app.component.html</code></span></p><div class="code-block" data-lang="markup">
+
+&lt;div [@routeAnimations]=&quot;getRouteAnimationData()&quot;&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;
+</div><p id="-a30pzt_47"><span class="control" id="-a30pzt_74">3. <code class="code" id="-a30pzt_75">app.component.ts</code></span></p><div class="code-block" data-lang="ts">
+// ...
+@Component({
+    // ...
+    animations: [slideInAnimation] // On importe notre animation
+})
+export class AppComponent {
+    private contexts = inject(ChildrenOutletContexts);
+
+    getRouteAnimationData() {
+        // Récupère la donnée 'animation' de la route active
+        return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+    }
+}
+</div><p id="-a30pzt_49"><span class="control" id="-a30pzt_76">4. L'animation <code class="code" id="-a30pzt_77">slideInAnimation</code></span></p><div class="code-block" data-lang="ts">
+// animations.ts
+trigger('routeAnimations', [
+    // Transition entre n'importe quels états
+    transition('* &lt;=&gt; *', [
+        // La page doit être positionnée en absolu pour que
+        // l'ancienne et la nouvelle puissent coexister pendant l'animation
+        style({position: 'relative'}),
+
+        // On cible la nouvelle page qui arrive (:enter) et l'ancienne qui part (:leave)
+        query(':enter, :leave', [
+            style({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%'
+            })
+        ], {optional: true}),
+
+        query(':enter', [
+            // On fait entrer la nouvelle page depuis la droite
+            style({left: '100%'})
+        ], {optional: true}),
+
+        group([
+            // On fait sortir l'ancienne page vers la gauche
+            query(':leave', [
+                animate('300ms ease-out', style({left: '-100%'}))
+            ], {optional: true}),
+
+            // On fait entrer la nouvelle page au centre
+            query(':enter', [
+                animate('300ms ease-out', style({left: '0%'}))
+            ], {optional: true})
+        ])
+    ])
+]);
+</div></section><section class="chapter"><h2 id="3-callbacks-d-animation" data-toc="3-callbacks-d-animation">3. Callbacks d'Animation</h2><p id="-a30pzt_78">Parfois, on a besoin de savoir quand une animation commence ou se termine pour ex&eacute;cuter une action. Le <code class="code" id="-a30pzt_82">trigger</code> d'animation &eacute;met des &eacute;v&eacute;nements.</p><ul class="list _bullet" id="-a30pzt_79"><li class="list__item" id="-a30pzt_83"><p id="-a30pzt_85"><code class="code" id="-a30pzt_86">(@nomDuTrigger.start)</code>: &Eacute;mis au d&eacute;but de l'animation.</p></li><li class="list__item" id="-a30pzt_84"><p id="-a30pzt_87"><code class="code" id="-a30pzt_88">(@nomDuTrigger.done)</code>: &Eacute;mis &agrave; la fin de l'animation.</p></li></ul><div class="code-block" data-lang="markup">
+
+&lt;div @myAnimation (@myAnimation.done)=&quot;onAnimationFinished($event)&quot;&gt;
+    ...
+&lt;/div&gt;
+</div><div class="code-block" data-lang="ts">
+// Dans le composant
+onAnimationFinished(event
+:
+AnimationEvent
+)
+{
+    // L'objet event contient des infos utiles :
+    // event.fromState, event.toState, event.totalTime...
+    console.log('Animation terminée !', event);
+
+    // Cas d'usage : après une animation de sortie (:leave),
+    // on peut maintenant supprimer l'objet du tableau de données.
+    if (event.toState === 'void') {
+        this.removeItemFromBackend(this.itemToRemove);
+    }
+}
+</div></section><section class="chapter"><h2 id="exercice-9-2-cr-er-un-effet-stagger-sur-une-galerie-d-images" data-toc="exercice-9-2-cr-er-un-effet-stagger-sur-une-galerie-d-images">Exercice 9.2 : Cr&eacute;er un effet &quot;Stagger&quot; sur une galerie d'images</h2><p id="-a30pzt_89"><span class="control" id="-a30pzt_93">Objectif :</span> Cr&eacute;er une galerie d'images o&ugrave; les cartes apparaissent en cascade les unes apr&egrave;s les autres.</p><p id="-a30pzt_90"><span class="control" id="-a30pzt_94">Instructions :</span></p><ol class="list _decimal" id="-a30pzt_91" type="1"><li class="list__item" id="-a30pzt_95"><p id="-a30pzt_102">Cr&eacute;ez un composant <code class="code" id="-a30pzt_103">ImageGalleryComponent</code>.</p></li><li class="list__item" id="-a30pzt_96"><p id="-a30pzt_104">Dans ce composant, ayez un tableau d'URLs d'images.</p></li><li class="list__item" id="-a30pzt_97"><p id="-a30pzt_105">Dans le template, utilisez <code class="code" id="-a30pzt_106">@for</code> pour afficher ces images dans des cartes (des <code class="code" id="-a30pzt_107">div</code> stylis&eacute;es).</p></li><li class="list__item" id="-a30pzt_98"><p id="-a30pzt_108">Cr&eacute;ez une animation <code class="code" id="-a30pzt_109">galleryStagger</code> que vous attacherez au <span class="control" id="-a30pzt_110">conteneur</span> de la galerie.</p></li><li class="list__item" id="-a30pzt_99"><p id="-a30pzt_111">Cette animation doit se d&eacute;clencher lorsque la page se charge (<code class="code" id="-a30pzt_112">:enter</code>).</p></li><li class="list__item" id="-a30pzt_100"><p id="-a30pzt_113">&Agrave; l'int&eacute;rieur, utilisez <code class="code" id="-a30pzt_114">query()</code> pour cibler chaque carte d'image qui entre (<code class="code" id="-a30pzt_115">query(':enter', ...)</code>).</p></li><li class="list__item" id="-a30pzt_101"><p id="-a30pzt_116">Utilisez <code class="code" id="-a30pzt_117">stagger()</code> pour animer l'apparition de chaque carte avec un d&eacute;calage de 150ms. L'animation de chaque carte sera un simple fondu (<code class="code" id="-a30pzt_118">opacity</code>) et un l&eacute;ger zoom (<code class="code" id="-a30pzt_119">transform: scale(0.9)</code> vers <code class="code" id="-a30pzt_120">scale(1)</code>).</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-9-2" data-toc="correction-exercice-9-2">Correction exercice 9.2</h3></div><div class="collapse__content"><section class="procedure-steps" id="-a30pzt_121"><p id="-a30pzt_122">Voici l'impl&eacute;mentation compl&egrave;te de la galerie avec effet &quot;stagger&quot;.</p><p id="-a30pzt_123"><span class="control" id="-a30pzt_129">1. <code class="code" id="-a30pzt_130">src/app/animations.ts</code> (ajout de la nouvelle animation)</span></p><div class="code-block" data-lang="ts">
+// ...
+export const galleryStagger = trigger('galleryStagger', [
+    transition(':enter', [
+        // On cible les éléments enfants avec la classe .gallery-item
+        // qui entrent dans le DOM.
+        query('.gallery-item', [
+            style({opacity: 0, transform: 'scale(0.8)'}),
+            stagger('150ms', [
+                animate('400ms ease-out', style({
+                    opacity: 1,
+                    transform: 'scale(1)'
+                }))
+            ])
+        ], {optional: true})
+    ])
+]);
+</div><p id="-a30pzt_125"><span class="control" id="-a30pzt_131">2. <code class="code" id="-a30pzt_132">src/app/image-gallery/image-gallery.component.ts</code></span></p><div class="code-block" data-lang="ts">
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {galleryStagger} from '../animations';
+
+@Component({
+    selector: 'app-image-gallery',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+    &lt;h2&gt;Galerie Animée&lt;/h2&gt;
+    &lt;!-- On attache l'animation au conteneur --&gt;
+    &lt;div class=&quot;gallery-container&quot; @galleryStagger&gt;
+      @for (image of images; track image) {
+        &lt;div class=&quot;gallery-item&quot;&gt;
+          &lt;img [src]=&quot;image&quot; alt=&quot;Image de galerie&quot;&gt;
+        &lt;/div&gt;
+      }
+    &lt;/div&gt;
+  `,
+    styleUrls: ['./image-gallery.component.css'],
+    animations: [galleryStagger] // On déclare l'animation
+})
+export class ImageGalleryComponent {
+    images = [
+        'https://via.placeholder.com/150/92c952',
+        'https://via.placeholder.com/150/771796',
+        'https://via.placeholder.com/150/24f355',
+        'https://via.placeholder.com/150/d32776',
+        'https://via.placeholder.com/150/f66b97',
+        'https://via.placeholder.com/150/56a8c2',
+    ];
+}
+</div><p id="-a30pzt_127"><span class="control" id="-a30pzt_133">3. <code class="code" id="-a30pzt_134">src/app/image-gallery/image-gallery.component.css</code> (pour le visuel)</span></p><div class="code-block" data-lang="css">
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gallery-item {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="-a30pzt_135" type="1"><li class="list__item" id="-a30pzt_136"><p id="-a30pzt_141"><span class="control" id="-a30pzt_142">Quelle fonction de l'API d'animation utiliseriez-vous pour animer un changement d'opacit&eacute; ET un mouvement en m&ecirc;me temps ?</span><br> a. <code class="code" id="-a30pzt_144">sequence()</code><br> b. <code class="code" id="-a30pzt_146">query()</code><br> c. <code class="code" id="-a30pzt_148">group()</code><br> d. <code class="code" id="-a30pzt_150">stagger()</code><br></p></li><li class="list__item" id="-a30pzt_137"><p id="-a30pzt_152"><span class="control" id="-a30pzt_153">Pour cr&eacute;er un effet o&ugrave; les &eacute;l&eacute;ments d'une liste apparaissent les uns apr&egrave;s les autres, quelle fonction est sp&eacute;cifiquement con&ccedil;ue pour introduire un d&eacute;lai entre chaque animation ?</span></p></li><li class="list__item" id="-a30pzt_138"><p id="-a30pzt_154"><span class="control" id="-a30pzt_155">Lors de l'animation d'une transition de route, quel est le r&ocirc;le de la propri&eacute;t&eacute; <code class="code" id="-a30pzt_162">data: { animation: '...' }</code> dans la configuration d'une route ?</span><br> a. Elle d&eacute;finit la dur&eacute;e de l'animation. <br> b. Elle fournit un nom d'&eacute;tat unique pour la route, que le <code class="code" id="-a30pzt_158">trigger</code> d'animation peut utiliser pour d&eacute;tecter un changement. <br> c. Elle charge dynamiquement le code de l'animation. <br> d. Elle n'est utilis&eacute;e que pour le d&eacute;bogage. <br></p></li><li class="list__item" id="-a30pzt_139"><p id="-a30pzt_163"><span class="control" id="-a30pzt_164">Si vous voulez ex&eacute;cuter du code TypeScript une fois qu'une animation est termin&eacute;e, quel m&eacute;canisme utilisez-vous ?</span></p></li><li class="list__item" id="-a30pzt_140"><p id="-a30pzt_165"><span class="control" id="-a30pzt_166">Que fait la fonction <code class="code" id="-a30pzt_167">query(':leave', ...)</code> dans une transition d'animation ?</span></p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="-a30pzt_168">Vous &ecirc;tes maintenant un metteur en sc&egrave;ne d'interfaces. Vous ne vous contentez plus d'animer des &eacute;l&eacute;ments isol&eacute;s ; vous orchestrez de v&eacute;ritables ballets visuels. Vous savez comment cr&eacute;er des animations parall&egrave;les et s&eacute;quentielles, comment produire des effets en cascade impressionnants, et comment rendre l'exp&eacute;rience de navigation de votre application exceptionnellement fluide avec des transitions de route.</p><p id="-a30pzt_169">Cette ma&icirc;trise des animations est souvent ce qui distingue une application &quot;correcte&quot; d'une application &quot;wow&quot;. C'est la touche finale qui d&eacute;montre un grand souci du d&eacute;tail et de l'exp&eacute;rience utilisateur.</p><p id="-a30pzt_170">Ce module conclut notre exploration approfondie du framework Angular. Avec toutes les comp&eacute;tences que vous avez acquises, de l'architecture &agrave; l'animation, vous &ecirc;tes maintenant parfaitement &eacute;quip&eacute; pour concevoir et d&eacute;velopper des applications web modernes, complexes et de haute qualit&eacute;.</p></section><div class="last-modified">18 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="010-00-animation.html" class="navigation-links__prev">Bonus 1 : L'Art de l'Animation avec @angular/animations - L'essentiel</a><a href="011-00-firebase.html" class="navigation-links__next">Bonus 2 : Super-pouvoirs Backend avec Firebase (BaaS) - L'essentiel</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:27.021562"><title>Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n) | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"le-flux-de-travail-de-l-i18n-avec-angular","level":0,"title":"Le Flux de Travail de l\u0027i18n avec Angular","anchor":"#le-flux-de-travail-de-l-i18n-avec-angular"},{"id":"1-installation-et-configuration","level":0,"title":"1. Installation et Configuration","anchor":"#1-installation-et-configuration"},{"id":"2-marquer-les-textes-traduire","level":0,"title":"2. Marquer les Textes à Traduire","anchor":"#2-marquer-les-textes-traduire"},{"id":"3-extraire-les-textes","level":0,"title":"3. Extraire les Textes","anchor":"#3-extraire-les-textes"},{"id":"4-traduire-le-fichier","level":0,"title":"4. Traduire le Fichier","anchor":"#4-traduire-le-fichier"},{"id":"5-configurer-le-build-et-lancer","level":0,"title":"5. Configurer le Build et Lancer","anchor":"#5-configurer-le-build-et-lancer"},{"id":"exercice-7-1-traduire-une-page-de-profil","level":0,"title":"Exercice 7.1 : Traduire une page de profil","anchor":"#exercice-7-1-traduire-une-page-de-profil"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n) | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/007-00-i18n.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n) | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/007-00-i18n.html#webpage",
+    "url": "writerside-documentation/007-00-i18n.html",
+    "name": "Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n) | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="007-00-i18n" data-main-title="Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="007-00-i18n" id="007-00-i18n.md">Module 7 : L'essentiel - Rendre son Application Globale : l'Internationalisation (i18n)</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="z8c2a6x_14">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="z8c2a6x_15"><li class="list__item" id="z8c2a6x_16"><p id="z8c2a6x_21"><span class="control" id="z8c2a6x_22">Comprendre</span> l'importance business et technique de l'internationalisation (i18n).</p></li><li class="list__item" id="z8c2a6x_17"><p id="z8c2a6x_23"><span class="control" id="z8c2a6x_24">Utiliser</span> les outils int&eacute;gr&eacute;s d'Angular (<code class="code" id="z8c2a6x_25">@angular/localize</code>) pour pr&eacute;parer une application &agrave; la traduction.</p></li><li class="list__item" id="z8c2a6x_18"><p id="z8c2a6x_26"><span class="control" id="z8c2a6x_27">Marquer</span> les textes &agrave; traduire dans vos templates en utilisant l'attribut <code class="code" id="z8c2a6x_28">i18n</code>.</p></li><li class="list__item" id="z8c2a6x_19"><p id="z8c2a6x_29"><span class="control" id="z8c2a6x_30">Ma&icirc;triser</span> le flux de travail de l'i18n : extraction, traduction (simul&eacute;e), et build par langue.</p></li><li class="list__item" id="z8c2a6x_20"><p id="z8c2a6x_31"><span class="control" id="z8c2a6x_32">G&eacute;n&eacute;rer</span> une version de votre application dans une autre langue.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="z8c2a6x_33">Votre application a du succ&egrave;s. Vos utilisateurs l'adorent. Tellement, que l'entreprise veut maintenant la lancer en Allemagne, en Espagne et au Japon. C'est une excellente nouvelle ! Mais votre interface est enti&egrave;rement cod&eacute;e en fran&ccedil;ais. Allez-vous cr&eacute;er trois copies de votre projet et traduire manuellement chaque template ? Certainement pas !</p><p id="z8c2a6x_34">C'est l&agrave; qu'intervient l' <span class="control" id="z8c2a6x_36">internationalisation</span>, abr&eacute;g&eacute;e <span class="control" id="z8c2a6x_37">i18n</span> (car il y a 18 lettres entre le 'i' initial et le ' n' final). C'est le processus qui consiste &agrave; concevoir une application de mani&egrave;re &agrave; ce qu'elle puisse &ecirc;tre adapt&eacute;e &agrave; diff&eacute;rentes langues et r&eacute;gions <span class="control" id="z8c2a6x_38">sans changements d'ing&eacute;nierie</span>.</p><p id="z8c2a6x_35">Angular fournit un outillage de premi&egrave;re classe pour g&eacute;rer ce processus de mani&egrave;re propre et robuste. Nous n'allons pas simplement injecter des traductions &agrave; la vol&eacute;e. Nous allons g&eacute;n&eacute;rer des versions distinctes et hautement optimis&eacute;es de notre application pour chaque langue, une approche qui garantit des performances maximales. Pr&eacute;parez-vous &agrave; ouvrir les portes du monde &agrave; votre application !</p></section><section class="chapter"><h2 id="le-flux-de-travail-de-l-i18n-avec-angular" data-toc="le-flux-de-travail-de-l-i18n-avec-angular">Le Flux de Travail de l'i18n avec Angular</h2><p id="z8c2a6x_39">Le processus se d&eacute;roule en plusieurs &eacute;tapes claires, s&eacute;parant le travail du d&eacute;veloppeur de celui du traducteur.</p></section><section class="chapter"><h2 id="1-installation-et-configuration" data-toc="1-installation-et-configuration">1. Installation et Configuration</h2><p id="z8c2a6x_41">La premi&egrave;re &eacute;tape est d'ajouter le package <code class="code" id="z8c2a6x_44">@angular/localize</code> &agrave; notre projet.</p><div class="code-block" data-lang="bash">
+ng add @angular/localize
+</div><p id="z8c2a6x_43">Cette commande va installer le package et effectuer les modifications n&eacute;cessaires dans votre projet pour activer le syst&egrave;me d'i18n.</p></section><section class="chapter"><h2 id="2-marquer-les-textes-traduire" data-toc="2-marquer-les-textes-traduire">2. Marquer les Textes &agrave; Traduire</h2><p id="z8c2a6x_45">C'est le c&oelig;ur du travail du d&eacute;veloppeur. Dans vos templates, vous devez identifier chaque morceau de texte qui doit &ecirc;tre traduit en y ajoutant l'attribut <code class="code" id="z8c2a6x_48">i18n</code>.</p><div class="code-block" data-lang="markup">
+&lt;!-- simple-greeting.component.html --&gt;
+
+&lt;!-- Texte simple --&gt;
+&lt;h1 i18n&gt;Bonjour tout le monde !&lt;/h1&gt;
+
+&lt;!-- Texte avec interpolation --&gt;
+&lt;p i18n&gt;Mon nom est {userName}.&lt;/p&gt;
+
+&lt;!-- Attributs à traduire (ex: title, aria-label) --&gt;
+&lt;img [src]=&quot;logoUrl&quot; i18n-title title=&quot;Logo de l'entreprise&quot;&gt;
+</div><section class="procedure-steps"><h3 id="z8c2a6x_47" data-toc="z8c2a6x_47">Bonnes pratiques pour le marquage</h3><p id="z8c2a6x_49">Pour rendre le travail du traducteur plus facile et vos traductions plus robustes, suivez ces conseils :</p><ol class="list _decimal" id="z8c2a6x_50" type="1"><li class="list__item" id="z8c2a6x_51"><p><b id="z8c2a6x_53">Ajoutez une description :</b> Aidez le traducteur &agrave; comprendre le contexte. </p><p id="z8c2a6x_54"><code class="code" id="z8c2a6x_55">&lt;h1 i18n=&quot;Titre principal de la page d'accueil&quot;&gt;...&lt;/h1&gt;</code></p></li><li class="list__item" id="z8c2a6x_52"><p><b id="z8c2a6x_56">Utilisez des identifiants personnalis&eacute;s (<code class="code" id="z8c2a6x_58">@@id</code>) :</b> Par d&eacute;faut, Angular g&eacute;n&egrave;re un ID pour chaque texte. Si le texte change, l'ID change, et la traduction est perdue. En fournissant un ID stable, vous &eacute;vitez ce probl&egrave;me. </p><p id="z8c2a6x_57"><code class="code" id="z8c2a6x_59">&lt;p i18n=&quot;Message de bienvenue@@welcomeMessage&quot;&gt;...&lt;/p&gt;</code></p></li></ol><ol class="list _decimal"></ol></section></section><section class="chapter"><h2 id="3-extraire-les-textes" data-toc="3-extraire-les-textes">3. Extraire les Textes</h2><p id="z8c2a6x_60">Une fois tous les textes marqu&eacute;s, nous utilisons Angular CLI pour les extraire dans un fichier standardis&eacute; que les traducteurs peuvent utiliser.</p><div class="code-block" data-lang="bash">
+ng extract-i18n --output-path src/locale
+</div><p id="z8c2a6x_62">Cette commande va scanner votre code et cr&eacute;er un fichier <code class="code" id="z8c2a6x_65">src/locale/messages.xlf</code>. XLIFF (<code class="code" id="z8c2a6x_66">.xlf</code>) est un format standard bas&eacute; sur XML pour la traduction.</p><p id="z8c2a6x_63"><span class="control" id="z8c2a6x_67">Extrait de <code class="code" id="z8c2a6x_68">messages.xlf</code>:</span></p><div class="code-block" data-lang="markup">
+&lt;!-- ... en-tête XML ... --&gt;
+&lt;body&gt;
+    &lt;trans-unit id=&quot;f9e87afd355c43277727174543743c799dc3be3d&quot;
+                datatype=&quot;html&quot;&gt;
+        &lt;source&gt;Bonjour tout le monde !&lt;/source&gt;
+        &lt;context-group purpose=&quot;location&quot;&gt;
+            &lt;context context-type=&quot;sourcefile&quot;&gt;
+                src/app/simple-greeting/simple-greeting.component.html
+            &lt;/context&gt;
+            &lt;context context-type=&quot;linenumber&quot;&gt;2&lt;/context&gt;
+        &lt;/context-group&gt;
+    &lt;/trans-unit&gt;
+    &lt;!-- ... autres trans-unit ... --&gt;
+&lt;/body&gt;
+</div></section><section class="chapter"><h2 id="4-traduire-le-fichier" data-toc="4-traduire-le-fichier">4. Traduire le Fichier</h2><p id="z8c2a6x_69">C'est ici que le travail du traducteur commence. On cr&eacute;e une copie du fichier <code class="code" id="z8c2a6x_72">messages.xlf</code> pour chaque langue cible, par exemple <code class="code" id="z8c2a6x_73">messages.es.xlf</code> pour l'espagnol. Dans ce fichier, le traducteur ajoute une balise <code class="code" id="z8c2a6x_74">&lt;target&gt;</code> avec la traduction.</p><p id="z8c2a6x_70"><span class="control" id="z8c2a6x_75">Extrait de <code class="code" id="z8c2a6x_76">messages.es.xlf</code> (apr&egrave;s traduction) :</span></p><div class="code-block" data-lang="markup">
+&lt;!-- ... --&gt;
+&lt;trans-unit id=&quot;f9e87afd355c43277727174543743c799dc3be3d&quot; ...&gt;
+&lt;source&gt;Bonjour tout le monde !&lt;/source&gt;
+&lt;target&gt;¡Hola, mundo!&lt;/target&gt; &lt;!-- LA TRADUCTION --&gt;
+        &lt;!-- ... --&gt;
+        &lt;/trans-unit&gt;
+        &lt;!-- ... --&gt;
+</div></section><section class="chapter"><h2 id="5-configurer-le-build-et-lancer" data-toc="5-configurer-le-build-et-lancer">5. Configurer le Build et Lancer</h2><p id="z8c2a6x_77">La derni&egrave;re &eacute;tape est de dire &agrave; Angular o&ugrave; se trouvent nos traductions. On modifie le fichier <code class="code" id="z8c2a6x_82">angular.json</code>.</p><div class="code-block" data-lang="json">
+// angular.json
+{
+  // ...
+  &quot;projects&quot;: {
+    &quot;my-app&quot;: {
+      // ...
+      &quot;i18n&quot;: {
+        // La langue par défaut de l'application (source)
+        &quot;sourceLocale&quot;: &quot;fr&quot;,
+        // Les langues pour lesquelles on veut générer un build
+        &quot;locales&quot;: {
+          &quot;es&quot;: &quot;src/locale/messages.es.xlf&quot;
+          // code langue -&gt; chemin du fichier
+        }
+      },
+      &quot;architect&quot;: {
+        &quot;build&quot;: {
+          &quot;options&quot;: {
+            // ...
+          },
+          &quot;configurations&quot;: {
+            &quot;production&quot;: {
+              // ...
+            },
+            // On peut créer une config spécifique pour une langue
+            &quot;es&quot;: {
+              &quot;localize&quot;: [
+                &quot;es&quot;
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</div><p id="z8c2a6x_79">Maintenant, pour g&eacute;n&eacute;rer toutes les versions localis&eacute;es de votre application en mode production :</p><div class="code-block" data-lang="bash">
+ng build --localize
+</div><p id="z8c2a6x_81">Cette commande va cr&eacute;er un dossier <code class="code" id="z8c2a6x_83">dist/my-app/fr/</code> et <code class="code" id="z8c2a6x_84">dist/my-app/es/</code>, chacun contenant une version enti&egrave;rement traduite et optimis&eacute;e de l'application.</p></section><section class="chapter"><h2 id="exercice-7-1-traduire-une-page-de-profil" data-toc="exercice-7-1-traduire-une-page-de-profil">Exercice 7.1 : Traduire une page de profil</h2><p id="z8c2a6x_85"><span class="control" id="z8c2a6x_89">Objectif :</span> Mettre en pratique tout le flux i18n sur un petit composant.</p><p id="z8c2a6x_86"><span class="control" id="z8c2a6x_90">Instructions :</span></p><ol class="list _decimal" id="z8c2a6x_87" type="1"><li class="list__item" id="z8c2a6x_91"><p id="z8c2a6x_98">Cr&eacute;ez un <code class="code" id="z8c2a6x_100">ProfileComponent</code> avec le template suivant :</p><div class="code-block" data-lang="markup">
+&lt;h2&gt;Mon Profil&lt;/h2&gt;
+&lt;p&gt;Bienvenue sur votre espace personnel.&lt;/p&gt;
+&lt;button&gt;Modifier le profil&lt;/button&gt;
+</div></li><li class="list__item" id="z8c2a6x_92"><p id="z8c2a6x_101"><span class="control" id="z8c2a6x_102">Marquez</span> les trois textes (<code class="code" id="z8c2a6x_103">h2</code>, <code class="code" id="z8c2a6x_104">p</code>, <code class="code" id="z8c2a6x_105">button</code>) avec l'attribut <code class="code" id="z8c2a6x_106">i18n</code>. Ajoutez des descriptions et des ID personnalis&eacute;s.</p></li><li class="list__item" id="z8c2a6x_93"><p id="z8c2a6x_107"><span class="control" id="z8c2a6x_108">Lancez l'extraction</span> avec <code class="code" id="z8c2a6x_109">ng extract-i18n</code>.</p></li><li class="list__item" id="z8c2a6x_94"><p id="z8c2a6x_110"><span class="control" id="z8c2a6x_111">Cr&eacute;ez manuellement</span> une copie du fichier <code class="code" id="z8c2a6x_112">messages.xlf</code> et nommez-la <code class="code" id="z8c2a6x_113">messages.en.xlf</code>.</p></li><li class="list__item" id="z8c2a6x_95"><p id="z8c2a6x_114"><span class="control" id="z8c2a6x_115">Traduisez</span> les textes en anglais &agrave; l'int&eacute;rieur de ce nouveau fichier.</p></li><li class="list__item" id="z8c2a6x_96"><p id="z8c2a6x_116"><span class="control" id="z8c2a6x_117">Configurez <code class="code" id="z8c2a6x_121">angular.json</code></span> pour d&eacute;clarer le fran&ccedil;ais (<code class="code" id="z8c2a6x_118">fr</code>) comme <code class="code" id="z8c2a6x_119">sourceLocale</code> et l'anglais (<code class="code" id="z8c2a6x_120">en</code>) comme une locale disponible.</p></li><li class="list__item" id="z8c2a6x_97"><p id="z8c2a6x_122"><span class="control" id="z8c2a6x_123">Lancez</span> <code class="code" id="z8c2a6x_124">ng build --configuration=en</code> pour ne g&eacute;n&eacute;rer que la version anglaise et v&eacute;rifiez le r&eacute;sultat dans le dossier <code class="code" id="z8c2a6x_125">dist/</code>.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-7-1" data-toc="correction-exercice-7-1">Correction exercice 7.1</h3></div><div class="collapse__content"><section class="procedure-steps" id="z8c2a6x_126"><p id="z8c2a6x_127"><span class="control" id="z8c2a6x_138">1. <code class="code" id="z8c2a6x_139">profile.component.html</code> marqu&eacute;</span></p><div class="code-block" data-lang="markup">
+&lt;h2 i18n=&quot;Titre de la page profil@@profilePageTitle&quot;&gt;Mon Profil&lt;/h2&gt;
+&lt;p i18n=&quot;Message d'accueil de la page profil@@profileWelcomeMessage&quot;&gt;
+    Bienvenue sur votre espace personnel.
+&lt;/p&gt;
+&lt;button i18n=&quot;Bouton d'action pour éditer le profil@@profileEditButton&quot;&gt;
+    Modifier le profil
+&lt;/button&gt;
+</div><p id="z8c2a6x_129"><span class="control" id="z8c2a6x_140">2. Commande d'extraction</span></p><div class="code-block" data-lang="bash">
+ng extract-i18n --output-path src/locale
+</div><p id="z8c2a6x_131"><span class="control" id="z8c2a6x_141">3. Fichier de traduction <code class="code" id="z8c2a6x_142">src/locale/messages.en.xlf</code></span></p><div class="code-block" data-lang="markup">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;xliff version=&quot;1.2&quot; xmlns=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;
+    &lt;file source-language=&quot;fr&quot; datatype=&quot;plaintext&quot; original=&quot;ng2.template&quot;&gt;
+        &lt;body&gt;
+            &lt;trans-unit id=&quot;profilePageTitle&quot; datatype=&quot;html&quot;&gt;
+                &lt;source&gt;Mon Profil&lt;/source&gt;
+                &lt;target&gt;My Profile&lt;/target&gt;
+                &lt;note priority=&quot;1&quot; from=&quot;description&quot;&gt;Titre de la page profil&lt;/note&gt;
+            &lt;/trans-unit&gt;
+            &lt;trans-unit id=&quot;profileWelcomeMessage&quot; datatype=&quot;html&quot;&gt;
+                &lt;source&gt;Bienvenue sur votre espace personnel.&lt;/source&gt;
+                &lt;target&gt;Welcome to your personal space.&lt;/target&gt;
+                &lt;note priority=&quot;1&quot; from=&quot;description&quot;&gt;Message d'accueil de la page profil&lt;/note&gt;
+            &lt;/trans-unit&gt;
+            &lt;trans-unit id=&quot;profileEditButton&quot; datatype=&quot;html&quot;&gt;
+                &lt;source&gt;Modifier le profil&lt;/source&gt;
+                &lt;target&gt;Edit Profile&lt;/target&gt;
+                &lt;note priority=&quot;1&quot; from=&quot;description&quot;&gt;Bouton d'action pour éditer le profil&lt;/note&gt;
+            &lt;/trans-unit&gt;
+        &lt;/body&gt;
+    &lt;/file&gt;
+&lt;/xliff&gt;
+</div><p id="z8c2a6x_133"><span class="control" id="z8c2a6x_143">4. Configuration <code class="code" id="z8c2a6x_144">angular.json</code></span></p><div class="code-block" data-lang="json">
+// ...
+&quot;i18n&quot;: {
+&quot;sourceLocale&quot;: &quot;fr&quot;,
+&quot;locales&quot;: {
+&quot;en&quot;: &quot;src/locale/messages.en.xlf&quot;
+}
+},
+&quot;architect&quot;: {
+&quot;build&quot;: {
+&quot;configurations&quot;: {
+&quot;production&quot;: {
+&quot;localize&quot;: true,
+// ...
+},
+&quot;en&quot;: {
+&quot;localize&quot;: [&quot;en&quot;]
+}
+}
+}
+}
+//...
+</div><p id="z8c2a6x_135"><span class="control" id="z8c2a6x_145">5. Commande de build</span></p><div class="code-block" data-lang="bash">
+ng build --configuration=en
+</div><p id="z8c2a6x_137">Vous devriez trouver un dossier <code class="code" id="z8c2a6x_146">dist/nom-de-votre-app/en/</code> contenant l'application avec les textes en anglais.</p><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="z8c2a6x_147" type="1"><li class="list__item" id="z8c2a6x_148"><p id="z8c2a6x_153"><span class="control" id="z8c2a6x_154">Quelle est la commande CLI pour extraire les textes marqu&eacute;s <code class="code" id="z8c2a6x_159">i18n</code> d'une application ?</span> a. <code class="code" id="z8c2a6x_155">ng generate translations</code> b. <code class="code" id="z8c2a6x_156">ng i18n --extract</code> c. <code class="code" id="z8c2a6x_157">ng extract-i18n</code> d. <code class="code" id="z8c2a6x_158">ng build --i18n</code></p></li><li class="list__item" id="z8c2a6x_149"><p id="z8c2a6x_160"><span class="control" id="z8c2a6x_161">Quel est le principal avantage d'utiliser un identifiant personnalis&eacute; <code class="code" id="z8c2a6x_162">@@id</code> dans un attribut <code class="code" id="z8c2a6x_163">i18n</code>?</span></p></li><li class="list__item" id="z8c2a6x_150"><p id="z8c2a6x_164"><span class="control" id="z8c2a6x_165">Dans quel fichier de configuration du projet d&eacute;clare-t-on la langue source (<code class="code" id="z8c2a6x_166">sourceLocale</code>) et les chemins vers les fichiers de traduction ?</span></p></li><li class="list__item" id="z8c2a6x_151"><p id="z8c2a6x_167"><span class="control" id="z8c2a6x_168">Vrai ou Faux : L'approche i18n d'Angular avec <code class="code" id="z8c2a6x_169">@angular/localize</code> permet de changer de langue dynamiquement sans recharger la page.</span></p></li><li class="list__item" id="z8c2a6x_152"><p id="z8c2a6x_170"><span class="control" id="z8c2a6x_171">Quel format de fichier est utilis&eacute; par d&eacute;faut par Angular pour stocker les textes extraits et les traductions ?</span> a. JSON (<code class="code" id="z8c2a6x_172">.json</code>) b. YAML (<code class="code" id="z8c2a6x_173">.yml</code>) c. XLIFF (<code class="code" id="z8c2a6x_174">.xlf</code>) d. CSV (<code class="code" id="z8c2a6x_175">.csv</code>)</p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="z8c2a6x_176">Vous savez maintenant comment briser la barri&egrave;re de la langue. En ma&icirc;trisant le flux de travail de l'internationalisation avec Angular, vous avez acquis une comp&eacute;tence essentielle pour le d&eacute;veloppement d'applications &agrave; grande &eacute;chelle. Vous savez comment s&eacute;parer proprement le code de la traduction, comment utiliser les outils standards de l'industrie, et comment g&eacute;n&eacute;rer des applications performantes et optimis&eacute;es pour chaque public.</p><p id="z8c2a6x_177">Votre application peut maintenant &ecirc;tre lue par tout le monde. Mais peut-elle &ecirc;tre <span class="emphasis" id="z8c2a6x_178">utilis&eacute;e</span> par tout le monde ? Qu'en est-il des utilisateurs qui naviguent avec un lecteur d'&eacute;cran, ou qui ne peuvent pas utiliser de souris ? C'est le d&eacute;fi de l' <span class="control" id="z8c2a6x_179">accessibilit&eacute; (a11y)</span>, que nous allons aborder dans la partie &quot;Pour aller plus loin&quot;.</p></section><div class="last-modified">10 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="006-02-pwa.html" class="navigation-links__prev">Module 6, Partie C : Build, D&eacute;ploiement et Progressive Web Apps (PWA)</a><a href="007-01-accessibility.html" class="navigation-links__next">Module 7 : Pour aller plus loin - B&acirc;tir pour Tous : L'Accessibilit&eacute; (a11y)</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

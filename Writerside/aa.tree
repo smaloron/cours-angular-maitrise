@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="aa"
+                 name="Angular avancé"
+                 start-page="00-intro.md">
+
+    <toc-element topic="00-intro.md">
+        <toc-element topic="00-01-four-pillars.md"/>
+    </toc-element>
+    <toc-element topic="001-00-RXJS.md">
+        <toc-element topic="001-01-advanced-rxjs.md"/>
+    </toc-element>
+    <toc-element topic="002-00-state-management.md">
+        <toc-element topic="002-01-ngrx.md"/>
+    </toc-element>
+    <toc-element topic="003-00-better-components.md">
+        <toc-element topic="003-01-lazy-loading.md"/>
+    </toc-element>
+    <toc-element topic="004-00-guards-and-interceptors.md">
+        <toc-element topic="004-01-route-lifecycle.md"/>
+    </toc-element>
+    <toc-element topic="005-00-unit-test.md">
+        <toc-element topic="005-01-advanced-unit-test.md"/>
+    </toc-element>
+    <toc-element topic="006-00-dynamic-components.md">
+        <toc-element topic="006-01-websockets.md"/>
+        <toc-element topic="006-02-pwa.md"/>
+    </toc-element>
+    <toc-element topic="007-00-i18n.md">
+        <toc-element topic="007-01-accessibility.md"/>
+    </toc-element>
+    <toc-element topic="008-00-end-to-end-tests.md">
+        <toc-element topic="008-01-advanced-end-to-end-tests.md"/>
+    </toc-element>
+    <toc-element topic="009-00-from-apprentice-to-architect.md"/>
+    <toc-element topic="009-01-corrections.md"/>
+    <toc-element topic="010-00-animation.md">
+        <toc-element topic="010-01-advanced-animation.md"/>
+    </toc-element>
+    <toc-element topic="011-00-firebase.md">
+        <toc-element topic="011-01-advanced-firebase.md"/>
+    </toc-element>
+</instance-profile>

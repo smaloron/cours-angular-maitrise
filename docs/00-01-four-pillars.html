@@ -1,0 +1,259 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-07T15:20:27.018843"><title>Module 0 : Pour aller plus loin - Vers un Code Professionnel | Angular avancé</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"l-injection-de-d-pendances-moderne-avec-inject","level":0,"title":"L\u0027injection de dépendances moderne avec inject()","anchor":"#l-injection-de-d-pendances-moderne-avec-inject"},{"id":"g-rer-les-configurations-avec-les-fichiers-d-environnement","level":0,"title":"Gérer les Configurations avec les Fichiers d\u0027Environnement","anchor":"#g-rer-les-configurations-avec-les-fichiers-d-environnement"},{"id":"renforcer-votre-code-avec-typescript","level":0,"title":"Renforcer votre Code avec TypeScript","anchor":"#renforcer-votre-code-avec-typescript"},{"id":"exercice-0-2-refactoring-vers-un-code-professionnel","level":0,"title":"Exercice 0.2 : Refactoring vers un code professionnel","anchor":"#exercice-0-2-refactoring-vers-un-code-professionnel"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion","level":0,"title":"Conclusion","anchor":"#conclusion"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 0 : Pour aller plus loin - Vers un Code Professionnel | Angular avancé"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Angular avancé Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/00-01-four-pillars.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 0 : Pour aller plus loin - Vers un Code Professionnel | Angular avancé"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/00-01-four-pillars.html#webpage",
+    "url": "writerside-documentation/00-01-four-pillars.html",
+    "name": "Module 0 : Pour aller plus loin - Vers un Code Professionnel | Angular avancé",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Angular avancé Help"
+}</script><!-- End Schema.org --></head><body data-id="00-01-four-pillars" data-main-title="Module 0 : Pour aller plus loin - Vers un Code Professionnel" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="00-intro.md|Module 0 : L'essentiel - Introduction et Rappels Clés"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Angular avancé  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="00-01-four-pillars" id="00-01-four-pillars.md">Module 0 : Pour aller plus loin - Vers un Code Professionnel</h1><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs p&eacute;dagogiques</h2><p id="m84e7v_11">&Agrave; la fin de cette partie, vous aurez ajout&eacute; des cordes essentielles &agrave; votre arc de d&eacute;veloppeur professionnel :</p><ul class="list _bullet" id="m84e7v_12"><li class="list__item" id="m84e7v_13"><p id="m84e7v_17"><span class="control" id="m84e7v_18">Utiliser</span> la fonction <code class="code" id="m84e7v_19">inject()</code> pour une injection de d&eacute;pendances plus flexible et moderne.</p></li><li class="list__item" id="m84e7v_14"><p id="m84e7v_20"><span class="control" id="m84e7v_21">G&eacute;rer</span> les configurations sp&eacute;cifiques &agrave; chaque environnement (d&eacute;veloppement, production) avec les fichiers d'environnement.</p></li><li class="list__item" id="m84e7v_15"><p id="m84e7v_22"><span class="control" id="m84e7v_23">Tirer parti</span> des fonctionnalit&eacute;s de TypeScript (Interfaces, Enums, <code class="code" id="m84e7v_24">readonly</code>) pour &eacute;crire un code plus s&ucirc;r, plus lisible et plus maintenable.</p></li><li class="list__item" id="m84e7v_16"><p id="m84e7v_25"><span class="control" id="m84e7v_26">Comprendre</span> la philosophie derri&egrave;re ces pratiques : &eacute;crire du code non seulement qui fonctionne, mais qui est aussi robuste et pr&ecirc;t pour le travail en &eacute;quipe.</p></li></ul></section><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="m84e7v_27">Si la partie &quot;L'essentiel&quot; nous a permis de v&eacute;rifier que le ch&acirc;ssis, le moteur et les roues de notre voiture &eacute;taient bien en place, cette partie &quot;Pour aller plus loin&quot; s'int&eacute;resse aux finitions qui font toute la diff&eacute;rence. Nous allons installer le tableau de bord, les ceintures de s&eacute;curit&eacute; et le GPS.</p><p id="m84e7v_28">Ce ne sont pas des gadgets. Ce sont des outils et des habitudes de travail qui transforment un code fonctionnel en une application professionnelle. Ils garantissent la s&eacute;curit&eacute; (typage), la fiabilit&eacute; (gestion des configurations) et l'ergonomie (lisibilit&eacute; du code). Adopter ces pratiques d&egrave;s maintenant est l'un des investissements les plus rentables que vous puissiez faire dans votre carri&egrave;re de d&eacute;veloppeur.</p></section><section class="chapter"><h2 id="l-injection-de-d-pendances-moderne-avec-inject" data-toc="l-injection-de-d-pendances-moderne-avec-inject">L'injection de d&eacute;pendances moderne avec <code class="code" id="m84e7v_40">inject()</code></h2><p id="m84e7v_30">Vous connaissez d&eacute;j&agrave; l'injection via le <code class="code" id="m84e7v_41">constructor</code>. C'est le m&eacute;canisme historique et il fonctionne parfaitement. Cependant, depuis l'av&egrave;nement des composants Standalone et des approches plus fonctionnelles, une nouvelle API a fait son apparition : la fonction <code class="code" id="m84e7v_42">inject()</code>.</p><p id="m84e7v_31">Elle permet d'obtenir une d&eacute;pendance directement dans le corps de la classe, sans passer par le constructeur.</p><p id="m84e7v_32"><span class="control" id="m84e7v_43">Avant (avec le constructeur) :</span></p><div class="code-block" data-lang="ts">
+import {Component} from '@angular/core';
+import {UserService} from './user.service';
+
+@Component({...})
+export class UserComponent {
+    // Déclaration de la propriété
+    private userService: UserService;
+
+    // Injection et assignation dans le constructeur
+    constructor(userService: UserService) {
+        this.userService = userService;
+    }
+}
+</div><p id="m84e7v_34">Ou sa version courte :</p><div class="code-block" data-lang="ts">
+import {Component} from '@angular/core';
+import {UserService} from './user.service';
+
+@Component({...})
+export class UserComponent {
+    // Injection et déclaration en une seule ligne
+    constructor(private userService: UserService) {
+    }
+}
+</div><p id="m84e7v_36"><span class="control" id="m84e7v_44">Maintenant (avec <code class="code" id="m84e7v_45">inject()</code>) :</span></p><div class="code-block" data-lang="ts">
+import {Component, inject} from '@angular/core';
+import {UserService} from './user.service';
+
+@Component({...})
+export class UserComponent {
+    // Injection directe dans la propriété de la classe
+    private userService = inject(UserService);
+}
+</div><aside class="prompt" data-type="warning" data-title="" id="m84e7v_38"><p>**Quand utiliser `inject()` ?** La fonction `inject()` doit &ecirc;tre appel&eacute;e dans un **contexte d'injection**, c'est-&agrave;-dire lors de l'initialisation d'une propri&eacute;t&eacute; de classe, dans le constructeur, ou dans les &quot;factory&quot; des providers. Vous ne pouvez pas l'appeler plus tard dans une m&eacute;thode comme `ngOnInit()` ou un gestionnaire de clic.</p></aside><p id="m84e7v_39">L'avantage principal est une syntaxe plus concise et une plus grande flexibilit&eacute; pour des cas d'usage avanc&eacute;s (comme les <code class="code" id="m84e7v_46">Route Guards</code> fonctionnels) que nous verrons plus tard. Pour l'instant, voyez-la comme la mani&egrave;re moderne et &eacute;l&eacute;gante de r&eacute;aliser l'injection de d&eacute;pendances.</p></section><section class="chapter"><h2 id="g-rer-les-configurations-avec-les-fichiers-d-environnement" data-toc="g-rer-les-configurations-avec-les-fichiers-d-environnement">G&eacute;rer les Configurations avec les Fichiers d'Environnement</h2><p id="m84e7v_47">Imaginez : votre API de d&eacute;veloppement tourne sur <code class="code" id="m84e7v_63">http://localhost:3000</code>. L'API de production, elle, est sur <code class="code" id="m84e7v_64">https://api.monsupersite.com</code>. Allez-vous changer l'URL manuellement dans votre <code class="code" id="m84e7v_65">DataService</code> avant chaque d&eacute;ploiement ? Certainement pas ! C'est une recette pour l'erreur humaine.</p><p id="m84e7v_48">Angular CLI nous offre une solution &eacute;l&eacute;gante : les fichiers d'environnement.</p><p id="m84e7v_49">Dans le dossier <code class="code" id="m84e7v_66">src/environments/</code>, vous trouverez deux fichiers :</p><ul class="list _bullet" id="m84e7v_50"><li class="list__item" id="m84e7v_67"><p id="m84e7v_69"><code class="code" id="m84e7v_70">environment.ts</code>: Pour le d&eacute;veloppement.</p></li><li class="list__item" id="m84e7v_68"><p id="m84e7v_71"><code class="code" id="m84e7v_72">environment.prod.ts</code>: Pour la production (ou tout autre environnement que vous configurez).</p></li></ul><p id="m84e7v_51"><span class="control" id="m84e7v_73"><code class="code" id="m84e7v_74">src/environments/environment.ts</code></span></p><div class="code-block" data-lang="ts">
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:3000/api'
+};
+</div><p id="m84e7v_53"><span class="control" id="m84e7v_75"><code class="code" id="m84e7v_76">src/environments/environment.prod.ts</code></span></p><div class="code-block" data-lang="ts">
+export const environment = {
+    production: true,
+    apiUrl: 'https://api.monsupersite.com/api'
+};
+</div><p id="m84e7v_55">Ensuite, dans votre service, il vous suffit d'importer l'objet <code class="code" id="m84e7v_77">environment</code>:</p><div class="code-block" data-lang="ts">
+import {Injectable, inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+
+@Injectable({providedIn: 'root'})
+export class ProductService {
+    private http = inject(HttpClient);
+    private apiUrl = environment.apiUrl; // Utilisation de la variable
+
+    getProducts() {
+        return this.http.get(`${this.apiUrl}/products`);
+    }
+}
+</div><p id="m84e7v_57"><span class="control" id="m84e7v_78">Comment &ccedil;a marche ?</span> La magie op&egrave;re au moment du build. Dans le fichier <code class="code" id="m84e7v_79">angular.json</code>, une configuration sp&eacute;cifie que lorsque vous lancez <code class="code" id="m84e7v_80">ng build</code> (qui par d&eacute;faut est en mode production), Angular remplacera l'import de <code class="code" id="m84e7v_81">environment.ts</code> par celui de <code class="code" id="m84e7v_82">environment.prod.ts</code>.</p><p id="m84e7v_58">@startuml !theme vibrant skinparam rectangle { roundCorner 25 }</p><p id="m84e7v_59">package &quot;D&eacute;veloppement (<code class="code" id="m84e7v_83">ng serve</code> )&quot; { [Code applicatif] ..&gt; [environment.ts] : &quot;importe&quot; note on link apiUrl: 'http://localhost:3000' end note }</p><p id="m84e7v_60">package &quot;Production (<code class="code" id="m84e7v_84">ng build</code> )&quot; { [Code applicatif] ..&gt; [environment.prod.ts] : &quot;importe&quot; note on link apiUrl: 'https://api.my-app.com' end note }</p><p id="m84e7v_61">node &quot;angular.json&quot; as an_json { file &quot;fileReplacements&quot; as fr }</p><p id="m84e7v_62">an_json ..&gt; &quot;Production (<code class="code" id="m84e7v_85">ng build</code> )&quot; : &quot;instruit de remplacer le fichier&quot; @enduml</p></section><section class="chapter"><h2 id="renforcer-votre-code-avec-typescript" data-toc="renforcer-votre-code-avec-typescript">Renforcer votre Code avec TypeScript</h2><p id="m84e7v_86">TypeScript est bien plus qu'un simple &quot;JavaScript avec des types&quot;. C'est un outil puissant pour construire des applications robustes. Voici trois fonctionnalit&eacute;s que vous devriez utiliser syst&eacute;matiquement.</p><div class="tabs" id="m84e7v_87" data-anchors="[m84e7v_88,m84e7v_89,m84e7v_90]"><div class="tabs__content" data-gtm="tab" id="m84e7v_88" data-title="Interfaces et Types"><p>Ne laissez jamais une structure de donn&eacute;es complexe &ecirc;tre de type `any`. D&eacute;finir une `interface` ou un `type` pour vos mod&egrave;les de donn&eacute;es offre des avantages consid&eacute;rables : </p><ul class="list _bullet" id="m84e7v_91"><li class="list__item" id="m84e7v_93"><p id="m84e7v_96"><span class="control" id="m84e7v_97">Autocompl&eacute;tion</span> dans votre &eacute;diteur de code.</p></li><li class="list__item" id="m84e7v_94"><p id="m84e7v_98"><span class="control" id="m84e7v_99">D&eacute;tection d'erreurs &agrave; la compilation</span> (ex: vous avez &eacute;crit <code class="code" id="m84e7v_100">produit.titel</code> au lieu de <code class="code" id="m84e7v_101">produit.title</code>).</p></li><li class="list__item" id="m84e7v_95"><p id="m84e7v_102"><span class="control" id="m84e7v_103">Code auto-document&eacute;</span>: une <code class="code" id="m84e7v_104">interface</code> d&eacute;crit la forme exacte de l'objet attendu.</p></li></ul><div class="code-block" data-lang="ts" data-title="TypeScript">
+// AVANT : Risqué et peu clair
+function processProduct(product: any): void {
+    console.log(product.name.toUpperCase()); // Et si name n'existe pas ?
+}
+
+// APRÈS : Sûr et explicite
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    description?: string; // La propriété est optionnelle
+}
+
+function processProduct(product: Product): void {
+    console.log(product.name.toUpperCase()); // Garanti d'exister !
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="m84e7v_89" data-title="Enums"><p>Quand vous avez une propri&eacute;t&eacute; qui ne peut prendre qu'un nombre limit&eacute; de valeurs textuelles (un statut, une cat&eacute;gorie...), utilisez un `enum` au lieu de simples cha&icirc;nes de caract&egrave;res (&quot;magic strings&quot;). </p><ul class="list _bullet" id="m84e7v_105"><li class="list__item" id="m84e7v_107"><p id="m84e7v_110"><span class="control" id="m84e7v_111">&Eacute;vite les fautes de frappe</span>: <code class="code" id="m84e7v_112">Status.PUBLISHED</code> est plus s&ucirc;r que <code class="code" id="m84e7v_113">&quot;published&quot;</code>.</p></li><li class="list__item" id="m84e7v_108"><p id="m84e7v_114"><span class="control" id="m84e7v_115">Centralise les valeurs possibles</span>: Si vous devez ajouter un statut, vous ne le modifiez qu'&agrave; un seul endroit.</p></li><li class="list__item" id="m84e7v_109"><p id="m84e7v_116"><span class="control" id="m84e7v_117">Am&eacute;liore la lisibilit&eacute;</span> du code.</p></li></ul><div class="code-block" data-lang="ts" data-title="TypeScript">
+// AVANT : Fragile
+function publish(status: string) {
+    if (status === 'PUBLISHED') { /* ... */
+    } // faute de frappe possible
+}
+
+publish('PUBLIHSED'); // Oups ! Pas d'erreur...
+
+// APRÈS : Robuste
+export enum ArticleStatus {
+    DRAFT = 'DRAFT',
+    PUBLISHED = 'PUBLISHED',
+    ARCHIVED = 'ARCHIVED',
+}
+
+function publish(status: ArticleStatus) {
+    if (status === ArticleStatus.PUBLISHED) { /* ... */
+    }
+}
+
+// Erreur détectée par TypeScript !
+// publish(ArticleStatus.PUBLIHSED); 
+</div></div><div class="tabs__content" data-gtm="tab" id="m84e7v_90" data-title="Immutabilit&eacute; avec `readonly`"><p>Le mot-cl&eacute; `readonly` vous permet de d&eacute;clarer une propri&eacute;t&eacute; qui ne peut &ecirc;tre assign&eacute;e qu'au moment de sa d&eacute;claration ou dans le constructeur. Une fois assign&eacute;e, elle ne peut plus &ecirc;tre modifi&eacute;e. </p><p id="m84e7v_118">C'est une premi&egrave;re &eacute;tape douce vers le concept d' <span class="control" id="m84e7v_120">immutabilit&eacute;</span>, qui est crucial pour les optimisations de performance (<code class="code" id="m84e7v_121">OnPush</code>) et la gestion d'&eacute;tat (NgRx) que nous verrons plus tard.</p><div class="code-block" data-lang="ts" data-title="TypeScript">
+export interface User {
+    readonly id: number; // L'ID ne doit jamais changer
+    name: string;
+}
+
+const user: User = {id: 1, name: 'John Doe'};
+
+user.name = 'Jane Doe'; // OK
+
+// Erreur TypeScript : Impossible d'assigner à 'id' car 
+// c'est une propriété en lecture seule.
+// user.id = 2; 
+</div></div></div></section><section class="chapter"><h2 id="exercice-0-2-refactoring-vers-un-code-professionnel" data-toc="exercice-0-2-refactoring-vers-un-code-professionnel">Exercice 0.2 : Refactoring vers un code professionnel</h2><p id="m84e7v_122"><span class="control" id="m84e7v_131">Objectif :</span> Reprendre un code simple et appliquer les trois concepts que nous venons de voir.</p><p id="m84e7v_123"><span class="control" id="m84e7v_132">Sc&eacute;nario de d&eacute;part :</span> Vous avez un service et un composant qui affichent des &quot;notifications&quot;. Le code fonctionne, mais il n'est pas robuste.</p><p id="m84e7v_124"><code class="code" id="m84e7v_133">notification.service.ts</code> (d&eacute;part)</p><div class="code-block" data-lang="ts">
+import {Injectable} from '@angular/core';
+import {of} from 'rxjs';
+
+@Injectable({providedIn: 'root'})
+export class NotificationService {
+    getNotifications() {
+        // L'URL est en dur !
+        console.log('Fetching from /api/notifications');
+        return of([
+            {id: 101, text: 'Maintenance prévue', type: 'info'},
+            {id: 102, text: 'Votre rapport est prêt', type: 'success'}
+        ]);
+    }
+}
+</div><p id="m84e7v_126"><code class="code" id="m84e7v_134">notification-list.component.ts</code> (d&eacute;part)</p><div class="code-block" data-lang="ts">
+import {Component, OnInit} from '@angular/core';
+import {NotificationService} from '../notification.service';
+import {CommonModule} from '@angular/common';
+
+@Component({
+    selector: 'app-notification-list',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+    &lt;ul&gt;
+      &lt;li *ngFor=&quot;let n of notifications&quot;&gt;
+        {{ n.text }} (Type: {{ n.type }})
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  `
+})
+export class NotificationListComponent implements OnInit {
+    notifications: any[] = [];
+
+    constructor(private notificationService: NotificationService) {
+    }
+
+    ngOnInit() {
+        this.notificationService.getNotifications()
+            .subscribe(data =&gt; this.notifications = data);
+    }
+}
+</div><p id="m84e7v_128"><span class="control" id="m84e7v_135">Votre mission :</span></p><ol class="list _decimal" id="m84e7v_129" type="1"><li class="list__item" id="m84e7v_136"><p id="m84e7v_140"><span class="control" id="m84e7v_142">Cr&eacute;ez un fichier <code class="code" id="m84e7v_143">notification.model.ts</code></span>:</p><ul class="list _bullet" id="m84e7v_141"><li class="list__item" id="m84e7v_144"><p id="m84e7v_146">D&eacute;finissez un <code class="code" id="m84e7v_147">enum</code> <code class="code" id="m84e7v_148">NotificationType</code> avec les valeurs <code class="code" id="m84e7v_149">INFO</code>, <code class="code" id="m84e7v_150">SUCCESS</code>, <code class="code" id="m84e7v_151">WARNING</code>, <code class="code" id="m84e7v_152">ERROR</code>.</p></li><li class="list__item" id="m84e7v_145"><p id="m84e7v_153">D&eacute;finissez une <code class="code" id="m84e7v_154">interface</code> <code class="code" id="m84e7v_155">Notification</code> avec les propri&eacute;t&eacute;s <code class="code" id="m84e7v_156">id</code> (nombre, en lecture seule), <code class="code" id="m84e7v_157">text</code> (cha&icirc;ne) et <code class="code" id="m84e7v_158">type</code> (utilisant l'enum <code class="code" id="m84e7v_159">NotificationType</code>).</p></li></ul></li><li class="list__item" id="m84e7v_137"><p id="m84e7v_160"><span class="control" id="m84e7v_161">Modifiez les fichiers d'environnement</span> pour y inclure une <code class="code" id="m84e7v_162">apiUrl</code>.</p></li><li class="list__item" id="m84e7v_138"><p id="m84e7v_163"><span class="control" id="m84e7v_165">Refactorez <code class="code" id="m84e7v_166">NotificationService</code></span>:</p><ul class="list _bullet" id="m84e7v_164"><li class="list__item" id="m84e7v_167"><p id="m84e7v_169">Il doit utiliser l'URL de l'environnement (m&ecirc;me si nous la simulons pour l'instant).</p></li><li class="list__item" id="m84e7v_168"><p id="m84e7v_170">La m&eacute;thode <code class="code" id="m84e7v_171">getNotifications()</code> doit retourner un <code class="code" id="m84e7v_172">Observable&lt;Notification[]&gt;</code>.</p></li></ul></li><li class="list__item" id="m84e7v_139"><p id="m84e7v_173"><span class="control" id="m84e7v_175">Refactorez <code class="code" id="m84e7v_176">NotificationListComponent</code></span>:</p><ul class="list _bullet" id="m84e7v_174"><li class="list__item" id="m84e7v_177"><p id="m84e7v_179">Utilisez la fonction <code class="code" id="m84e7v_180">inject()</code> pour obtenir le service.</p></li><li class="list__item" id="m84e7v_178"><p id="m84e7v_181">Le tableau <code class="code" id="m84e7v_182">notifications</code> doit &ecirc;tre typ&eacute; correctement avec <code class="code" id="m84e7v_183">Notification[]</code>.</p></li></ul></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-exercice-0-2" data-toc="correction-exercice-0-2">Correction exercice 0.2</h3></div><div class="collapse__content"><section class="procedure-steps" id="m84e7v_184"><p id="m84e7v_185">Voici le code refactoris&eacute;, appliquant toutes les bonnes pratiques demand&eacute;es.</p><p id="m84e7v_186"><span class="control" id="m84e7v_200">1. Fichiers d'environnement</span></p><p id="m84e7v_187"><code class="code" id="m84e7v_201">src/environments/environment.ts</code></p><div class="code-block" data-lang="ts">
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:4200/api'
+};
+</div><p id="m84e7v_189"><code class="code" id="m84e7v_202">src/environments/environment.prod.ts</code></p><div class="code-block" data-lang="ts">
+export const environment = {
+    production: true,
+    apiUrl: 'https://prod.server.com/api'
+};
+</div><p id="m84e7v_191"><span class="control" id="m84e7v_203">2. Le nouveau mod&egrave;le de donn&eacute;es</span></p><p id="m84e7v_192"><code class="code" id="m84e7v_204">src/app/notification.model.ts</code></p><div class="code-block" data-lang="ts">
+// Définit les types de notifications possibles de manière sûre.
+export enum NotificationType {
+    INFO = 'info',
+    SUCCESS = 'success',
+    WARNING = 'warning',
+    ERROR = 'error',
+}
+
+// Décrit la structure d'une notification.
+export interface Notification {
+    readonly id: number; // L'ID ne pourra pas être modifié.
+    text: string;
+    type: NotificationType;
+}
+</div><p id="m84e7v_194"><span class="control" id="m84e7v_205">3. Le service refactoris&eacute;</span></p><p id="m84e7v_195"><code class="code" id="m84e7v_206">src/app/notification.service.ts</code></p><div class="code-block" data-lang="ts">
+import {Injectable, inject} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {environment} from '../environments/environment';
+import {Notification, NotificationType} from './notification.model';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class NotificationService {
+    private apiUrl = environment.apiUrl;
+
+    // La méthode est maintenant typée et retourne un Observable du bon type.
+    getNotifications(): Observable&lt;Notification[]&gt; {
+        console.log(`Fetching from ${this.apiUrl}/notifications`);
+
+        // Les données simulées respectent maintenant notre modèle.
+        const mockNotifications: Notification[] = [
+            {
+                id: 101,
+                text: 'Maintenance prévue à 2h du matin.',
+                type: NotificationType.INFO
+            },
+            {
+                id: 102,
+                text: 'Votre rapport a été généré avec succès.',
+                type: NotificationType.SUCCESS
+            }
+        ];
+        return of(mockNotifications);
+    }
+}
+</div><p id="m84e7v_197"><span class="control" id="m84e7v_207">4. Le composant refactoris&eacute;</span></p><p id="m84e7v_198"><code class="code" id="m84e7v_208">src/app/notification-list/notification-list.component.ts</code></p><div class="code-block" data-lang="ts">
+import {Component, OnInit, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Observable} from 'rxjs';
+import {NotificationService} from '../notification.service';
+import {Notification} from '../notification.model';
+
+@Component({
+    selector: 'app-notification-list',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+    &lt;h3&gt;Notifications&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;!-- On utilise le pipe async pour une gestion plus propre --&gt;
+      &lt;li *ngFor=&quot;let n of notifications$ | async&quot;&gt;
+        {{ n.text }} (Type: {{ n.type }})
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  `
+})
+export class NotificationListComponent implements OnInit {
+    // Injection de dépendances moderne.
+    private notificationService = inject(NotificationService);
+
+    // La propriété est un Observable, ce qui est une bonne pratique.
+    // Elle est correctement typée.
+    notifications$!: Observable&lt;Notification[]&gt;;
+
+    ngOnInit() {
+        this.notifications$ = this.notificationService.getNotifications();
+    }
+}
+</div><ol class="list _decimal"></ol></section></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><ol class="list _decimal" id="m84e7v_209" type="1"><li class="list__item" id="m84e7v_210"><p id="m84e7v_215"><span class="control" id="m84e7v_216">Laquelle de ces affirmations concernant la fonction <code class="code" id="m84e7v_217">inject()</code> est FAUSSE ?</span> a. Elle doit &ecirc;tre appel&eacute;e dans un contexte d'injection (ex: initialisation de propri&eacute;t&eacute;). b. Elle peut remplacer compl&egrave;tement l'injection par constructeur. c. Elle peut &ecirc;tre appel&eacute;e &agrave; n'importe quel moment dans le cycle de vie d'un composant, y compris dans une m&eacute;thode d&eacute;clench&eacute;e par un clic. d. Elle offre une syntaxe plus concise.</p></li><li class="list__item" id="m84e7v_211"><p id="m84e7v_218"><span class="control" id="m84e7v_219">Expliquez en deux phrases le m&eacute;canisme qui permet &agrave; une application Angular d'utiliser une URL d'API diff&eacute;rente en d&eacute;veloppement et en production.</span></p></li><li class="list__item" id="m84e7v_212"><p id="m84e7v_220"><span class="control" id="m84e7v_221">Quel est le principal b&eacute;n&eacute;fice de l'utilisation d'une <code class="code" id="m84e7v_222">interface</code> TypeScript pour mod&eacute;liser les donn&eacute;es re&ccedil;ues d'une API ?</span> a. Cela acc&eacute;l&egrave;re les appels HTTP. b. Cela garantit la s&eacute;curit&eacute; des donn&eacute;es sur le serveur. c. Cela fournit une v&eacute;rification de type &agrave; la compilation et am&eacute;liore l'aide au d&eacute;veloppement (autocompl&eacute;tion). d. Cela compresse automatiquement les donn&eacute;es JSON.</p></li><li class="list__item" id="m84e7v_213"><p id="m84e7v_223"><span class="control" id="m84e7v_224">Vous travaillez sur une entit&eacute; <code class="code" id="m84e7v_225">Order</code> (commande) et vous voulez vous assurer que sa propri&eacute;t&eacute; <code class="code" id="m84e7v_226">creationDate</code> ne soit jamais modifi&eacute;e apr&egrave;s son assignation initiale. Quel mot-cl&eacute; TypeScript utiliseriez-vous sur cette propri&eacute;t&eacute; dans l'interface <code class="code" id="m84e7v_227">Order</code>?</span></p></li><li class="list__item" id="m84e7v_214"><p id="m84e7v_228"><span class="control" id="m84e7v_229">Quel fichier de configuration d'un projet Angular CLI est responsable de la gestion du remplacement des fichiers d' environnement ?</span> a. <code class="code" id="m84e7v_230">package.json</code> b. <code class="code" id="m84e7v_231">tsconfig.json</code> c. <code class="code" id="m84e7v_232">angular.json</code> d. <code class="code" id="m84e7v_233">ng.conf</code></p></li></ol></section><section class="chapter"><h2 id="conclusion" data-toc="conclusion">Conclusion</h2><p id="m84e7v_234">F&eacute;licitations ! Vous venez de faire un grand pas en avant. En ma&icirc;trisant l'injection via <code class="code" id="m84e7v_236">inject()</code>, la gestion des environnements et un typage rigoureux avec TypeScript, vous avez adopt&eacute; les r&eacute;flexes d'un d&eacute;veloppeur soucieux de la qualit&eacute;. Ce sont ces d&eacute;tails qui, mis bout &agrave; bout, font la diff&eacute;rence entre une application qui fonctionne &quot;pour l'instant&quot; et une application robuste, pr&ecirc;te &agrave; &eacute;voluer et &agrave; &ecirc;tre maintenue par une &eacute;quipe.</p><p id="m84e7v_235">Ces bases solides vont nous &ecirc;tre indispensables pour la suite. Maintenant que nous savons comment structurer notre code de mani&egrave;re propre et professionnelle, nous sommes pr&ecirc;ts &agrave; nous attaquer &agrave; un sujet puissant et central dans l'&eacute;cosyst&egrave;me Angular : la programmation r&eacute;active. Dans le prochain module, nous plongerons au c&oelig;ur de <span class="control" id="m84e7v_237">RxJS</span> pour apprendre &agrave; ma&icirc;triser les flux de donn&eacute;es comme jamais auparavant.</p></section><div class="last-modified">10 août 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="00-intro.html" class="navigation-links__prev">Module 0 : L'essentiel - Introduction et Rappels Cl&eacute;s</a><a href="001-00-rxjs.html" class="navigation-links__next">Module 1 : L'essentiel - Ma&icirc;trise de RxJS, le c&oelig;ur r&eacute;actif d'Angular</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

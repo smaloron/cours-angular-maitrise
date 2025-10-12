@@ -89,7 +89,7 @@ connaissances et, surtout, pour comprendre les raisonnements derrière chaque r�
 
 ## Module 1 : Maîtrise de RxJS
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_6"}
 
 1. **Que reçoit un nouvel abonné à un `BehaviorSubject` ?**
 
@@ -124,7 +124,7 @@ connaissances et, surtout, pour comprendre les raisonnements derrière chaque r�
   propre plat. Un `Subject` est comme un haut-parleur ; il diffuse le même message à tous ceux qui écoutent en même
   temps.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_1"}
 
 1. **Que doit retourner un `catchError` ?**
 
@@ -163,7 +163,7 @@ connaissances et, surtout, pour comprendre les raisonnements derrière chaque r�
 
 ## Module 2 : Stratégies de Gestion d'État
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_5"}
 
 1. **Qu'est-ce que le "prop drilling" ?**
 
@@ -202,7 +202,7 @@ connaissances et, surtout, pour comprendre les raisonnements derrière chaque r�
   des effets de bord (appels API) n'est pas formalisée, ce qui peut rendre le code plus difficile à maintenir et à
   déboguer en équipe.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_2"}
 
 1. **Principe qui N'APPARTIENT PAS à NgRx/Redux :**
 
@@ -244,7 +244,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 
 ## Module 3 : Patrons de Conception de Composants et Optimisation
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_4"}
 
 1. **Responsabilité qui N'APPARTIENT PAS à un composant de présentation :**
 
@@ -280,7 +280,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 * **Explication :** C'est le piège classique de la mutation. Comme la référence de l'objet n'a pas changé, le composant
   `OnPush` ne se mettra pas à jour.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_3"}
 
 1. **Bénéfice principal du Lazy Loading :**
 
@@ -319,7 +319,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 
 ## Module 4 : Gardiens et Intercepteurs
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_3"}
 
 1. **Rôle principal d'un garde `CanActivate` :**
 
@@ -352,7 +352,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
   de créer cette `UrlTree` est d'injecter le `Router` et de retourner `router.parseUrl('/login')`, ce qui annulera la
   navigation actuelle et en déclenchera une nouvelle vers la page de connexion.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_4"}
 
 1. **Avantage principal d'un `Resolver` :**
 
@@ -390,7 +390,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 
 ## Module 5 : Tests Unitaires
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_2"}
 
 1. **Rôle de `Karma` :**
 
@@ -423,7 +423,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
   rend les tests plus fiables, moins "flaky" (aléatoires), et plus faciles à déboguer. Si un test échoue, on sait que
   c'est à cause de la logique qu'il teste, et non à cause d'un effet de bord d'un autre test.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_5"}
 
 1. **Comment fournir une fausse version d'un service dans le `TestBed` ?**
 
@@ -633,7 +633,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 
 ## Module 8 : Tests E2E et Maintenance
 
-### L'essentiel
+### L'essentiel {id="l-essentiel_1"}
 
 1. **Différence entre test unitaire et test E2E :**
 
@@ -665,7 +665,7 @@ logique du cours et les principes fondamentaux de chaque technologie abordée.*
 * **Explication :** La recette est Visiter (`visit`), Trouver (`get`), Agir (`click`, `type`...), et enfin Vérifier (
   `should`) que l'action a eu l'effet escompté.
 
-### Pour aller plus loin
+### Pour aller plus loin {id="pour-aller-plus-loin_6"}
 
 1. **Avantage principal de `cy.intercept()` :**
 

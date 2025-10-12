@@ -58,7 +58,7 @@ http.get('/api/users').pipe(
     })
 ).subscribe(users => console.log(users)); // L'UI reçoit [] et continue de fonctionner
 ```
-
+```plantuml
 @startuml
 !theme vibrant
 skinparam linetype ortho
@@ -78,6 +78,9 @@ Catcher -> Sub : error()
 end
 deactivate Catcher
 @enduml
+```
+
+
 </tab>
 <tab title="retry(n) : La Seconde Chance">
 Parfois, une erreur est temporaire (un soubresaut du réseau). `retry` permet de se ré-abonner automatiquement au flux source qui a échoué, un certain nombre de fois.
@@ -173,31 +176,84 @@ forkJoin({
     })
 ).subscribe(viewModel => console.log(viewModel));
 ```
-
+```plantuml
 @startuml
 !theme vibrant
+' Titre du diagramme
+title Diagramme de séquence pour forkJoin([A, B, C])
 
-participant "user$" as U
-participant "products$" as P
-participant "forkJoin" as FJ
-participant "Abonné" as Sub
+' Acteurs/Participants
+participant "Observateur Final" as Observer
+participant "forkJoin" as ForkJoin
+box "Exécution en Parallèle" #LightBlue
+participant "Observable A (Rapide)" as ObsA
+participant "Observable B (Lent)" as ObsB
+participant "Observable C (Moyen)" as ObsC
+end box
 
-@0
-U is "..."
-P is "..."
+' ===================================
+' 1. Abonnement initial
+' ===================================
+Observer -> ForkJoin : subscribe()
+activate ForkJoin
 
-@100
-U is {User Object}
-U is {end}
+note over ForkJoin
+  S'abonne à tous les
+  observables sources
+  simultanément.
+end note
 
-@150
-P is {[Product Array]}
-P is {end}
+ForkJoin -> ObsA : subscribe()
+activate ObsA
+ForkJoin -> ObsB : subscribe()
+activate ObsB
+ForkJoin -> ObsC : subscribe()
+activate ObsC
 
-@150
-FJ -> Sub : next([ {User Object}, {[Product Array]} ])
-FJ -> Sub : complete()
+' =========================================================
+' 2. Vie des observables (émissions multiples possibles)
+' =========================================================
+
+' --- Observable A ---
+ObsA -> ForkJoin : émet 'A1'
+note right of ObsA : forkJoin garde 'A1' en mémoire temp.
+ObsA -> ForkJoin : émet 'A-Last'
+note right of ObsA : forkJoin remplace 'A1' par 'A-Last'
+
+ObsA --> ForkJoin : complete()
+destroy ObsA
+note over ForkJoin : A terminé. Valeur finale retenue : 'A-Last'.\nEn attente de B et C.
+
+' --- Observable C (pendant que B tourne encore) ---
+' Note: le temps s'écoule vers le bas, C finit après A mais avant B
+ObsC -> ForkJoin : émet 'C1'
+ObsC -> ForkJoin : émet 'C2'
+ObsC -> ForkJoin : émet 'C-Last'
+ObsC --> ForkJoin : complete()
+destroy ObsC
+note over ForkJoin : C terminé. Valeur finale retenue : 'C-Last'.\nEn attente de B.
+
+' --- Observable B (le plus lent) ---
+ObsB -> ForkJoin : émet 'B-Last'
+ObsB --> ForkJoin : complete()
+destroy ObsB
+
+' ================================================================
+' 3. Synchronisation finale et émission
+' ================================================================
+note over ForkJoin
+  **TOUS** les observables sont terminés.
+  forkJoin rassemble les dernières valeurs :
+  ['A-Last', 'B-Last', 'C-Last']
+end note
+
+ForkJoin -> Observer : émet ['A-Last', 'B-Last', 'C-Last']
+ForkJoin --> Observer : complete()
+deactivate ForkJoin
+
 @enduml
+```
+
 </tab>
 <tab title="combineLatest : Le Panneau de Contrôle">
 `combineLatest` est un autre outil de combinaison, mais avec un comportement très différent et très réactif.

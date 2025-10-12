@@ -139,6 +139,7 @@ La magie opère au moment du build. Dans le fichier `angular.json`, une configur
 `ng build` (qui par défaut est en mode production), Angular remplacera l'import de `environment.ts` par celui de
 `environment.prod.ts`.
 
+```plantuml
 @startuml
 !theme vibrant
 skinparam rectangle {
@@ -165,6 +166,7 @@ file "fileReplacements" as fr
 
 an_json ..> "Production (`ng build`)" : "instruit de remplacer le fichier"
 @enduml
+```
 
 ### Renforcer votre Code avec TypeScript
 

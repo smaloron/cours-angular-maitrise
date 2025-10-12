@@ -64,7 +64,6 @@ Il se concentre exclusivement sur le *comment* les choses sont affichées.
 **Le flux de données est simple :**
 
 ```plantuml
-
 @startuml
 
 !theme vibrant

@@ -52,6 +52,7 @@ Le composant `ListeProduits` n'a rien à faire de cette devise ! Il ne fait que 
 ça, le "prop drilling". C'est fastidieux, et si vous devez ajouter un composant intermédiaire, vous devez penser à
 percer un nouveau "trou" pour la propriété.
 
+```plantuml
 @startuml
 !theme vibrant
 skinparam componentStyle rectangle
@@ -65,6 +66,7 @@ List -down-> Card : `@Input() devise`
 
 note right of List : Je ne me sers pas de `devise`,\nje ne fais que la passer.
 @enduml
+```
 
 #### L'État Incohérent
 
@@ -158,6 +160,7 @@ export class UserStateService {
 Avec cette approche, n'importe quel composant de l'application peut injecter `UserStateService` et s'abonner à
 `currentUser$` pour réagir aux changements d'état, résolvant à la fois le "prop drilling" et le risque d'incohérence.
 
+```plantuml
 @startuml
 !theme vibrant
 
@@ -183,6 +186,7 @@ BS ..> Header : notifie
 BS ..> Profile : notifie
 
 @enduml
+```
 
 ### Exercice 2.1 : Créer un Store "fait-main" pour une liste de tâches
 

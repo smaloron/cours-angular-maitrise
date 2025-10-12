@@ -118,6 +118,7 @@ export class UserListComponent implements OnInit {
 }
 ```
 
+```plantuml
 @startuml
 skinparam linetype ortho
 !theme vibrant
@@ -134,10 +135,13 @@ class UserService {
 
 UserListComponent ..> UserService : "dépend de"
 @enduml
+```
 
 </tab>
 <tab title="RxJS et Asynchronisme">
-Dans le monde du web, tout est asynchrone : les appels HTTP, les interactions utilisateur, etc. RxJS est une bibliothèque qui permet de gérer ces flux de données asynchrones (les **Observables**) de manière élégante et puissante. Au lieu d'attendre une réponse, on "s'abonne" à un flux et on réagit aux données au fur et à mesure qu'elles arrivent.
+Dans le monde du web, tout est asynchrone : les appels HTTP, les interactions utilisateur, etc. 
+RxJS est une bibliothèque qui permet de gérer ces flux de données asynchrones (les Observables) de manière élégante et puissante. 
+Au lieu d'attendre une réponse, on "s'abonne" à un flux et on réagit aux données au fur et à mesure qu'elles arrivent.
 
 `HttpClient` d'Angular retourne des Observables, ce qui en fait un partenaire naturel de RxJS.
 

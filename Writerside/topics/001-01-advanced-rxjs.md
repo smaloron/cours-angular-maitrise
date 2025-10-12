@@ -32,6 +32,7 @@ d'opérateurs, laissant votre UI dans un état incohérent. Heureusement, RxJS n
 
 <tabs>
 <tab title="catchError : L'airbag">
+
 L'opérateur `catchError` est votre "try-catch" pour les `Observables`. Il intercepte une erreur dans le flux et vous donne une chance de la gérer.
 
 **La règle d'or :** `catchError` doit retourner un **nouvel `Observable`**. Vous pouvez retourner :
@@ -83,6 +84,7 @@ deactivate Catcher
 
 </tab>
 <tab title="retry(n) : La Seconde Chance">
+
 Parfois, une erreur est temporaire (un soubresaut du réseau). `retry` permet de se ré-abonner automatiquement au flux source qui a échoué, un certain nombre de fois.
 
 C'est un outil simple mais puissant pour améliorer la résilience de votre application face à des problèmes de
@@ -114,6 +116,7 @@ http.get('/api/flaky-endpoint').pipe(
 
 </tab>
 <tab title="finalize : Le Nettoyage Final">
+
 L'opérateur `finalize` est le bloc `finally` de votre `Observable`. Il exécute une fonction callback quand le flux se termine, que ce soit par un `complete` (succès) ou un `error` (échec).
 
 C'est l'endroit **parfait** pour faire du nettoyage, et notamment pour cacher un indicateur de chargement (`loader`).
@@ -149,6 +152,7 @@ utilisateur, de la liste des ventes et des notifications récentes. Comment char
 
 <tabs>
 <tab title="forkJoin : Le Peloton d'Exécution">
+
 `forkJoin` est l'équivalent de `Promise.all` pour les `Observables`. Il prend un tableau (ou un dictionnaire) d'Observables et attend que **tous** se terminent (`complete`). Une fois que c'est le cas, il émet une **seule valeur** : un tableau (ou un dictionnaire) contenant la **dernière valeur** de chaque `Observable` source.
 
 Idéal pour les appels de "setup" : charger toutes les données initiales d'une page en parallèle.
@@ -256,6 +260,7 @@ deactivate ForkJoin
 
 </tab>
 <tab title="combineLatest : Le Panneau de Contrôle">
+
 `combineLatest` est un autre outil de combinaison, mais avec un comportement très différent et très réactif.
 Il attend que chaque `Observable` source ait émis au moins une fois. Ensuite, il émet une nouvelle valeur **chaque fois que l'un des `Observables` source émet**. La valeur émise est un tableau contenant la **dernière valeur de chaque source**.
 

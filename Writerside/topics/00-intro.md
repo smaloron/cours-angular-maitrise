@@ -57,6 +57,7 @@ solides. Voici un rappel "à 30 000 pieds" des quatre piliers sur lesquels nous 
 
 <tabs>
 <tab title="Composants Standalone">
+
 Depuis Angular 14, les composants Standalone sont la nouvelle norme. Ils simplifient l'architecture en supprimant la nécessité des `NgModules`. Un composant se déclare lui-même et gère ses propres dépendances. C'est la brique de base de nos applications modernes.
 
 ```typescript
@@ -77,6 +78,7 @@ export class AppComponent {
 
 </tab>
 <tab title="Services et Injection de Dépendances (DI)">
+
 Le cœur de la logique métier ne doit pas résider dans les composants. Les **Services** sont des classes TypeScript dédiées à une tâche précise (appeler une API, gérer l'authentification, etc.). Grâce à l'**Injection de Dépendances**, Angular peut automatiquement "fournir" une instance d'un service à n'importe quel composant qui en fait la demande dans son constructeur.
 
 L'injecteur racine (`providedIn: 'root'`) crée un singleton du service, une seule instance partagée pour toute
@@ -139,6 +141,7 @@ UserListComponent ..> UserService : "dépend de"
 
 </tab>
 <tab title="RxJS et Asynchronisme">
+
 Dans le monde du web, tout est asynchrone : les appels HTTP, les interactions utilisateur, etc. 
 RxJS est une bibliothèque qui permet de gérer ces flux de données asynchrones (les Observables) de manière élégante et puissante. 
 Au lieu d'attendre une réponse, on "s'abonne" à un flux et on réagit aux données au fur et à mesure qu'elles arrivent.
@@ -200,6 +203,7 @@ deactivate DataService
 
 </tab>
 <tab title="Formulaires Réactifs">
+
 Pour gérer les formulaires complexes avec des logiques de validation riches, les Formulaires Réactifs sont l'outil de choix. Le modèle du formulaire (`FormGroup`, `FormControl`) est défini et géré dans la classe du composant, ce qui le rend facile à tester et à manipuler. La synchronisation avec le template HTML se fait via des directives comme `[formGroup]` et `formControlName`.
 
 ```typescript

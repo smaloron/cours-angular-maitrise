@@ -32,6 +32,7 @@ composants en deux catégories distinctes.
 
 <tabs>
 <tab title="Container / Smart Component">
+
 **Le Cerveau / Le Manager**
 
 Ce composant connaît le "monde extérieur". Ses responsabilités sont :

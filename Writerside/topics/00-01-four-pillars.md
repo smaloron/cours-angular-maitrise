@@ -175,6 +175,7 @@ applications robustes. Voici trois fonctionnalités que vous devriez utiliser sy
 
 <tabs>
 <tab title="Interfaces et Types">
+
 Ne laissez jamais une structure de données complexe être de type `any`. Définir une `interface` ou un `type` pour vos modèles de données offre des avantages considérables :
 
 * **Autocomplétion** dans votre éditeur de code.
@@ -202,6 +203,7 @@ function processProduct(product: Product): void {
 
 </tab>
 <tab title="Enums">
+
 Quand vous avez une propriété qui ne peut prendre qu'un nombre limité de valeurs textuelles (un statut, une catégorie...), utilisez un `enum` au lieu de simples chaînes de caractères ("magic strings").
 
 * **Évite les fautes de frappe** : `Status.PUBLISHED` est plus sûr que `"published"`.
@@ -235,6 +237,7 @@ function publish(status: ArticleStatus) {
 
 </tab>
 <tab title="Immutabilité avec `readonly`">
+
 Le mot-clé `readonly` vous permet de déclarer une propriété qui ne peut être assignée qu'au moment de sa déclaration ou dans le constructeur. Une fois assignée, elle ne peut plus être modifiée.
 
 C'est une première étape douce vers le concept d'**immutabilité**, qui est crucial pour les optimisations de

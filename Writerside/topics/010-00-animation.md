@@ -74,9 +74,11 @@ L'API d'animation d'Angular s'articule autour de quelques fonctions clés que l'
 
 <tabs>
 <tab title="trigger()">
+
 C'est le **déclencheur**, le point d'entrée de votre animation. On lui donne un nom, et c'est ce nom que l'on va lier à un élément HTML dans le template via la syntaxe `[@nomDuTrigger]`.
 </tab>
 <tab title="state()">
+
 Définit un **état** spécifique de l'animation et les styles CSS associés à cet état. Par exemple, un état `open` avec une opacité de 1, et un état `closed` avec une opacité de 0.
 </tab>
 <tab title="transition()">
@@ -86,9 +88,11 @@ unidirectionnelles (<code>'open => closed'</code>) ou bidirectionnelles (`'open 
 
 </tab>
 <tab title="style()">
+
 Applique un ensemble de styles CSS à un moment donné de l'animation.
 </tab>
 <tab title="animate()">
+
 Définit la **durée** de la transition, avec un éventuel **délai** et une **courbe d'accélération** (easing). C'est `animate()` qui rend la transition visible dans le temps.
 </tab>
 </tabs>

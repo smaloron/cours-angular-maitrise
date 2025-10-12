@@ -30,7 +30,9 @@ Lorsque vous placez plusieurs appels à `animate()` dans une transition, ils s'e
 pour des contrôles plus fins, nous avons des outils dédiés.
 
 <tabs>
+
 <tab title="`group()` : Tous ensemble !">
+
 La fonction `group()` permet d'exécuter plusieurs animations **en parallèle**. C'est utile si vous voulez animer plusieurs propriétés en même temps, potentiellement avec des durées ou des timings différents.
 
 ```typescript
@@ -45,7 +47,9 @@ transition(':enter', [
 ```
 
 </tab>
+
 <tab title="`query()` et `stagger()` : L'Effet Domino">
+
 Ce duo est magique pour animer les éléments d'une liste.
 *   **`query(':enter', ...)` :** Permet de trouver des éléments à l'intérieur de l'élément qui porte le `trigger`. On peut cibler des éléments qui entrent (`:enter`), qui sortent (`:leave`), ou n'importe quel sélecteur CSS.
 *   **`stagger(temps, ...)` :** Applique un délai entre les animations de chaque élément trouvé par `query()`.

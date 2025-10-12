@@ -101,6 +101,7 @@ L'attribut `role` définit le "métier" d'un élément. Par exemple, si vous con
 
 </tab>
 <tab title="Propriétés `aria-*` : Quel est ton état ?">
+
 Les attributs `aria-*` décrivent l'état actuel d'un composant.
 *   `aria-selected`: L'onglet est-il sélectionné ? (`true`/`false`)
 *   `aria-expanded`: Le menu est-il déplié ? (`true`/`false`)

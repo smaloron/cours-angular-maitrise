@@ -91,6 +91,7 @@ pointe qui pourraient vous intéresser pour aller encore plus loin.
 
 <tabs>
 <tab title="Le Rendu Côté Serveur (SSR) avec Angular Universal">
+
 **Le Problème :** Par défaut, une application Angular est une "Single Page Application" (SPA). Le serveur envoie un `index.html` quasi-vide, et c'est JavaScript qui construit toute la page dans le navigateur. C'est mauvais pour le référencement (SEO) et pour la performance perçue (le "First Contentful Paint").
 
 **La Solution :** Angular Universal exécute votre application sur le serveur Node.js. Il génère le HTML complet de la
@@ -101,6 +102,7 @@ l'application prend le relais en toute transparence. C'est le meilleur des deux 
 e-commerce, sites de contenu...).
 </tab>
 <tab title="L'Automatisation du Code avec les Schematics">
+
 **Le Problème :** Dans une grande équipe, comment s'assurer que tout le monde crée des composants qui respectent les mêmes conventions ? Comment automatiser la création de "boilerplate" (code répétitif) ?
 
 **La Solution :** Les Schematics sont des générateurs de code. Vous connaissez déjà `ng generate component`... eh bien,
@@ -111,6 +113,7 @@ NgRx, la pagination, et les tests unitaires de base, le tout en une seule comman
 projets d'équipe de grande taille.
 </tab>
 <tab title="Les Architectures Distribuées (Micro-frontends)">
+
 **Le Problème :** Votre application est devenue un monolithe gigantesque. Plusieurs équipes travaillent dessus et se marchent sur les pieds. Déployer la moindre petite modification demande de re-tester et de re-déployer l'ensemble de l'application.
 
 **La Solution :** Les Micro-frontends (implémentés dans Angular via Module Federation) permettent de découper une

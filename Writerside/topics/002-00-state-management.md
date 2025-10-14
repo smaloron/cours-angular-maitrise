@@ -329,6 +329,90 @@ export class TaskStateService {
     }
 }
 ```
+</procedure>
+
+<procedure title="version avec signal">
+
+**1. Le service**
+
+```typescript
+import { Injectable, signal, computed } from '@angular/core';
+
+import {Task} from './task.model';
+
+@Injectable({ providedIn: 'root' })
+export class TaskSignalService {
+  // Le signal privé contient l'état modifiable
+  #tasks = signal<Task[]>([
+    { id: 1, title: 'Apprendre Angular', completed: true },
+    { id: 2, title: 'Explorer les Signaux', completed: false },
+  ]);
+
+  // Le signal public est en lecture seule (computed)
+  public tasks = this.#tasks.asReadonly();
+  // Ou `public tasks = computed(() => this.#tasks());`
+
+  addTask(title: string) {
+    if (!title) return;
+    const newTask: Task = { id: Date.now(), title, completed: false };
+    this.#tasks.update(currentTasks => [...currentTasks, newTask]);
+  }
+
+  toggleTask(id: number) {
+    this.#tasks.update(tasks =>
+      tasks.map(task =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+}
+```
+
+**2. Utilisation du service**
+
+```typescript
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TaskSignalService} from './task-signal.service'; // Adaptez le chemin
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>Ma liste de tâches</h1>
+    <button (click)="addTask('Apprendre la gestion d-état')">
+      Ajouter Tâche
+    </button>
+
+      <ul>
+        @for (task of taskService.tasks(); track task.id) {
+          <li (click)="toggleTask(task.id)"
+              [style.text-decoration]="task.completed ? 'line-through' : 'none'"
+          >
+            {{ task.title }}
+          </li>
+        } @empty {
+          <p>Aucune tâche pour le moment. Bravo !</p>
+        }
+      </ul>
+
+  `
+})
+export class App {
+  // Injection de dépendances moderne et directe
+  taskService = inject(TaskSignalService);
+
+  // Les méthodes ne font qu'appeler le service
+  addTask(title: string) {
+    this.taskService.addTask(title);
+  }
+
+  toggleTask(id: number) {
+    this.taskService.toggleTask(id);
+  }
+}
+```
 
 </procedure>
 

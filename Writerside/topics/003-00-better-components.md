@@ -138,6 +138,151 @@ this.user = {...this.user, name: 'Nouveau Nom'};
 Les composants de présentation ("Dumb") sont les candidats parfaits pour passer en `OnPush`, car ils ne dépendent que de
 leurs `@Input()`.
 
+#### Exemple
+
+**1. Le Composant Enfant : user-profile.component.ts**
+
+Ce composant va simplement recevoir un utilisateur et l'afficher. On active OnPush.
+
+```typescript
+// src/app/user-profile/user-profile.component.ts
+
+import { Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  template: `
+    <div class="profile-card">
+      <h3>{{ user.name }}</h3>
+      <p>ID: {{ user.id }}</p>
+      <!-- On ajoute un log pour voir quand le composant est vérifié -->
+      {{ check() }}
+    </div>
+  `,
+  styles: [`.profile-card { border: 1px solid steelblue; padding: 10px; margin: 10px; border-radius: 5px; }`],
+  // LA LIGNE MAGIQUE !
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class UserProfileComponent {
+  @Input() user: { id: number; name: string };
+
+  check(): void {
+    console.log(`UserProfileComponent vérifié pour : ${this.user.name}`);
+  }
+}
+```
+
+**2. Le Composant Parent : app.component.ts**
+
+Ce composant va gérer les données et les passer au composant enfant.
+
+```typescript
+// src/app/app.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Exemple OnPush</h1>
+    
+    <button (click)="changeUserNameWithoutChangingReference()">
+      Modifier le nom (Mauvaise façon - Mutation)
+    </button>
+    
+    <button (click)="changeUserNameWithNewReference()">
+      Modifier le nom (Bonne façon - Immuabilité)
+    </button>
+
+    <button (click)="addUser()">
+      Ajouter un utilisateur
+    </button>
+    
+    <hr>
+    
+    <app-user-profile 
+      *ngFor="let user of users; trackBy: trackById" 
+      [user]="user">
+    </app-user-profile>
+  `
+})
+export class AppComponent {
+  users = [
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' }
+  ];
+
+  // Nécessaire avec *ngFor pour l'optimisation
+  trackById(index: number, user: { id: number; name: string }): number {
+    return user.id;
+  }
+
+  /**
+   * MAUVAISE FAÇON avec OnPush :
+   * On modifie directement une propriété de l'objet dans le tableau.
+   * La référence du tableau "users" ne change pas.
+   * La référence de l'objet "user" pour Alice ne change pas.
+   * Le composant enfant ne sera PAS mis à jour.
+   */
+  changeUserNameWithoutChangingReference(): void {
+    console.log("Tentative de modification par mutation...");
+    this.users[0].name = 'Alice (modifié)';
+  }
+
+  /**
+   * BONNE FAÇON avec OnPush :
+   * On crée un NOUVEAU tableau en utilisant .map().
+   * Pour l'utilisateur que l'on veut changer, on crée un NOUVEL objet avec le spread operator (...).
+   * La référence du tableau et de l'objet modifié changent.
+   * Le composant enfant SERA mis à jour.
+   */
+  changeUserNameWithNewReference(): void {
+    console.log("Modification avec une nouvelle référence (immuabilité)...");
+    this.users = this.users.map(user => {
+      if (user.id === 1) {
+        return { ...user, name: 'Alice (Immuable)' }; // Nouvel objet !
+      }
+      return user;
+    });
+  }
+  
+  /**
+   * Ici, on crée un nouveau tableau en ajoutant un utilisateur.
+   * La référence du tableau change, donc la vue est mise à jour.
+   */
+  addUser(): void {
+    const newUser = { id: this.users.length + 1, name: 'Charlie' };
+    this.users = [...this.users, newUser]; // Nouveau tableau !
+  }
+}
+```
+
+##### Testons le résultat
+1. Lancez l'application. Vous verrez "Alice" et "Bob". Dans la console, vous verrez :
+   - UserProfileComponent vérifié pour : Alice
+   - UserProfileComponent vérifié pour : Bob
+
+2. Cliquez sur "Modifier le nom (Mauvaise façon - Mutation)".
+   - Résultat UI : Rien ne change ! Le nom "Alice" reste affiché.
+   - Résultat console : Le console.log de la méthode s'affiche, mais PAS ceux du check() du composant enfant.
+   - Pourquoi ? On a modifié une propriété de l'objet, mais la référence de l'objet (this.users[0]) passée à l'input @Input() user n'a pas changé. OnPush ignore donc le changement.
+
+3. Cliquez sur "Ajouter un utilisateur".
+   - Résultat UI : "Charlie" apparaît.
+   - Résultat console : UserProfileComponent vérifié pour : Charlie s'affiche.
+   - Pourquoi ? On a créé un tout nouveau tableau (this.users = [...]). Angular détecte que la référence de l'input
+     users a changé pour le *ngFor, donc il met à jour la liste.
+
+4. Cliquez sur "Modifier le nom (Bonne façon - Immuabilité)".
+   - Résultat UI : Le nom d'Alice devient "Alice (Immuable)".
+   - Résultat console : UserProfileComponent vérifié pour : Alice (Immuable) s'affiche.
+   - Pourquoi ? On a créé un nouveau tableau (.map() renvoie un nouveau tableau) et un nouvel objet ({ ...user })
+     pour Alice. La référence de l'input @Input() user du premier UserProfileComponent a changé, ce qui déclenche la détection de changement.
+
+##### Conclusion du test
+La stratégie OnPush est un outil puissant pour optimiser votre application. Elle vous force à adopter de bonnes pratiques comme l'immuabilité (ne pas modifier les objets/tableaux existants, mais en créer de nouveaux). Cela rend le flux de données de votre application plus prévisible et plus performant.
+
+
 ### Optimisation des Listes : `trackBy`
 
 Lorsque vous utilisez `@for` (ou l'ancien `*ngFor`) pour afficher une liste et que cette liste change, Angular doit
